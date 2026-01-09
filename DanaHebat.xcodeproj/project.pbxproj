@@ -12,6 +12,12 @@
 		7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A42F10A0F0004A8271 /* NetworkSession.swift */; };
 		7316E3A82F10A248004A8271 /* HttpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A72F10A244004A8271 /* HttpViewModel.swift */; };
 		7316E3AA2F10A5CC004A8271 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A92F10A5CC004A8271 /* LoadingIndicator.swift */; };
+		7316E3B02F10AC8A004A8271 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3AF2F10AC8A004A8271 /* KeychainHelper.swift */; };
+		7316E3B22F10AEA1004A8271 /* DeviceIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3B12F10AEA1004A8271 /* DeviceIDManager.swift */; };
+		7316E3B42F10AF7E004A8271 /* CommonParaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3B32F10AF7E004A8271 /* CommonParaManager.swift */; };
+		7316E3B72F10B577004A8271 /* DeviceNetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3B62F10B577004A8271 /* DeviceNetworkInfo.swift */; };
+		7316E3BA2F10B7AF004A8271 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7316E3B82F10B7AF004A8271 /* Localizable.strings */; };
+		7316E3BE2F10B98B004A8271 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3BD2F10B98B004A8271 /* AppLanguage.swift */; };
 		73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86992F108CA500F4826F /* AppDelegate.swift */; };
 		73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869A2F108CA500F4826F /* Assets.xcassets */; };
 		73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */; };
@@ -33,6 +39,14 @@
 		7316E3A42F10A0F0004A8271 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 		7316E3A72F10A244004A8271 /* HttpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpViewModel.swift; sourceTree = "<group>"; };
 		7316E3A92F10A5CC004A8271 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		7316E3AF2F10AC8A004A8271 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		7316E3B12F10AEA1004A8271 /* DeviceIDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceIDManager.swift; sourceTree = "<group>"; };
+		7316E3B32F10AF7E004A8271 /* CommonParaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonParaManager.swift; sourceTree = "<group>"; };
+		7316E3B52F10B569004A8271 /* DanaHebat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DanaHebat.entitlements; sourceTree = "<group>"; };
+		7316E3B62F10B577004A8271 /* DeviceNetworkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceNetworkInfo.swift; sourceTree = "<group>"; };
+		7316E3B92F10B7AF004A8271 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7316E3BC2F10B7C2004A8271 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7316E3BD2F10B98B004A8271 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		73EA86812F108C9C00F4826F /* DanaHebat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaHebat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73EA86992F108CA500F4826F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73EA869A2F108CA500F4826F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,8 +106,10 @@
 		73EA86A22F108CA500F4826F /* DanaHebat */ = {
 			isa = PBXGroup;
 			children = (
+				7316E3B52F10B569004A8271 /* DanaHebat.entitlements */,
 				73EA869B2F108CA500F4826F /* Info.plist */,
 				73EA869A2F108CA500F4826F /* Assets.xcassets */,
+				7316E3B82F10B7AF004A8271 /* Localizable.strings */,
 				73EA86992F108CA500F4826F /* AppDelegate.swift */,
 				73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */,
 				73EA86B32F108FCB00F4826F /* Other */,
@@ -111,6 +127,7 @@
 		73EA86AD2F108FB500F4826F /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				7316E3BD2F10B98B004A8271 /* AppLanguage.swift */,
 				7316E3A72F10A244004A8271 /* HttpViewModel.swift */,
 				7316E3A92F10A5CC004A8271 /* LoadingIndicator.swift */,
 				73EA86B52F10944100F4826F /* BaseViewController.swift */,
@@ -128,6 +145,9 @@
 				7316E3A22F109EDB004A8271 /* BaseModel.swift */,
 				7316E3A02F109D18004A8271 /* NetworkMonitor.swift */,
 				7316E3A42F10A0F0004A8271 /* NetworkSession.swift */,
+				7316E3B32F10AF7E004A8271 /* CommonParaManager.swift */,
+				7316E3B12F10AEA1004A8271 /* DeviceIDManager.swift */,
+				7316E3AF2F10AC8A004A8271 /* KeychainHelper.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -166,6 +186,7 @@
 		73EA86B32F108FCB00F4826F /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				7316E3B62F10B577004A8271 /* DeviceNetworkInfo.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -228,6 +249,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 73EA86782F108C9C00F4826F;
 			minimizedProjectReferenceProxies = 1;
@@ -247,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */,
+				7316E3BA2F10B7AF004A8271 /* Localizable.strings in Resources */,
 				73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,16 +330,21 @@
 				73EA86BA2F10945C00F4826F /* BaseNavigationController.swift in Sources */,
 				73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */,
 				7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */,
+				7316E3B42F10AF7E004A8271 /* CommonParaManager.swift in Sources */,
 				73EA86BC2F10946E00F4826F /* BaseTabBarController.swift in Sources */,
 				7316E3A82F10A248004A8271 /* HttpViewModel.swift in Sources */,
 				73EA86C42F1094CC00F4826F /* CenterViewController.swift in Sources */,
 				73EA86B82F10944900F4826F /* LaunchViewController.swift in Sources */,
+				7316E3B72F10B577004A8271 /* DeviceNetworkInfo.swift in Sources */,
 				73EA86B62F10944100F4826F /* BaseViewController.swift in Sources */,
+				7316E3B22F10AEA1004A8271 /* DeviceIDManager.swift in Sources */,
 				73EA86C02F1094BD00F4826F /* HomeViewController.swift in Sources */,
 				7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */,
 				7316E3AA2F10A5CC004A8271 /* LoadingIndicator.swift in Sources */,
 				7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */,
 				73EA86BE2F10948D00F4826F /* GuideViewController.swift in Sources */,
+				7316E3BE2F10B98B004A8271 /* AppLanguage.swift in Sources */,
+				7316E3B02F10AC8A004A8271 /* KeychainHelper.swift in Sources */,
 				73EA86C22F1094C400F4826F /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +352,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		7316E3B82F10B7AF004A8271 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7316E3B92F10B7AF004A8271 /* en */,
+				7316E3BC2F10B7C2004A8271 /* id */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -341,6 +378,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -382,6 +420,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -422,6 +461,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -485,6 +525,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

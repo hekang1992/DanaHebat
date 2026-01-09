@@ -18,7 +18,7 @@ final class NetworkSession {
     /// GET
     static let getSession: Session = {
         let config = URLSessionConfiguration.default
-        config.timeoutIntervalForRequest = 10
+        config.timeoutIntervalForRequest = 30
         return Session(configuration: config)
     }()
     
@@ -33,7 +33,10 @@ final class NetworkSession {
 final class NetworkManager {
     
     static let shared = NetworkManager()
+    
     private init() {}
+    
+    let base_url = "http://8.215.47.12/seropositiveer"
     
     // MARK: - GET
     func get<T: Codable>(
@@ -43,7 +46,8 @@ final class NetworkManager {
         responseType: T.Type
     ) async throws -> T {
         
-        guard let url = URL(string: url) else {
+        let requestUrl = RequestParamBuilder.buildRequestString(baseURL: base_url + url)
+        guard let url = URL(string: requestUrl) else {
             throw NetworkError.invalidURL
         }
         
@@ -76,7 +80,8 @@ final class NetworkManager {
         responseType: T.Type
     ) async throws -> T {
         
-        guard let url = URL(string: url) else {
+        let requestUrl = RequestParamBuilder.buildRequestString(baseURL: base_url + url)
+        guard let url = URL(string: requestUrl) else {
             throw NetworkError.invalidURL
         }
         
@@ -120,7 +125,8 @@ final class NetworkManager {
         responseType: T.Type
     ) async throws -> T {
         
-        guard let url = URL(string: url) else {
+        let requestUrl = RequestParamBuilder.buildRequestString(baseURL: base_url + url)
+        guard let url = URL(string: requestUrl) else {
             throw NetworkError.invalidURL
         }
         

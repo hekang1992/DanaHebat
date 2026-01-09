@@ -10,7 +10,7 @@ import Toast_Swift
 class HttpViewModel {
     
     /// launch
-    func launchApi() async throws -> BaseModel {
+    func launchApi(parameters: [String: Any]) async throws -> BaseModel {
         
         LoadingIndicator.show()
         
@@ -19,7 +19,10 @@ class HttpViewModel {
         }
         
         do {
-            let model: BaseModel = try await NetworkManager.shared.get(url: "/relateder/kg", responseType: BaseModel.self)
+            let model: BaseModel = try await NetworkManager.shared.get(
+                url: "/relateder/kg",
+                parameters: parameters,
+                responseType: BaseModel.self)
             return model
         } catch {
             throw error

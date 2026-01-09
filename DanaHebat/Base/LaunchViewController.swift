@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FBSDKCoreKit
 
 class LaunchViewController: BaseViewController {
     
@@ -66,7 +67,30 @@ extension LaunchViewController {
 extension LaunchViewController {
     
     private func kgApi() async {
-        ToastManager.showMessage("kgApi")
+        do {
+            let kg = Locale.preferredLanguages.first ?? ""
+            var parameters = DeviceNetworkInfo.getNetworkInfo()
+            parameters["kg"] = kg
+            let model = try await viewModel.launchApi(parameters: parameters)
+            if model.illness == 0 {
+                if let facebookModel = model.potions?.reports {
+                    faceBookSDK(with: facebookModel)
+                }
+            }
+        } catch {
+            
+        }
+    }
+    
+    private func faceBookSDK(with model: reportsModel) {
+        Settings.shared.displayName = model.baldness ?? ""
+        Settings.shared.appURLSchemeSuffix = model.anecdotal ?? ""
+        Settings.shared.appID = model.paralysis ?? ""
+        Settings.shared.clientToken = model.treatment ?? ""
+        ApplicationDelegate.shared.application(
+            UIApplication.shared,
+            didFinishLaunchingWithOptions: nil
+        )
     }
     
 }

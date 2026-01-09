@@ -12,5 +12,12 @@ class BaseModel: Codable {
 }
 
 class potionsModel: Codable {
-    
+    var reports: reportsModel?
+}
+
+class reportsModel: Codable {
+    var anecdotal: String?
+    var paralysis: String?
+    var baldness: String?
+    var treatment: String?
 }
