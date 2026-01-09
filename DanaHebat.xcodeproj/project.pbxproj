@@ -10,6 +10,8 @@
 		7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A02F109D18004A8271 /* NetworkMonitor.swift */; };
 		7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A22F109EDB004A8271 /* BaseModel.swift */; };
 		7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A42F10A0F0004A8271 /* NetworkSession.swift */; };
+		7316E3A82F10A248004A8271 /* HttpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A72F10A244004A8271 /* HttpViewModel.swift */; };
+		7316E3AA2F10A5CC004A8271 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A92F10A5CC004A8271 /* LoadingIndicator.swift */; };
 		73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86992F108CA500F4826F /* AppDelegate.swift */; };
 		73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869A2F108CA500F4826F /* Assets.xcassets */; };
 		73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */; };
@@ -29,6 +31,8 @@
 		7316E3A02F109D18004A8271 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		7316E3A22F109EDB004A8271 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		7316E3A42F10A0F0004A8271 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		7316E3A72F10A244004A8271 /* HttpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpViewModel.swift; sourceTree = "<group>"; };
+		7316E3A92F10A5CC004A8271 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		73EA86812F108C9C00F4826F /* DanaHebat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaHebat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73EA86992F108CA500F4826F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73EA869A2F108CA500F4826F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 		73EA86AD2F108FB500F4826F /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				7316E3A72F10A244004A8271 /* HttpViewModel.swift */,
+				7316E3A92F10A5CC004A8271 /* LoadingIndicator.swift */,
 				73EA86B52F10944100F4826F /* BaseViewController.swift */,
 				73EA86BD2F10948D00F4826F /* GuideViewController.swift */,
 				73EA86B72F10944900F4826F /* LaunchViewController.swift */,
@@ -119,9 +125,9 @@
 		73EA86AE2F108FB700F4826F /* Http */ = {
 			isa = PBXGroup;
 			children = (
-				7316E3A42F10A0F0004A8271 /* NetworkSession.swift */,
 				7316E3A22F109EDB004A8271 /* BaseModel.swift */,
 				7316E3A02F109D18004A8271 /* NetworkMonitor.swift */,
+				7316E3A42F10A0F0004A8271 /* NetworkSession.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -302,11 +308,13 @@
 				73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */,
 				7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */,
 				73EA86BC2F10946E00F4826F /* BaseTabBarController.swift in Sources */,
+				7316E3A82F10A248004A8271 /* HttpViewModel.swift in Sources */,
 				73EA86C42F1094CC00F4826F /* CenterViewController.swift in Sources */,
 				73EA86B82F10944900F4826F /* LaunchViewController.swift in Sources */,
 				73EA86B62F10944100F4826F /* BaseViewController.swift in Sources */,
 				73EA86C02F1094BD00F4826F /* HomeViewController.swift in Sources */,
 				7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */,
+				7316E3AA2F10A5CC004A8271 /* LoadingIndicator.swift in Sources */,
 				7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */,
 				73EA86BE2F10948D00F4826F /* GuideViewController.swift in Sources */,
 				73EA86C22F1094C400F4826F /* OrderViewController.swift in Sources */,

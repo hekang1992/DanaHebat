@@ -131,11 +131,10 @@ final class NetworkManager {
                         formData.append(
                             imageData,
                             withName: imageKey,
-                            fileName: "image.jpg",
+                            fileName: "georgeGroups.jpg",
                             mimeType: "image/jpeg"
                         )
                         
-                        // 其他参数
                         parameters?.forEach { key, value in
                             if let data = value.data(using: .utf8) {
                                 formData.append(data, withName: key)

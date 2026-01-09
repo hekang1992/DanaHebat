@@ -10,6 +10,8 @@ import SnapKit
 
 class LaunchViewController: BaseViewController {
     
+    private let viewModel = HttpViewModel()
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "launch_image")
@@ -33,7 +35,7 @@ class LaunchViewController: BaseViewController {
 extension LaunchViewController {
     
     func networkMonitor() {
-        NetworkMonitor.shared.statusBlock = { status in
+        NetworkMonitor.shared.statusBlock = { [weak self] status in
             switch status {
             case .unknown:
                 print("network=====unknown")
@@ -41,9 +43,15 @@ extension LaunchViewController {
                 print("network=====notReachable")
             case .ethernetOrWiFi:
                 NetworkMonitor.shared.stopListening()
+                Task {
+                    await self?.kgApi()
+                }
                 print("network=====WIFI")
             case .cellular:
                 NetworkMonitor.shared.stopListening()
+                Task {
+                    await self?.kgApi()
+                }
                 print("network=====5G")
             }
             
@@ -51,6 +59,14 @@ extension LaunchViewController {
         
         NetworkMonitor.shared.startListening()
         
+    }
+    
+}
+
+extension LaunchViewController {
+    
+    private func kgApi() async {
+        ToastManager.showMessage("kgApi")
     }
     
 }
