@@ -6,25 +6,51 @@
 //
 
 import UIKit
+import SnapKit
 
 class LaunchViewController: BaseViewController {
-
+    
+    lazy var bgImageView: UIImageView = {
+        let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "launch_image")
+        bgImageView.contentMode = .scaleAspectFill
+        return bgImageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        view.backgroundColor = .red
+        
+        self.networkMonitor()
+        
+        view.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension LaunchViewController {
+    
+    func networkMonitor() {
+        NetworkMonitor.shared.statusBlock = { status in
+            switch status {
+            case .unknown:
+                print("network=====unknown")
+            case .notReachable:
+                print("network=====notReachable")
+            case .ethernetOrWiFi:
+                NetworkMonitor.shared.stopListening()
+                print("network=====WIFI")
+            case .cellular:
+                NetworkMonitor.shared.stopListening()
+                print("network=====5G")
+            }
+            
+        }
+        
+        NetworkMonitor.shared.startListening()
+        
     }
-    */
-
+    
 }

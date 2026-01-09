@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A02F109D18004A8271 /* NetworkMonitor.swift */; };
+		7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A22F109EDB004A8271 /* BaseModel.swift */; };
+		7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A42F10A0F0004A8271 /* NetworkSession.swift */; };
 		73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86992F108CA500F4826F /* AppDelegate.swift */; };
 		73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869A2F108CA500F4826F /* Assets.xcassets */; };
 		73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */; };
@@ -23,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaHebat.release.xcconfig"; path = "Target Support Files/Pods-DanaHebat/Pods-DanaHebat.release.xcconfig"; sourceTree = "<group>"; };
+		7316E3A02F109D18004A8271 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		7316E3A22F109EDB004A8271 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		7316E3A42F10A0F0004A8271 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 		73EA86812F108C9C00F4826F /* DanaHebat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaHebat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73EA86992F108CA500F4826F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73EA869A2F108CA500F4826F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +119,9 @@
 		73EA86AE2F108FB700F4826F /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				7316E3A42F10A0F0004A8271 /* NetworkSession.swift */,
+				7316E3A22F109EDB004A8271 /* BaseModel.swift */,
+				7316E3A02F109D18004A8271 /* NetworkMonitor.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -247,9 +256,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DanaHebat/Pods-DanaHebat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DanaHebat/Pods-DanaHebat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -287,11 +300,14 @@
 			files = (
 				73EA86BA2F10945C00F4826F /* BaseNavigationController.swift in Sources */,
 				73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */,
+				7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */,
 				73EA86BC2F10946E00F4826F /* BaseTabBarController.swift in Sources */,
 				73EA86C42F1094CC00F4826F /* CenterViewController.swift in Sources */,
 				73EA86B82F10944900F4826F /* LaunchViewController.swift in Sources */,
 				73EA86B62F10944100F4826F /* BaseViewController.swift in Sources */,
 				73EA86C02F1094BD00F4826F /* HomeViewController.swift in Sources */,
+				7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */,
+				7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */,
 				73EA86BE2F10948D00F4826F /* GuideViewController.swift in Sources */,
 				73EA86C22F1094C400F4826F /* OrderViewController.swift in Sources */,
 			);
@@ -321,6 +337,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 57MBH2272N;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaHebat/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dana Hebat";
@@ -361,6 +378,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 57MBH2272N;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaHebat/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dana Hebat";
