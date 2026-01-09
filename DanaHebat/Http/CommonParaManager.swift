@@ -46,41 +46,35 @@ private extension CommonParaManager {
 
 final class RequestParamBuilder {
     
-    class func buildRequestString(baseURL: String) -> String {
-        
+    static func buildRequestString(from baseURL: String) -> String {
         let deviceInfo = CommonParaManager.getDeviceInfo()
-        
-        guard let jsonString = jsonString(from: deviceInfo) else {
-            return baseURL
-        }
-        
-        let encodedJSON = jsonString.addingPercentEncoding(
-            withAllowedCharacters: .urlQueryAllowed
-        ) ?? ""
-        
-        if baseURL.contains("?") {
-            return baseURL + "&data=" + encodedJSON
-        } else {
-            return baseURL + "?data=" + encodedJSON
-        }
+        return baseURL.addParameters(deviceInfo)
     }
 }
 
-private extension RequestParamBuilder {
+extension String {
     
-    static func jsonString(from dict: [String: String]) -> String? {
-        guard JSONSerialization.isValidJSONObject(dict) else {
+    func addParameters(_ parameters: [String: Any]) -> String {
+        guard let url = URL(string: self),
+              let urlWithParams = url.addParameters(parameters) else {
+            return ""
+        }
+        return urlWithParams.absoluteString
+    }
+}
+
+extension URL {
+    
+    func addParameters(_ parameters: [String: Any]) -> URL? {
+        guard var components = URLComponents(url: self, resolvingAgainstBaseURL: false) else {
             return nil
         }
         
-        do {
-            let data = try JSONSerialization.data(
-                withJSONObject: dict,
-                options: []
-            )
-            return String(data: data, encoding: .utf8)
-        } catch {
-            return nil
+        let queryItems = parameters.map { key, value in
+            URLQueryItem(name: key, value: "\(value)")
         }
+        
+        components.queryItems = (components.queryItems ?? []) + queryItems
+        return components.url
     }
 }

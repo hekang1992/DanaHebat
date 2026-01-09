@@ -46,7 +46,7 @@ final class NetworkManager {
         responseType: T.Type
     ) async throws -> T {
         
-        let requestUrl = RequestParamBuilder.buildRequestString(baseURL: base_url + url)
+        let requestUrl = RequestParamBuilder.buildRequestString(from: base_url + url)
         guard let url = URL(string: requestUrl) else {
             throw NetworkError.invalidURL
         }
@@ -80,7 +80,7 @@ final class NetworkManager {
         responseType: T.Type
     ) async throws -> T {
         
-        let requestUrl = RequestParamBuilder.buildRequestString(baseURL: base_url + url)
+        let requestUrl = RequestParamBuilder.buildRequestString(from: base_url + url)
         guard let url = URL(string: requestUrl) else {
             throw NetworkError.invalidURL
         }
@@ -125,7 +125,7 @@ final class NetworkManager {
         responseType: T.Type
     ) async throws -> T {
         
-        let requestUrl = RequestParamBuilder.buildRequestString(baseURL: base_url + url)
+        let requestUrl = RequestParamBuilder.buildRequestString(from: base_url + url)
         guard let url = URL(string: requestUrl) else {
             throw NetworkError.invalidURL
         }

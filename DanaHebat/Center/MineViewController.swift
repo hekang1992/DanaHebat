@@ -1,5 +1,5 @@
 //
-//  CenterViewController.swift
+//  MineViewController.swift
 //  DanaHebat
 //
 //  Created by hekang on 2026/1/9.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CenterViewController: BaseViewController {
+class MineViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

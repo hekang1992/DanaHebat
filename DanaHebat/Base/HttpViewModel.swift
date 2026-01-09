@@ -29,6 +29,21 @@ class HttpViewModel {
         }
     }
     
+    /// guide
+    func uploadIDFAApi(parameters: [String: Any]) async throws -> BaseModel {
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/sealed",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
+    
     /// login
     
     /// home

@@ -28,7 +28,7 @@
 		73EA86BE2F10948D00F4826F /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86BD2F10948D00F4826F /* GuideViewController.swift */; };
 		73EA86C02F1094BD00F4826F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86BF2F1094BD00F4826F /* HomeViewController.swift */; };
 		73EA86C22F1094C400F4826F /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86C12F1094C400F4826F /* OrderViewController.swift */; };
-		73EA86C42F1094CC00F4826F /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86C32F1094CC00F4826F /* CenterViewController.swift */; };
+		73EA86C42F1094CC00F4826F /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86C32F1094CC00F4826F /* MineViewController.swift */; };
 		D76C891188E339233AE09B00 /* Pods_DanaHebat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5DAABB5FF51B262DB495F8 /* Pods_DanaHebat.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +59,7 @@
 		73EA86BD2F10948D00F4826F /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		73EA86BF2F1094BD00F4826F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		73EA86C12F1094C400F4826F /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
-		73EA86C32F1094CC00F4826F /* CenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		73EA86C32F1094CC00F4826F /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		BD5DAABB5FF51B262DB495F8 /* Pods_DanaHebat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaHebat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaHebat.debug.xcconfig"; path = "Target Support Files/Pods-DanaHebat/Pods-DanaHebat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,7 +178,7 @@
 		73EA86B22F108FC900F4826F /* Center */ = {
 			isa = PBXGroup;
 			children = (
-				73EA86C32F1094CC00F4826F /* CenterViewController.swift */,
+				73EA86C32F1094CC00F4826F /* MineViewController.swift */,
 			);
 			path = Center;
 			sourceTree = "<group>";
@@ -333,7 +333,7 @@
 				7316E3B42F10AF7E004A8271 /* CommonParaManager.swift in Sources */,
 				73EA86BC2F10946E00F4826F /* BaseTabBarController.swift in Sources */,
 				7316E3A82F10A248004A8271 /* HttpViewModel.swift in Sources */,
-				73EA86C42F1094CC00F4826F /* CenterViewController.swift in Sources */,
+				73EA86C42F1094CC00F4826F /* MineViewController.swift in Sources */,
 				73EA86B82F10944900F4826F /* LaunchViewController.swift in Sources */,
 				7316E3B72F10B577004A8271 /* DeviceNetworkInfo.swift in Sources */,
 				73EA86B62F10944100F4826F /* BaseViewController.swift in Sources */,
@@ -396,7 +396,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ll.leap.loan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -438,7 +438,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ll.leap.loan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

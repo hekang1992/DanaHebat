@@ -13,6 +13,7 @@ class BaseModel: Codable {
 
 class potionsModel: Codable {
     var reports: reportsModel?
+    var being: String?
 }
 
 class reportsModel: Codable {

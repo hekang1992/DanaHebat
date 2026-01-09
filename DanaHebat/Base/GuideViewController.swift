@@ -6,15 +6,24 @@
 //
 
 import UIKit
+import SnapKit
+import AppTrackingTransparency
 
 class GuideViewController: UIViewController {
     
+    private let viewModel = HttpViewModel()
+    
     private var scrollView: UIScrollView!
+    
     private var nextButton: UIButton!
+    
     private var currentPage: Int = 0
     
     private let backgroundENImageNames = ["guide_en_one_image", "guide_en_two_image"]
+    
     private let backgroundIDImageNames = ["guide_id_one_image", "guide_id_two_image"]
+    
+    private var backgroundImageNames: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +31,16 @@ class GuideViewController: UIViewController {
     }
     
     private func setupUI() {
+        
+        let code = LanguageManager.shared.getCurrentLanguageCode()
+        backgroundImageNames = code == 2 ? backgroundENImageNames : backgroundIDImageNames
+        
         setupScrollView()
         setupButton()
+        
+        Task {
+            await self.getAppIDFA()
+        }
     }
     
     private func setupScrollView() {
@@ -36,10 +53,10 @@ class GuideViewController: UIViewController {
         
         let pageWidth = view.bounds.width
         let pageHeight = view.bounds.height
-        scrollView.contentSize = CGSize(width: pageWidth * CGFloat(backgroundENImageNames.count),
+        scrollView.contentSize = CGSize(width: pageWidth * CGFloat(backgroundImageNames.count),
                                         height: pageHeight)
         
-        for (index, imageName) in backgroundENImageNames.enumerated() {
+        for (index, imageName) in backgroundImageNames.enumerated() {
             let imageView = UIImageView(frame: CGRect(x: pageWidth * CGFloat(index),
                                                       y: 0,
                                                       width: pageWidth,
@@ -53,17 +70,20 @@ class GuideViewController: UIViewController {
     
     private func setupButton() {
         nextButton = UIButton(type: .system)
-        nextButton.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-        nextButton.backgroundColor = .white
-        nextButton.setTitleColor(.black, for: .normal)
-        nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        nextButton.layer.cornerRadius = 25
-        nextButton.clipsToBounds = true
-        nextButton.setTitle("下一步", for: .normal)
+        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        nextButton.setBackgroundImage(UIImage(named: "guide_btn_image"), for: .normal)
+        nextButton.setTitle(LanguageManager.localizedString(for: "Next"), for: .normal)
+        nextButton.adjustsImageWhenHighlighted = false
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         view.addSubview(nextButton)
         
-        nextButton.center = CGPoint(x: view.center.x, y: view.bounds.height - 100)
+        nextButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).inset(50)
+            make.size.equalTo(CGSize(width: 299, height: 46))
+        }
     }
     
     @objc private func nextButtonTapped() {
@@ -73,19 +93,25 @@ class GuideViewController: UIViewController {
             scrollView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
             currentPage = nextPage
         } else {
+            SaveGuideShowManager.markAsShown()
             goToHomePage()
         }
     }
     
     private func goToHomePage() {
-        
+        let tabBarVc = BaseTabBarController()
+        if let window = UIApplication.shared.windows.first {
+            UIView.transition(with: window, duration: 0.25, options: .transitionCrossDissolve, animations: {
+                window.rootViewController = tabBarVc
+            }, completion: nil)
+        }
     }
     
     private func updateButtonTitle() {
-        if currentPage == backgroundENImageNames.count - 1 {
-            nextButton.setTitle("开始使用", for: .normal)
+        if currentPage == backgroundImageNames.count - 1 {
+            nextButton.setTitle(LanguageManager.localizedString(for: "Enter"), for: .normal)
         } else {
-            nextButton.setTitle("下一步", for: .normal)
+            nextButton.setTitle(LanguageManager.localizedString(for: "Next"), for: .normal)
         }
     }
 }
@@ -99,4 +125,54 @@ extension GuideViewController: UIScrollViewDelegate {
         
         updateButtonTitle()
     }
+}
+
+extension GuideViewController {
+    
+    private func getAppIDFA() async {
+        guard #available(iOS 14, *) else { return }
+        try? await Task.sleep(nanoseconds: 1_000_000_000)
+        let status = await ATTrackingManager.requestTrackingAuthorization()
+        
+        switch status {
+        case .authorized, .denied, .notDetermined:
+            await uploadIDFAInfo()
+        case .restricted:
+            break
+        @unknown default:
+            break
+        }
+    }
+    
+    private func uploadIDFAInfo() async {
+        do {
+            let parameters = ["forested": DeviceIDManager.getIDFV(),
+                              "occur": DeviceIDManager.getIDFA()]
+            let _ = try await viewModel.uploadIDFAApi(parameters: parameters)
+        } catch {
+            
+        }
+    }
+    
+}
+
+class SaveGuideShowManager {
+    
+    private static let guideShownKey = "guideShownKey"
+    
+    static func checkIfGuideShown() -> String {
+        let hasShown = UserDefaults.standard.bool(forKey: guideShownKey)
+        return hasShown ? "1" : "0"
+    }
+    
+    static func markAsShown() {
+        UserDefaults.standard.set(true, forKey: guideShownKey)
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func resetGuideShown() {
+        UserDefaults.standard.set(false, forKey: guideShownKey)
+        UserDefaults.standard.synchronize()
+    }
+    
 }
