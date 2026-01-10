@@ -12,3 +12,20 @@
 "Home" = "Home";
 "Order" = "Order";
 "Mine" = "Mine";
+
+"Log in" = "Log in";
+"Get Code" = "Get Code";
+"Mobile Number" = "Mobile Number";
+"Verification Code" = "Verification Code";
+"Enter mobile number" = "Enter mobile number";
+"I have read and agree <Privacy Agreement>" = "I have read and agree <Privacy Agreement>";
+"<Privacy Agreement>" = "<Privacy Agreement>";
+"Please read and agree to the Privacy Policy" = "Please read and agree to the Privacy Policy";
+
+"Personal Center" = "Personal Center";
+"Settings" = "Settings";
+"My Service" = "My Service";
+"Account Cancellation" = "Account Cancellation";
+"Sign Out" = "Sign Out";
+"I have read and agreed to the above" = "I have read and agreed to the above";
+"Please read and agree to the above content" = "Please read and agree to the above content";

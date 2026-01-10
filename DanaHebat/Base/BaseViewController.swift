@@ -8,22 +8,37 @@
 import UIKit
 
 class BaseViewController: UIViewController {
+    
+    lazy var appHeadView: AppNavView = {
+        let appHeadView = AppNavView(frame: .zero)
+        return appHeadView
+    }()
+    
+    let languageCode = LanguageManager.shared.getCurrentLocaleCode()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+    }
+
+}
+
+extension BaseViewController {
+    
+    func changeRootVc() {
+        let tabBarVc = BaseTabBarController()
+        if let window = UIApplication.shared.windows.first {
+            UIView.transition(with: window, duration: 0.25, options: .transitionCrossDissolve, animations: {
+                window.rootViewController = tabBarVc
+            }, completion: nil)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func goWordWebVc(with pageUrl: String) {
+        let webVc = WordH5WebViewController()
+        webVc.pageUrl = pageUrl
+        self.navigationController?.pushViewController(webVc, animated: true)
     }
-    */
-
+    
 }

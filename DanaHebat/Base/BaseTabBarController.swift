@@ -11,6 +11,7 @@ class BaseTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         setupViewControllers()
         setupTabBarAppearance()
     }
@@ -59,3 +60,16 @@ class BaseTabBarController: UITabBarController {
     
 }
 
+extension BaseTabBarController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if !UserDataManager.isLoggedIn() {
+            let loginVc = BaseNavigationController(rootViewController: LoginViewController())
+            loginVc.modalPresentationStyle = .fullScreen
+            self.present(loginVc, animated: true)
+            return false
+        }
+        return true
+    }
+    
+}

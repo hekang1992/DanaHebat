@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import FBSDKCoreKit
+import IQKeyboardManagerSwift
 
 class LaunchViewController: BaseViewController {
     
@@ -29,6 +30,9 @@ class LaunchViewController: BaseViewController {
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
     
 }
@@ -96,7 +100,7 @@ extension LaunchViewController {
             if guideStatus == "0" {
                 self.navigateToGuidePage()
             } else {
-                self.navigateToHomePage()
+                self.changeRootVc()
             }
         }
     }
@@ -110,15 +114,6 @@ extension LaunchViewController {
             }, completion: nil)
         }
         
-    }
-    
-    private func navigateToHomePage() {
-        let tabBarVc = BaseTabBarController()
-        if let window = UIApplication.shared.windows.first {
-            UIView.transition(with: window, duration: 0.25, options: .transitionCrossDissolve, animations: {
-                window.rootViewController = tabBarVc
-            }, completion: nil)
-        }
     }
     
     private func faceBookSDK(with model: reportsModel) {

@@ -12,3 +12,20 @@
 "Home" = "Beranda";
 "Order" = "Pesan";
 "Mine" = "Milikku";
+
+"Log in" = "Masuk";
+"Get Code" = "Dapatkan Kode";
+"Mobile Number" = "Nomor Telepon Seluler";
+"Verification Code" = "Kode Verifikasi";
+"Enter mobile number" = "Masukkan Nomor Telepon Seluler";
+"I have read and agree <Privacy Agreement>" = "Saya telah membaca dan menyetujui <Perjanjian Privasi>";
+"<Privacy Agreement>" = "<Perjanjian Privasi>";
+"Please read and agree to the Privacy Policy" = "Harap membaca dan menyetujui kebijakan privasi";
+
+"Personal Center" = "Pusat Pribadi";
+"Settings" = "Pengaturan";
+"My Service" = "Layanan Saya";
+"Account Cancellation" = "Pembatalan Akun";
+"Sign Out" = "Keluar";
+"I have read and agreed to the above" = "Saya telah membaca dan menyetujui ketentuan di atas";
+"Please read and agree to the above content" = "Silakan baca dan setuju dengan hal di atas";

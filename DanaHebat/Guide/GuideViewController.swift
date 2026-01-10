@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import AppTrackingTransparency
 
-class GuideViewController: UIViewController {
+class GuideViewController: BaseViewController {
     
     private let viewModel = HttpViewModel()
     
@@ -94,16 +94,7 @@ class GuideViewController: UIViewController {
             currentPage = nextPage
         } else {
             SaveGuideShowManager.markAsShown()
-            goToHomePage()
-        }
-    }
-    
-    private func goToHomePage() {
-        let tabBarVc = BaseTabBarController()
-        if let window = UIApplication.shared.windows.first {
-            UIView.transition(with: window, duration: 0.25, options: .transitionCrossDissolve, animations: {
-                window.rootViewController = tabBarVc
-            }, completion: nil)
+            self.changeRootVc()
         }
     }
     
