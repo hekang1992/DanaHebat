@@ -1,16 +1,17 @@
 //
-//  SettingListView.swift
+//  ProductListView.swift
 //  DanaHebat
 //
 //  Created by hekang on 2026/1/10.
 //
+
 
 import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
 
-class SettingListView: UIView {
+class ProductListView: UIView {
     
     private let disposeBag = DisposeBag()
     
@@ -59,7 +60,7 @@ class SettingListView: UIView {
         
         bgView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.size.equalTo(CGSize(width: 343.pix(), height: 64.pix()))
+            make.size.equalTo(CGSize(width: 320.pix(), height: 60.pix()))
         }
         
         logoImageView.snp.makeConstraints { make in
@@ -75,9 +76,9 @@ class SettingListView: UIView {
         }
         
         arrowImageView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-15.pix())
-            make.height.width.equalTo(25.pix())
+            make.top.equalToSuperview().offset(9.pix())
+            make.right.equalToSuperview().offset(-11.pix())
+            make.height.width.equalTo(20.pix())
         }
         
         clickBtn.snp.makeConstraints { make in

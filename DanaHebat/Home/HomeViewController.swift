@@ -20,6 +20,8 @@ class HomeViewController: BaseViewController {
     
     private var baseModel: BaseModel?
     
+    private var productModel: newarModel?
+    
     lazy var loginBtn: UIButton = {
         let loginBtn = UIButton(type: .custom)
         loginBtn.setTitle("Log in to Zoom Loan", for: .normal)
@@ -60,8 +62,11 @@ class HomeViewController: BaseViewController {
         })
         
         homeView.oneBlock = { [weak self] in
-            guard let self = self else { return }
-            ToastManager.showMessage("1")
+            guard let self = self, let productModel = productModel else { return }
+            Task {
+                let productID = String(productModel.anthropologist ?? 0)
+                await self.enterInfo(with: productID)
+            }
         }
         
         homeView.twoBlock = { [weak self] in
@@ -97,6 +102,7 @@ extension HomeViewController {
                 let modelArray = model.potions?.certainly ?? []
                 if let listModel = modelArray.first(where: { $0.almost == "lengthsb" }) {
                     let newarModel = listModel.newar?.first ?? newarModel()
+                    self.productModel = newarModel
                     self.configHeadInfo(with: newarModel)
                     self.homeView.model = newarModel
                 }
@@ -115,6 +121,32 @@ extension HomeViewController {
         let logoUrl = model.asthma ?? ""
         self.headView.nameLabel.text = model.ecological ?? ""
         self.headView.logoImageView.kf.setImage(with: URL(string: logoUrl))
+    }
+    
+}
+
+extension HomeViewController {
+    
+    private func enterInfo(with productID: String) async {
+        do {
+            let parameters = ["will": productID]
+            let model = try await viewModel.enterApi(parameters: parameters)
+            if model.illness == 0 {
+                let pageUrl = model.potions?.stated ?? ""
+                if pageUrl.isEmpty {
+                    return
+                }
+                if pageUrl.hasPrefix(DeepLinkRoute.scheme_url) {
+                    URLSchemeRouter.handle(pageURL: pageUrl, from: self)
+                }else {
+                    self.goWordWebVc(with: pageUrl)
+                }
+            }else {
+                ToastManager.showMessage(model.mental ?? "")
+            }
+        } catch {
+            
+        }
     }
     
 }

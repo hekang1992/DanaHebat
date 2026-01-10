@@ -122,6 +122,25 @@ class HttpViewModel {
         }
     }
     
+    func enterApi(parameters: [String: Any]) async throws -> BaseModel {
+        
+        LoadingIndicator.show()
+        
+        defer {
+            LoadingIndicator.hide()
+        }
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/being",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
     
     /// order
     
@@ -184,6 +203,25 @@ class HttpViewModel {
     }
     
     /// product
+    func productDetailApi(parameters: [String: Any]) async throws -> BaseModel {
+        
+        LoadingIndicator.show()
+        
+        defer {
+            LoadingIndicator.hide()
+        }
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/reports",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
     
 }
 

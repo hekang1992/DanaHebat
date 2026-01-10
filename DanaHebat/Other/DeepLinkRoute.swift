@@ -62,11 +62,10 @@ class URLSchemeRouter: NSObject {
             break
             
         case "clades":
-//            let productVc = ProductViewController()
-//            let queryParams = route.queryParams
-//            productVc.productID = queryParams["seget"] ?? ""
-//            vc.navigationController?.pushViewController(productVc, animated: true)
-            break
+            let productVc = ProductViewController()
+            let queryParams = route.queryParams
+            productVc.productID = queryParams["will"] ?? ""
+            vc.navigationController?.pushViewController(productVc, animated: true)
             
         default:
             break

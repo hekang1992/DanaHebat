@@ -38,6 +38,73 @@ class potionsModel: Codable {
     var userInfo: userInfoModel?
     var certainly: [certainlyModel]?
     var off: offModel?
+    var stated: String?
+    var five: [fiveModel]?
+    var appeared: fiveModel?
+    var yet: yetModel?
+}
+
+class yetModel: Codable {
+    var indicates: String?
+    var ecological: String?
+    var origins: String?
+    var anthropologist: String?
+    var chaerephon: String?
+    var isolated: String?
+    var plicata: String?
+    var treat: String?
+    var aselliscus: aselliscusModel?
+    
+    private enum CodingKeys: String, CodingKey {
+        case indicates
+        case ecological
+        case origins
+        case anthropologist
+        case chaerephon
+        case isolated
+        case plicata
+        case treat
+        case aselliscus
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        indicates = try container.decodeIfPresent(String.self, forKey: .indicates)
+        ecological = try container.decodeIfPresent(String.self, forKey: .ecological)
+        origins = try container.decodeIfPresent(String.self, forKey: .origins)
+        anthropologist = try container.decodeIfPresent(String.self, forKey: .anthropologist)
+        chaerephon = try container.decodeIfPresent(String.self, forKey: .chaerephon)
+        treat = try container.decodeIfPresent(String.self, forKey: .treat)
+        aselliscus = try container.decodeIfPresent(aselliscusModel.self, forKey: .aselliscus)
+        
+        if let stringValue = try? container.decode(String.self, forKey: .isolated) {
+            isolated = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .isolated) {
+            isolated = String(intValue)
+        } else {
+            isolated = nil
+        }
+        
+        if let stringValue = try? container.decode(String.self, forKey: .plicata) {
+            plicata = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .plicata) {
+            plicata = String(intValue)
+        } else {
+            plicata = nil
+        }
+    }
+    
+}
+
+class aselliscusModel: Codable {
+    var blasii: blasiiModel?
+    var affinis: blasiiModel?
+}
+
+class blasiiModel: Codable {
+    var tightly: String?
+    var involved: String?
 }
 
 class offModel: Codable {
@@ -74,4 +141,12 @@ class newarModel: Codable {
     var ao: String?
     var naga: String?
     var reported: String?
+}
+
+class fiveModel: Codable {
+    var tightly: String?
+    var infected: String?
+    var identified: String?
+    var contact: String?
+    var gnaw: Int?
 }
