@@ -38,6 +38,8 @@
 		733EE1822F123691001C6B69 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1812F123691001C6B69 /* ProductViewController.swift */; };
 		733EE1862F125A9E001C6B69 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1852F125A9E001C6B69 /* ProductView.swift */; };
 		733EE1882F12665A001C6B69 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1872F12665A001C6B69 /* ProductListView.swift */; };
+		733EE18C2F126DD4001C6B69 /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE18B2F126DD4001C6B69 /* FaceViewController.swift */; };
+		733EE18E2F1271A8001C6B69 /* FaceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE18D2F1271A8001C6B69 /* FaceListView.swift */; };
 		73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86992F108CA500F4826F /* AppDelegate.swift */; };
 		73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869A2F108CA500F4826F /* Assets.xcassets */; };
 		73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */; };
@@ -87,6 +89,8 @@
 		733EE1812F123691001C6B69 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		733EE1852F125A9E001C6B69 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		733EE1872F12665A001C6B69 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
+		733EE18B2F126DD4001C6B69 /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
+		733EE18D2F1271A8001C6B69 /* FaceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceListView.swift; sourceTree = "<group>"; };
 		73EA86812F108C9C00F4826F /* DanaHebat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaHebat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73EA86992F108CA500F4826F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73EA869A2F108CA500F4826F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,11 +151,29 @@
 		733EE1802F12367D001C6B69 /* Product */ = {
 			isa = PBXGroup;
 			children = (
-				733EE1852F125A9E001C6B69 /* ProductView.swift */,
-				733EE1872F12665A001C6B69 /* ProductListView.swift */,
-				733EE1812F123691001C6B69 /* ProductViewController.swift */,
+				733EE1892F126DB4001C6B69 /* View */,
+				733EE18A2F126DBA001C6B69 /* Controller */,
 			);
 			path = Product;
+			sourceTree = "<group>";
+		};
+		733EE1892F126DB4001C6B69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				733EE1852F125A9E001C6B69 /* ProductView.swift */,
+				733EE1872F12665A001C6B69 /* ProductListView.swift */,
+				733EE18D2F1271A8001C6B69 /* FaceListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		733EE18A2F126DBA001C6B69 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				733EE1812F123691001C6B69 /* ProductViewController.swift */,
+				733EE18B2F126DD4001C6B69 /* FaceViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		73EA86782F108C9C00F4826F = {
@@ -449,6 +471,7 @@
 				733EE1682F118C85001C6B69 /* MineListView.swift in Sources */,
 				73EA86B82F10944900F4826F /* LaunchViewController.swift in Sources */,
 				733EE1862F125A9E001C6B69 /* ProductView.swift in Sources */,
+				733EE18C2F126DD4001C6B69 /* FaceViewController.swift in Sources */,
 				733EE1602F116699001C6B69 /* Other.swift in Sources */,
 				733EE17F2F122F22001C6B69 /* LoanDetailViewController.swift in Sources */,
 				733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */,
@@ -470,6 +493,7 @@
 				73EA86BE2F10948D00F4826F /* GuideViewController.swift in Sources */,
 				7316E3BE2F10B98B004A8271 /* AppLanguage.swift in Sources */,
 				7316E3B02F10AC8A004A8271 /* KeychainHelper.swift in Sources */,
+				733EE18E2F1271A8001C6B69 /* FaceListView.swift in Sources */,
 				73EA86C22F1094C400F4826F /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

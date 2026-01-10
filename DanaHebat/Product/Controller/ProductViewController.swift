@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import MJRefresh
 
 class ProductViewController: BaseViewController {
     
@@ -15,6 +16,8 @@ class ProductViewController: BaseViewController {
     var orderID: String = ""
     
     var yetModel: yetModel?
+    
+    var baseModel: BaseModel?
     
     private let viewModel = HttpViewModel()
     
@@ -55,6 +58,29 @@ class ProductViewController: BaseViewController {
             make.left.right.bottom.equalToSuperview()
         }
         
+        productView.nextBlock = { [weak self] in
+            guard let self = self, let baseModel = baseModel else { return }
+            let appearedModel = baseModel.potions?.appeared ?? fiveModel()
+            self.toPageVc(with: appearedModel)
+        }
+        
+        productView.cellBlock = { [weak self] model in
+            guard let self = self else { return }
+            let gnaw = model.gnaw ?? 0
+            if gnaw == 1 {
+                self.toPageVc(with: model)
+            }else {
+                productView.nextBlock?()
+            }
+        }
+        
+        productView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            Task {
+                await self.detailInfo()
+            }
+        })
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,14 +100,16 @@ extension ProductViewController {
                               "purported": UserDataManager.getPhone() ?? ""]
             let model = try await viewModel.productDetailApi(parameters: parameters)
             if model.illness == 0 {
+                self.baseModel = model
                 self.productView.model = model
                 if let yetModel = model.potions?.yet {
                     self.yetModel = yetModel
                     self.configInfo(with: yetModel)
                 }
             }
+            await self.productView.scrollView.mj_header?.endRefreshing()
         } catch {
-            
+            await self.productView.scrollView.mj_header?.endRefreshing()
         }
     }
     
@@ -94,6 +122,34 @@ extension ProductViewController {
         self.productView.twoListView.oneLabel.text = model.aselliscus?.affinis?.tightly ?? ""
         self.productView.twoListView.twoLabel.text = model.aselliscus?.affinis?.involved ?? ""
         self.productView.applyBtn.setTitle(model.treat ?? "", for: .normal)
+    }
+    
+}
+
+extension ProductViewController {
+    
+    private func toPageVc(with model: fiveModel) {
+        let contact = model.contact ?? ""
+        
+        switch contact {
+        case "toa":
+            let faceVc = FaceViewController()
+            faceVc.productID = productID
+            faceVc.appTitle = model.tightly ?? ""
+            self.navigationController?.pushViewController(faceVc, animated: true)
+            
+        case "tob":
+            break
+            
+        case "toc":
+            break
+            
+        case "tod":
+            break
+        default:
+            break
+        }
+        
     }
     
 }

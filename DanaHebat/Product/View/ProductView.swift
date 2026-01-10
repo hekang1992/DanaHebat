@@ -8,8 +8,18 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class ProductView: UIView {
+    
+    var nextBlock: (() -> Void)?
+    
+    var cellBlock: ((fiveModel) -> Void)?
+    
+    private let disposeBag = DisposeBag()
+    
+    let languageCode = LanguageManager.shared.getCurrentLocaleCode()
     
     var model: BaseModel? {
         didSet {
@@ -60,7 +70,7 @@ class ProductView: UIView {
     lazy var applyBtn: UIButton = {
         let applyBtn = UIButton(type: .custom)
         applyBtn.setTitleColor(.white, for: .normal)
-        applyBtn.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
+        applyBtn.titleLabel?.font = .systemFont(ofSize: 16, weight: UIFont.Weight(600))
         applyBtn.setBackgroundImage(UIImage(named: "guide_btn_image"), for: .normal)
         return applyBtn
     }()
@@ -110,7 +120,7 @@ class ProductView: UIView {
     
     lazy var stepLabel: UILabel = {
         let label = UILabel()
-        label.text = "Certification Process"
+        label.text = LanguageManager.localizedString(for: "Certification Process")
         label.font = .systemFont(ofSize: 16, weight: .black)
         return label
     }()
@@ -150,10 +160,6 @@ class ProductView: UIView {
         bgView.addSubview(oneListView)
         bgView.addSubview(twoListView)
         
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(bgImageView)
-        contentView.addSubview(stepLabel)
-        contentView.addSubview(coverView)
         
         oneView.layer.insertSublayer(gradientLayer, at: 0)
         
@@ -213,28 +219,63 @@ class ProductView: UIView {
             make.size.equalTo(CGSize(width: 144.pix(), height: 60.pix()))
         }
         
-        nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(oneView.snp.bottom).offset(14)
-            make.left.equalTo(oneView)
+        if languageCode == "en" {
+            contentView.addSubview(nameLabel)
+            contentView.addSubview(bgImageView)
+            
+            nameLabel.snp.makeConstraints { make in
+                make.top.equalTo(oneView.snp.bottom).offset(14)
+                make.left.equalTo(oneView)
+            }
+            
+            bgImageView.snp.makeConstraints { make in
+                make.top.equalTo(nameLabel.snp.bottom).offset(10)
+                make.centerX.equalToSuperview()
+                make.size.equalTo(CGSize(width: 343.pix(), height: 86.pix()))
+            }
+            
+            contentView.addSubview(stepLabel)
+            contentView.addSubview(coverView)
+            
+            stepLabel.snp.makeConstraints { make in
+                make.top.equalTo(bgImageView.snp.bottom).offset(14)
+                make.left.equalTo(oneView)
+            }
+            
+            coverView.snp.makeConstraints { make in
+                make.top.equalTo(stepLabel.snp.bottom).offset(10)
+                make.centerX.equalToSuperview()
+                make.left.equalToSuperview().offset(16.pix())
+                make.bottom.equalToSuperview().offset(-5.pix())
+            }
+            
+        }else {
+            contentView.addSubview(stepLabel)
+            contentView.addSubview(coverView)
+            
+            stepLabel.snp.makeConstraints { make in
+                make.top.equalTo(oneView.snp.bottom).offset(14)
+                make.left.equalTo(oneView)
+            }
+            
+            coverView.snp.makeConstraints { make in
+                make.top.equalTo(stepLabel.snp.bottom).offset(10)
+                make.centerX.equalToSuperview()
+                make.left.equalToSuperview().offset(16.pix())
+                make.bottom.equalToSuperview().offset(-5.pix())
+            }
         }
         
-        bgImageView.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(10)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 343.pix(), height: 86.pix()))
-        }
+        applyBtn
+            .rx
+            .tap
+            .debounce(.milliseconds(250), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.nextBlock?()
+            })
+            .disposed(by: disposeBag)
         
-        stepLabel.snp.makeConstraints { make in
-            make.top.equalTo(bgImageView.snp.bottom).offset(14)
-            make.left.equalTo(oneView)
-        }
-        
-        coverView.snp.makeConstraints { make in
-            make.top.equalTo(stepLabel.snp.bottom).offset(10)
-            make.centerX.equalToSuperview()
-            make.left.equalToSuperview().offset(16.pix())
-            make.bottom.equalToSuperview().offset(-5.pix())
-        }
     }
     
     override func layoutSubviews() {
@@ -248,6 +289,10 @@ class ProductView: UIView {
         var lastView: UIView = stepLabel
         for (index, model) in list.enumerated() {
             let itemView = ProductListView(frame: .zero)
+            itemView.tapBlock = { [weak self] in
+                guard let self = self else { return }
+                self.cellBlock?(model)
+            }
             contentView.addSubview(itemView)
             let gnaw = model.gnaw ?? 0
             itemView.arrowImageView.image = gnaw == 1 ? UIImage(named: "com_li_p_imge") : UIImage(named: "nor_li_p_imge")

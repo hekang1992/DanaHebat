@@ -222,6 +222,25 @@ class HttpViewModel {
         }
     }
     
+    func getPersonalDetailApi(parameters: [String: Any]) async throws -> BaseModel {
+        
+        LoadingIndicator.show()
+        
+        defer {
+            LoadingIndicator.hide()
+        }
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/anecdotal",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
     
 }
 
