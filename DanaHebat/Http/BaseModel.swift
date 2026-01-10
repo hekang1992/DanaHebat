@@ -42,6 +42,93 @@ class potionsModel: Codable {
     var five: [fiveModel]?
     var appeared: fiveModel?
     var yet: yetModel?
+    var newar: newarModel?
+    var pearsoni: Int?
+    var sinicus: [sinicusModel]?
+    var showed: [showedModel]?
+}
+
+class showedModel: Codable {
+    var tightly: String?
+    var infected: String?
+    var illness: String?
+    var analyses: String?
+    var linked: [linkedModel]?
+    var detected: Int?
+    var orthoreoviruses: String?
+    var market: String?
+    var almost: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case tightly
+        case infected
+        case illness
+        case analyses
+        case linked
+        case detected
+        case orthoreoviruses
+        case market
+        case almost
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        tightly = try container.decodeIfPresent(String.self, forKey: .tightly)
+        infected = try container.decodeIfPresent(String.self, forKey: .infected)
+        illness = try container.decodeIfPresent(String.self, forKey: .illness)
+        analyses = try container.decodeIfPresent(String.self, forKey: .analyses)
+        linked = try container.decodeIfPresent([linkedModel].self, forKey: .linked)
+        detected = try container.decodeIfPresent(Int.self, forKey: .detected)
+        orthoreoviruses = try container.decodeIfPresent(String.self, forKey: .orthoreoviruses)
+        
+        if let stringValue = try? container.decode(String.self, forKey: .market) {
+            market = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .market) {
+            market = String(intValue)
+        } else {
+            market = nil
+        }
+        
+        if let stringValue = try? container.decode(String.self, forKey: .almost) {
+            almost = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .almost) {
+            almost = String(intValue)
+        } else {
+            almost = nil
+        }
+    }
+    
+}
+
+class linkedModel: Codable {
+    var crawl: String?
+    var almost: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case crawl
+        case almost
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        crawl = try container.decodeIfPresent(String.self, forKey: .crawl)
+        if let stringValue = try? container.decode(String.self, forKey: .almost) {
+            almost = stringValue
+        } else if let intValue = try? container.decode(Int.self, forKey: .almost) {
+            almost = String(intValue)
+        } else {
+            almost = nil
+        }
+    }
+    
+}
+
+class sinicusModel: Codable {
+    var virus: String?
+    var positive: String?
+    var illness: String?
 }
 
 class yetModel: Codable {
@@ -141,6 +228,10 @@ class newarModel: Codable {
     var ao: String?
     var naga: String?
     var reported: String?
+    var harbored: String?
+    var homologous: String?
+    var recombination: String?
+    var arisen: String?
 }
 
 class fiveModel: Codable {

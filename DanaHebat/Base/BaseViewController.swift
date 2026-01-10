@@ -15,13 +15,13 @@ class BaseViewController: UIViewController {
     }()
     
     let languageCode = LanguageManager.shared.getCurrentLocaleCode()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
     }
-
+    
 }
 
 extension BaseViewController {
@@ -33,6 +33,16 @@ extension BaseViewController {
                 window.rootViewController = tabBarVc
             }, completion: nil)
         }
+    }
+    
+    func backProductVc() {
+        guard let nav = navigationController,
+              let productVC = nav.viewControllers.first(where: { $0 is ProductViewController })
+        else {
+            navigationController?.popToRootViewController(animated: true)
+            return
+        }
+        nav.popToViewController(productVC, animated: true)
     }
     
     func goWordWebVc(with pageUrl: String) {

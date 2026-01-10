@@ -40,6 +40,16 @@
 		733EE1882F12665A001C6B69 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1872F12665A001C6B69 /* ProductListView.swift */; };
 		733EE18C2F126DD4001C6B69 /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE18B2F126DD4001C6B69 /* FaceViewController.swift */; };
 		733EE18E2F1271A8001C6B69 /* FaceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE18D2F1271A8001C6B69 /* FaceListView.swift */; };
+		733EE1902F12876C001C6B69 /* CommonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE18F2F12876C001C6B69 /* CommonAlertView.swift */; };
+		733EE1942F128CD4001C6B69 /* SystemCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1932F128CD4001C6B69 /* SystemCamera.swift */; };
+		733EE1962F129159001C6B69 /* PersonalNameAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1952F129159001C6B69 /* PersonalNameAlertView.swift */; };
+		733EE1982F129396001C6B69 /* CommonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1972F129396001C6B69 /* CommonListView.swift */; };
+		733EE19A2F1293A1001C6B69 /* CommonClickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1992F1293A1001C6B69 /* CommonClickView.swift */; };
+		733EE19C2F12A370001C6B69 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE19B2F12A370001C6B69 /* PersonalViewController.swift */; };
+		733EE19F2F12A403001C6B69 /* TapClickViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE19E2F12A403001C6B69 /* TapClickViewCell.swift */; };
+		733EE1A12F12A41C001C6B69 /* EnterWordViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1A02F12A41C001C6B69 /* EnterWordViewCell.swift */; };
+		733EE1A32F12AD91001C6B69 /* PersonalEnumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1A22F12AD91001C6B69 /* PersonalEnumView.swift */; };
+		733EE1A52F12B447001C6B69 /* WorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1A42F12B447001C6B69 /* WorkViewController.swift */; };
 		73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86992F108CA500F4826F /* AppDelegate.swift */; };
 		73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869A2F108CA500F4826F /* Assets.xcassets */; };
 		73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */; };
@@ -91,6 +101,16 @@
 		733EE1872F12665A001C6B69 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
 		733EE18B2F126DD4001C6B69 /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
 		733EE18D2F1271A8001C6B69 /* FaceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceListView.swift; sourceTree = "<group>"; };
+		733EE18F2F12876C001C6B69 /* CommonAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAlertView.swift; sourceTree = "<group>"; };
+		733EE1932F128CD4001C6B69 /* SystemCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemCamera.swift; sourceTree = "<group>"; };
+		733EE1952F129159001C6B69 /* PersonalNameAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalNameAlertView.swift; sourceTree = "<group>"; };
+		733EE1972F129396001C6B69 /* CommonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonListView.swift; sourceTree = "<group>"; };
+		733EE1992F1293A1001C6B69 /* CommonClickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonClickView.swift; sourceTree = "<group>"; };
+		733EE19B2F12A370001C6B69 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		733EE19E2F12A403001C6B69 /* TapClickViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapClickViewCell.swift; sourceTree = "<group>"; };
+		733EE1A02F12A41C001C6B69 /* EnterWordViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterWordViewCell.swift; sourceTree = "<group>"; };
+		733EE1A22F12AD91001C6B69 /* PersonalEnumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalEnumView.swift; sourceTree = "<group>"; };
+		733EE1A42F12B447001C6B69 /* WorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkViewController.swift; sourceTree = "<group>"; };
 		73EA86812F108C9C00F4826F /* DanaHebat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaHebat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73EA86992F108CA500F4826F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73EA869A2F108CA500F4826F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -160,9 +180,17 @@
 		733EE1892F126DB4001C6B69 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				733EE1932F128CD4001C6B69 /* SystemCamera.swift */,
 				733EE1852F125A9E001C6B69 /* ProductView.swift */,
 				733EE1872F12665A001C6B69 /* ProductListView.swift */,
 				733EE18D2F1271A8001C6B69 /* FaceListView.swift */,
+				733EE18F2F12876C001C6B69 /* CommonAlertView.swift */,
+				733EE1952F129159001C6B69 /* PersonalNameAlertView.swift */,
+				733EE1972F129396001C6B69 /* CommonListView.swift */,
+				733EE1992F1293A1001C6B69 /* CommonClickView.swift */,
+				733EE19E2F12A403001C6B69 /* TapClickViewCell.swift */,
+				733EE1A02F12A41C001C6B69 /* EnterWordViewCell.swift */,
+				733EE1A22F12AD91001C6B69 /* PersonalEnumView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,6 +200,8 @@
 			children = (
 				733EE1812F123691001C6B69 /* ProductViewController.swift */,
 				733EE18B2F126DD4001C6B69 /* FaceViewController.swift */,
+				733EE19B2F12A370001C6B69 /* PersonalViewController.swift */,
+				733EE1A42F12B447001C6B69 /* WorkViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -454,32 +484,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				733EE1982F129396001C6B69 /* CommonListView.swift in Sources */,
 				733EE1712F1204E1001C6B69 /* SettingViewController.swift in Sources */,
 				73EA86BA2F10945C00F4826F /* BaseNavigationController.swift in Sources */,
 				73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */,
 				733EE1772F121274001C6B69 /* HomeHeadView.swift in Sources */,
 				733EE17B2F121D6A001C6B69 /* StrokeLabel.swift in Sources */,
 				7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */,
+				733EE19F2F12A403001C6B69 /* TapClickViewCell.swift in Sources */,
 				7316E3B42F10AF7E004A8271 /* CommonParaManager.swift in Sources */,
 				733EE1622F116993001C6B69 /* LoginView.swift in Sources */,
 				733EE16C2F11F8E8001C6B69 /* DeepLinkRoute.swift in Sources */,
+				733EE1942F128CD4001C6B69 /* SystemCamera.swift in Sources */,
 				73EA86BC2F10946E00F4826F /* BaseTabBarController.swift in Sources */,
+				733EE1902F12876C001C6B69 /* CommonAlertView.swift in Sources */,
 				733EE16A2F11F666001C6B69 /* WordH5WebViewController.swift in Sources */,
 				733EE1642F116C97001C6B69 /* LoginListView.swift in Sources */,
 				7316E3A82F10A248004A8271 /* HttpViewModel.swift in Sources */,
 				73EA86C42F1094CC00F4826F /* MineViewController.swift in Sources */,
 				733EE1682F118C85001C6B69 /* MineListView.swift in Sources */,
 				73EA86B82F10944900F4826F /* LaunchViewController.swift in Sources */,
+				733EE1A32F12AD91001C6B69 /* PersonalEnumView.swift in Sources */,
 				733EE1862F125A9E001C6B69 /* ProductView.swift in Sources */,
 				733EE18C2F126DD4001C6B69 /* FaceViewController.swift in Sources */,
 				733EE1602F116699001C6B69 /* Other.swift in Sources */,
+				733EE1A52F12B447001C6B69 /* WorkViewController.swift in Sources */,
 				733EE17F2F122F22001C6B69 /* LoanDetailViewController.swift in Sources */,
 				733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */,
 				733EE1822F123691001C6B69 /* ProductViewController.swift in Sources */,
+				733EE1962F129159001C6B69 /* PersonalNameAlertView.swift in Sources */,
+				733EE19C2F12A370001C6B69 /* PersonalViewController.swift in Sources */,
+				733EE19A2F1293A1001C6B69 /* CommonClickView.swift in Sources */,
 				7316E3B72F10B577004A8271 /* DeviceNetworkInfo.swift in Sources */,
 				73EA86B62F10944100F4826F /* BaseViewController.swift in Sources */,
 				7316E3B22F10AEA1004A8271 /* DeviceIDManager.swift in Sources */,
 				733EE15E2F116613001C6B69 /* AppNavView.swift in Sources */,
+				733EE1A12F12A41C001C6B69 /* EnterWordViewCell.swift in Sources */,
 				733EE17D2F1221F8001C6B69 /* HomeListView.swift in Sources */,
 				73EA86C02F1094BD00F4826F /* HomeViewController.swift in Sources */,
 				733EE1662F1181D2001C6B69 /* UserDataManager.swift in Sources */,

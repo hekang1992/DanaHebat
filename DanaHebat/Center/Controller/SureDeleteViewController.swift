@@ -33,7 +33,7 @@ class SureDeleteViewController: BaseViewController {
     
     lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
-        logoImageView.image = UIImage(named: "p_logo_image")
+        logoImageView.image = UIImage(named: "cen_logo_a_image")
         logoImageView.layer.cornerRadius = 50
         logoImageView.layer.masksToBounds = true
         logoImageView.layer.borderWidth = 2
@@ -124,7 +124,7 @@ class SureDeleteViewController: BaseViewController {
         scrollView.addSubview(logoImageView)
         logoImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(34)
-            make.width.height.equalTo(100)
+            make.width.height.equalTo(104)
             make.centerX.equalToSuperview()
         }
         

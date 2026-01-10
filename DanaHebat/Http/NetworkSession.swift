@@ -138,7 +138,7 @@ final class NetworkManager {
                             imageData,
                             withName: imageKey,
                             fileName: "georgeGroups.jpg",
-                            mimeType: "image/jpeg"
+                            mimeType: "georgeGroups/jpeg"
                         )
                         
                         parameters?.forEach { key, value in

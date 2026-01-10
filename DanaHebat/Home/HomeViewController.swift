@@ -63,10 +63,17 @@ class HomeViewController: BaseViewController {
         
         homeView.oneBlock = { [weak self] in
             guard let self = self, let productModel = productModel else { return }
-            Task {
-                let productID = String(productModel.anthropologist ?? 0)
-                await self.enterInfo(with: productID)
+            if UserDataManager.isLoggedIn() {
+                Task {
+                    let productID = String(productModel.anthropologist ?? 0)
+                    await self.enterInfo(with: productID)
+                }
+            }else {
+                let loginVc = BaseNavigationController(rootViewController: LoginViewController())
+                loginVc.modalPresentationStyle = .fullScreen
+                self.present(loginVc, animated: true)
             }
+            
         }
         
         homeView.twoBlock = { [weak self] in

@@ -10,6 +10,8 @@ import SnapKit
 
 class FaceListView: UIView {
     
+    var tapClickBlock: (() -> Void)?
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "d_face_i_image")
@@ -20,7 +22,6 @@ class FaceListView: UIView {
     lazy var nameLabel: UILabel = {
         let nameLabel = UILabel()
         nameLabel.textAlignment = .center
-        nameLabel.text = "PAN Card Front"
         nameLabel.textColor = UIColor.init(hexString: "#333333")
         nameLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight(500))
         return nameLabel
@@ -45,6 +46,19 @@ class FaceListView: UIView {
         typeLabel.backgroundColor = UIColor.init(hexString: "#FFF26B")
         return typeLabel
     }()
+    
+    lazy var cImageView: UIImageView = {
+        let cImageView = UIImageView()
+        cImageView.layer.cornerRadius = 12.pix()
+        cImageView.layer.masksToBounds = true
+        return cImageView
+    }()
+    
+    lazy var applyBtn: UIButton = {
+        let applyBtn = UIButton(type: .custom)
+        applyBtn.addTarget(self, action: #selector(btnClick), for: .touchUpInside)
+        return applyBtn
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,6 +66,7 @@ class FaceListView: UIView {
         bgImageView.addSubview(nameLabel)
         bgImageView.addSubview(whiteView)
         bgImageView.addSubview(typeLabel)
+        addSubview(applyBtn)
         bgImageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()
@@ -72,10 +87,25 @@ class FaceListView: UIView {
             make.bottom.equalToSuperview().offset(-13.pix())
             make.size.equalTo(CGSize(width: 317.pix(), height: 52.pix()))
         }
+        whiteView.addSubview(cImageView)
+        cImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(CGSize(width: 168.pix(), height: 109.pix()))
+        }
+        applyBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+extension FaceListView {
+    
+    @objc func btnClick() {
+        self.tapClickBlock?()
+    }
 }

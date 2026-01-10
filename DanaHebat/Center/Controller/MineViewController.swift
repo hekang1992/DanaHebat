@@ -31,7 +31,7 @@ class MineViewController: BaseViewController {
     
     lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
-        logoImageView.image = UIImage(named: "p_logo_image")
+        logoImageView.image = UIImage(named: "cen_logo_a_image")
         logoImageView.layer.cornerRadius = 50
         logoImageView.layer.masksToBounds = true
         logoImageView.layer.borderWidth = 2
@@ -55,7 +55,7 @@ class MineViewController: BaseViewController {
     
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
-        oneImageView.backgroundColor = .systemPink
+        oneImageView.image = languageCode == "id" ? UIImage(named: "c_em_d_image") : UIImage(named: "c_m_d_image")
         return oneImageView
     }()
     

@@ -19,8 +19,7 @@ final class CommonParaManager {
         dict["capable"] = UIDevice.current.systemVersion
         dict["increased"] = UserDataManager.getToken() ?? ""
         dict["give"] = DeviceIDManager.getIDFA()
-//        dict["being"] = String(LanguageManager.shared.getCurrentLanguageCode())
-        dict["being"] = "1"
+        dict["being"] = String(LanguageManager.shared.getCurrentLanguageCode())
         return dict
     }
 }

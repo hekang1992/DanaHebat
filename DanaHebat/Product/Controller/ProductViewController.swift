@@ -139,10 +139,16 @@ extension ProductViewController {
             self.navigationController?.pushViewController(faceVc, animated: true)
             
         case "tob":
-            break
+            let faceVc = PersonalViewController()
+            faceVc.productID = productID
+            faceVc.appTitle = model.tightly ?? ""
+            self.navigationController?.pushViewController(faceVc, animated: true)
             
         case "toc":
-            break
+            let faceVc = WorkViewController()
+            faceVc.productID = productID
+            faceVc.appTitle = model.tightly ?? ""
+            self.navigationController?.pushViewController(faceVc, animated: true)
             
         case "tod":
             break
