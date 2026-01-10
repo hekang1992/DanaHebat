@@ -30,6 +30,11 @@
 		733EE1712F1204E1001C6B69 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1702F1204E1001C6B69 /* SettingViewController.swift */; };
 		733EE1732F120706001C6B69 /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1722F120706001C6B69 /* SettingListView.swift */; };
 		733EE1752F120A5C001C6B69 /* SureDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1742F120A5C001C6B69 /* SureDeleteViewController.swift */; };
+		733EE1772F121274001C6B69 /* HomeHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1762F121274001C6B69 /* HomeHeadView.swift */; };
+		733EE1792F12186B001C6B69 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1782F12186B001C6B69 /* HomeView.swift */; };
+		733EE17B2F121D6A001C6B69 /* StrokeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE17A2F121D6A001C6B69 /* StrokeLabel.swift */; };
+		733EE17D2F1221F8001C6B69 /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE17C2F1221F8001C6B69 /* HomeListView.swift */; };
+		733EE17F2F122F22001C6B69 /* LoanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE17E2F122F22001C6B69 /* LoanDetailViewController.swift */; };
 		73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86992F108CA500F4826F /* AppDelegate.swift */; };
 		73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869A2F108CA500F4826F /* Assets.xcassets */; };
 		73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */; };
@@ -71,6 +76,11 @@
 		733EE1702F1204E1001C6B69 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		733EE1722F120706001C6B69 /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
 		733EE1742F120A5C001C6B69 /* SureDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SureDeleteViewController.swift; sourceTree = "<group>"; };
+		733EE1762F121274001C6B69 /* HomeHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeadView.swift; sourceTree = "<group>"; };
+		733EE1782F12186B001C6B69 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		733EE17A2F121D6A001C6B69 /* StrokeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeLabel.swift; sourceTree = "<group>"; };
+		733EE17C2F1221F8001C6B69 /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
+		733EE17E2F122F22001C6B69 /* LoanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanDetailViewController.swift; sourceTree = "<group>"; };
 		73EA86812F108C9C00F4826F /* DanaHebat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaHebat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73EA86992F108CA500F4826F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73EA869A2F108CA500F4826F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -210,7 +220,12 @@
 		73EA86B02F108FC100F4826F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				733EE17A2F121D6A001C6B69 /* StrokeLabel.swift */,
+				733EE1762F121274001C6B69 /* HomeHeadView.swift */,
+				733EE1782F12186B001C6B69 /* HomeView.swift */,
 				73EA86BF2F1094BD00F4826F /* HomeViewController.swift */,
+				733EE17C2F1221F8001C6B69 /* HomeListView.swift */,
+				733EE17E2F122F22001C6B69 /* LoanDetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -403,6 +418,8 @@
 				733EE1712F1204E1001C6B69 /* SettingViewController.swift in Sources */,
 				73EA86BA2F10945C00F4826F /* BaseNavigationController.swift in Sources */,
 				73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */,
+				733EE1772F121274001C6B69 /* HomeHeadView.swift in Sources */,
+				733EE17B2F121D6A001C6B69 /* StrokeLabel.swift in Sources */,
 				7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */,
 				7316E3B42F10AF7E004A8271 /* CommonParaManager.swift in Sources */,
 				733EE1622F116993001C6B69 /* LoginView.swift in Sources */,
@@ -415,17 +432,20 @@
 				733EE1682F118C85001C6B69 /* MineListView.swift in Sources */,
 				73EA86B82F10944900F4826F /* LaunchViewController.swift in Sources */,
 				733EE1602F116699001C6B69 /* Other.swift in Sources */,
+				733EE17F2F122F22001C6B69 /* LoanDetailViewController.swift in Sources */,
 				733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */,
 				7316E3B72F10B577004A8271 /* DeviceNetworkInfo.swift in Sources */,
 				73EA86B62F10944100F4826F /* BaseViewController.swift in Sources */,
 				7316E3B22F10AEA1004A8271 /* DeviceIDManager.swift in Sources */,
 				733EE15E2F116613001C6B69 /* AppNavView.swift in Sources */,
+				733EE17D2F1221F8001C6B69 /* HomeListView.swift in Sources */,
 				73EA86C02F1094BD00F4826F /* HomeViewController.swift in Sources */,
 				733EE1662F1181D2001C6B69 /* UserDataManager.swift in Sources */,
 				733EE1752F120A5C001C6B69 /* SureDeleteViewController.swift in Sources */,
 				7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */,
 				7316E3AA2F10A5CC004A8271 /* LoadingIndicator.swift in Sources */,
 				7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */,
+				733EE1792F12186B001C6B69 /* HomeView.swift in Sources */,
 				733EE1732F120706001C6B69 /* SettingListView.swift in Sources */,
 				73EA86BE2F10948D00F4826F /* GuideViewController.swift in Sources */,
 				7316E3BE2F10B98B004A8271 /* AppLanguage.swift in Sources */,

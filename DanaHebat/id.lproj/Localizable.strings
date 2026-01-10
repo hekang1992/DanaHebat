@@ -21,6 +21,8 @@
 "I have read and agree <Privacy Agreement>" = "Saya telah membaca dan menyetujui <Perjanjian Privasi>";
 "<Privacy Agreement>" = "<Perjanjian Privasi>";
 "Please read and agree to the Privacy Policy" = "Harap membaca dan menyetujui kebijakan privasi";
+"Privacy Policy" = "Kebijakan Privasi";
+"View Details" = "Lihat Detail";
 
 "Personal Center" = "Pusat Pribadi";
 "Settings" = "Pengaturan";
@@ -29,3 +31,6 @@
 "Sign Out" = "Keluar";
 "I have read and agreed to the above" = "Saya telah membaca dan menyetujui ketentuan di atas";
 "Please read and agree to the above content" = "Silakan baca dan setuju dengan hal di atas";
+
+"Loan Precautions" = "Peringatan Pinjaman";
+"Go to Apply" = "Klik \"Ajukan sekarang\"";

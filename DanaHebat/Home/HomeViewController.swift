@@ -9,10 +9,16 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import MJRefresh
+import Kingfisher
 
 class HomeViewController: BaseViewController {
     
     private let disposeBag = DisposeBag()
+    
+    private let viewModel = HttpViewModel()
+    
+    private var baseModel: BaseModel?
     
     lazy var loginBtn: UIButton = {
         let loginBtn = UIButton(type: .custom)
@@ -20,32 +26,95 @@ class HomeViewController: BaseViewController {
         loginBtn.setTitleColor(.black, for: .normal)
         return loginBtn
     }()
-
+    
+    lazy var headView: HomeHeadView = {
+        let headView = HomeHeadView(frame: .zero)
+        return headView
+    }()
+    
+    lazy var homeView: HomeView = {
+        let homeView = HomeView(frame: .zero)
+        return homeView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-        view.addSubview(loginBtn)
-        loginBtn.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.height.equalTo(200)
+        view.addSubview(headView)
+        headView.snp.makeConstraints { make in
+            make.left.top.right.equalToSuperview()
         }
-        loginBtn.rx.tap.bind(onNext: {
-            let loginVc = BaseNavigationController(rootViewController: LoginViewController())
-            loginVc.modalPresentationStyle = .fullScreen
-            self.present(loginVc, animated: true)
-        }).disposed(by: disposeBag)
+        
+        view.addSubview(homeView)
+        homeView.snp.makeConstraints { make in
+            make.top.equalTo(headView.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
+        homeView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            Task {
+                await self.homeInfo()
+            }
+        })
+        
+        homeView.oneBlock = { [weak self] in
+            guard let self = self else { return }
+            ToastManager.showMessage("1")
+        }
+        
+        homeView.twoBlock = { [weak self] in
+            guard let self = self else { return }
+            let loanVc = LoanDetailViewController()
+            self.navigationController?.pushViewController(loanVc, animated: true)
+        }
+        
+        homeView.threeBlock = { [weak self] in
+            guard let self = self, let baseModel = baseModel else { return }
+            let pageUrl = baseModel.potions?.off?.ready ?? ""
+            self.goWordWebVc(with: pageUrl)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Task {
+            await self.homeInfo()
+        }
     }
-    */
+    
+}
 
+extension HomeViewController {
+    
+    private func homeInfo() async {
+        do {
+            let parameters = ["purported": UserDataManager.getPhone() ?? ""]
+            let model = try await viewModel.homeApi(parameters: parameters)
+            self.baseModel = model
+            if model.illness == 0 {
+                let modelArray = model.potions?.certainly ?? []
+                if let listModel = modelArray.first(where: { $0.almost == "lengthsb" }) {
+                    let newarModel = listModel.newar?.first ?? newarModel()
+                    self.configHeadInfo(with: newarModel)
+                    self.homeView.model = newarModel
+                }
+            }
+            await MainActor.run {
+                self.homeView.scrollView.mj_header?.endRefreshing()
+            }
+        } catch {
+            await MainActor.run {
+                self.homeView.scrollView.mj_header?.endRefreshing()
+            }
+        }
+    }
+    
+    func configHeadInfo(with model: newarModel) {
+        let logoUrl = model.asthma ?? ""
+        self.headView.nameLabel.text = model.ecological ?? ""
+        self.headView.logoImageView.kf.setImage(with: URL(string: logoUrl))
+    }
+    
 }

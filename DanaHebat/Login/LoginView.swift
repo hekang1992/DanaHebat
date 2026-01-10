@@ -307,7 +307,7 @@ class LoginView: UIView {
         loginBtn.snp.makeConstraints { make in
             make.top.equalTo(privacyLabel.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 299, height: 46))
+            make.size.equalTo(CGSize(width: 299.pix(), height: 46.pix()))
             make.bottom.equalToSuperview().offset(-40)
         }
         

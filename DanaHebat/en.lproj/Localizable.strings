@@ -21,6 +21,8 @@
 "I have read and agree <Privacy Agreement>" = "I have read and agree <Privacy Agreement>";
 "<Privacy Agreement>" = "<Privacy Agreement>";
 "Please read and agree to the Privacy Policy" = "Please read and agree to the Privacy Policy";
+"Privacy Policy" = "Privacy Policy";
+"View Details" = "View Details";
 
 "Personal Center" = "Personal Center";
 "Settings" = "Settings";
@@ -29,3 +31,6 @@
 "Sign Out" = "Sign Out";
 "I have read and agreed to the above" = "I have read and agreed to the above";
 "Please read and agree to the above content" = "Please read and agree to the above content";
+
+"Loan Precautions" = "Loan Precautions";
+"Go to Apply" = "Go to Apply";

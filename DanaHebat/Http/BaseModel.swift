@@ -37,6 +37,11 @@ class potionsModel: Codable {
     var increased: String?
     var userInfo: userInfoModel?
     var certainly: [certainlyModel]?
+    var off: offModel?
+}
+
+class offModel: Codable {
+    var ready: String?
 }
 
 class reportsModel: Codable {
@@ -52,6 +57,21 @@ class userInfoModel: Codable {
 
 class certainlyModel: Codable {
     var tightly: String?
+    var almost: String?
+    var newar: [newarModel]?
     var stated: String?
     var off: String?
+}
+
+class newarModel: Codable {
+    var anthropologist: Int?
+    var ecological: String?
+    var asthma: String?
+    var treat: String?
+    var flesh: String?
+    var people: String?
+    var northeast: String?
+    var ao: String?
+    var naga: String?
+    var reported: String?
 }

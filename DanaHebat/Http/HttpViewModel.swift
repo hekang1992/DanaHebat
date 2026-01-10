@@ -103,6 +103,25 @@ class HttpViewModel {
     }
     
     /// home
+    func homeApi(parameters: [String: Any]) async throws -> BaseModel {
+        
+        LoadingIndicator.show()
+        
+        defer {
+            LoadingIndicator.hide()
+        }
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.get(
+                url: "/relateder/potions",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
     
     /// order
     
