@@ -18,7 +18,7 @@ class OrderView: UIView {
         let oneBtn = UIButton(type: .custom)
         oneBtn.setTitle(LanguageManager.localizedString(for: "All"), for: .normal)
         oneBtn.setTitleColor(UIColor.init(hexString: "#333333"), for: .normal)
-        oneBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(700))
+        oneBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         oneBtn.layer.cornerRadius = 20.pix()
         oneBtn.layer.masksToBounds = true
         oneBtn.layer.borderWidth = 1
@@ -33,7 +33,7 @@ class OrderView: UIView {
         let twoBtn = UIButton(type: .custom)
         twoBtn.setTitle(LanguageManager.localizedString(for: "Apply"), for: .normal)
         twoBtn.setTitleColor(UIColor.init(hexString: "#333333"), for: .normal)
-        twoBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(700))
+        twoBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         twoBtn.layer.cornerRadius = 20.pix()
         twoBtn.layer.masksToBounds = true
         twoBtn.layer.borderWidth = 1
@@ -48,7 +48,7 @@ class OrderView: UIView {
         let threeBtn = UIButton(type: .custom)
         threeBtn.setTitle(LanguageManager.localizedString(for: "Repayment"), for: .normal)
         threeBtn.setTitleColor(UIColor.init(hexString: "#333333"), for: .normal)
-        threeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(700))
+        threeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         threeBtn.layer.cornerRadius = 20.pix()
         threeBtn.layer.masksToBounds = true
         threeBtn.layer.borderWidth = 1
@@ -63,7 +63,7 @@ class OrderView: UIView {
         let fourBtn = UIButton(type: .custom)
         fourBtn.setTitle(LanguageManager.localizedString(for: "Finished"), for: .normal)
         fourBtn.setTitleColor(UIColor.init(hexString: "#333333"), for: .normal)
-        fourBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight(700))
+        fourBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         fourBtn.layer.cornerRadius = 20.pix()
         fourBtn.layer.masksToBounds = true
         fourBtn.layer.borderWidth = 1
@@ -120,25 +120,25 @@ class OrderView: UIView {
         
         oneBtn.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.size.equalTo(CGSize(width: 88.pix(), height: 40.pix()))
+            make.size.equalTo(CGSize(width: 70.pix(), height: 40.pix()))
             make.left.equalToSuperview().offset(8.pix())
         }
         
         twoBtn.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.size.equalTo(CGSize(width: 140.pix(), height: 40.pix()))
+            make.size.equalTo(CGSize(width: 120.pix(), height: 40.pix()))
             make.left.equalTo(oneBtn.snp.right).offset(6.pix())
         }
         
         threeBtn.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.size.equalTo(CGSize(width: 136.pix(), height: 40.pix()))
+            make.size.equalTo(CGSize(width: 120.pix(), height: 40.pix()))
             make.left.equalTo(twoBtn.snp.right).offset(6.pix())
         }
         
         fourBtn.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.size.equalTo(CGSize(width: 88.pix(), height: 40.pix()))
+            make.size.equalTo(CGSize(width: 70.pix(), height: 40.pix()))
             make.left.equalTo(threeBtn.snp.right).offset(6.pix())
             make.right.equalToSuperview().offset(-8.pix())
         }
@@ -163,6 +163,15 @@ class OrderView: UIView {
         default:
             break
         }
+        
+        if sender.tag == 0 {
+            scrollToLeft()
+        }
+        
+        if sender.tag == 3 {
+            scrollToRight()
+        }
+        
     }
     
     private func updateSelectedButton(_ button: UIButton) {
@@ -207,10 +216,29 @@ class OrderView: UIView {
         if button.bounds.width > 0 && button.bounds.height > 0 {
             gradient.frame = button.bounds
         } else {
-            gradient.frame = CGRect(x: 0, y: 0, width: button.tag == 0 || button.tag == 3 ? 88.pix() : (button.tag == 1 ? 140.pix() : 136.pix()), height: 40.pix())
+            gradient.frame = CGRect(x: 0, y: 0, width: button.tag == 0 || button.tag == 3 ? 70.pix() : (button.tag == 1 ? 120.pix() : 120.pix()), height: 40.pix())
         }
         
         button.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    private func scrollToRight() {
+        let contentWidth = scrollView.contentSize.width
+        let scrollViewWidth = scrollView.bounds.width
+        
+        if contentWidth > scrollViewWidth {
+            let targetOffset = CGPoint(x: contentWidth - scrollViewWidth, y: 0)
+            
+            UIView.animate(withDuration: 0.2) {
+                self.scrollView.contentOffset = targetOffset
+            }
+        }
+    }
+    
+    func scrollToLeft() {
+        UIView.animate(withDuration: 0.2) {
+            self.scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        }
     }
     
 }
