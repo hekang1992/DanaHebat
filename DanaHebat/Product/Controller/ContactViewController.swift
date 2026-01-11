@@ -159,7 +159,7 @@ extension ContactViewController {
     
     private func uploadPerInfo(with parameters: [String: String]) async {
         do {
-            let _ = try await viewModel.uploadContactApi(parameters: parameters)
+            _ = try await viewModel.uploadContactApi(parameters: parameters)
         } catch {
             
         }

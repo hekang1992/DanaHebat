@@ -43,21 +43,22 @@ extension LaunchViewController {
         NetworkMonitor.shared.statusBlock = { [weak self] status in
             switch status {
             case .unknown:
-                print("network=====unknown")
+                break
             case .notReachable:
-                print("network=====notReachable")
+                break
+                
             case .ethernetOrWiFi:
                 NetworkMonitor.shared.stopListening()
                 Task {
                     await self?.kgApi()
                 }
-                print("network=====WIFI")
+                
             case .cellular:
                 NetworkMonitor.shared.stopListening()
                 Task {
                     await self?.kgApi()
                 }
-                print("network=====5G")
+                
             }
             
         }

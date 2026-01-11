@@ -21,6 +21,8 @@
 		732867B52F13991200AB767E /* OrderListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B42F13991200AB767E /* OrderListViewCell.swift */; };
 		732867B72F139E5300AB767E /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B62F139E5300AB767E /* OrderEmptyView.swift */; };
 		732867B92F13A2DB00AB767E /* OrderContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B82F13A2DB00AB767E /* OrderContentListView.swift */; };
+		732867BB2F13A9EC00AB767E /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867BA2F13A9EC00AB767E /* LocationInfo.swift */; };
+		732867BD2F13B34100AB767E /* DeviceInfoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867BC2F13B34100AB767E /* DeviceInfoCollector.swift */; };
 		733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15B2F1165E7001C6B69 /* LoginViewController.swift */; };
 		733EE15E2F116613001C6B69 /* AppNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15D2F116613001C6B69 /* AppNavView.swift */; };
 		733EE1602F116699001C6B69 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15F2F116695001C6B69 /* Other.swift */; };
@@ -112,6 +114,8 @@
 		732867B42F13991200AB767E /* OrderListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewCell.swift; sourceTree = "<group>"; };
 		732867B62F139E5300AB767E /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
 		732867B82F13A2DB00AB767E /* OrderContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderContentListView.swift; sourceTree = "<group>"; };
+		732867BA2F13A9EC00AB767E /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
+		732867BC2F13B34100AB767E /* DeviceInfoCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoCollector.swift; sourceTree = "<group>"; };
 		733EE15B2F1165E7001C6B69 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		733EE15D2F116613001C6B69 /* AppNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavView.swift; sourceTree = "<group>"; };
 		733EE15F2F116695001C6B69 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
@@ -390,6 +394,8 @@
 		73EA86B32F108FCB00F4826F /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				732867BC2F13B34100AB767E /* DeviceInfoCollector.swift */,
+				732867BA2F13A9EC00AB767E /* LocationInfo.swift */,
 				733EE16B2F11F8E8001C6B69 /* DeepLinkRoute.swift */,
 				733EE15F2F116695001C6B69 /* Other.swift */,
 				7316E3B62F10B577004A8271 /* DeviceNetworkInfo.swift */,
@@ -580,12 +586,14 @@
 				73EA86B62F10944100F4826F /* BaseViewController.swift in Sources */,
 				73DF8E282F135705002C6EE9 /* HomeProductHeadViewCell.swift in Sources */,
 				7316E3B22F10AEA1004A8271 /* DeviceIDManager.swift in Sources */,
+				732867BD2F13B34100AB767E /* DeviceInfoCollector.swift in Sources */,
 				733EE15E2F116613001C6B69 /* AppNavView.swift in Sources */,
 				733EE1A12F12A41C001C6B69 /* EnterWordViewCell.swift in Sources */,
 				733EE17D2F1221F8001C6B69 /* HomeListView.swift in Sources */,
 				73EA86C02F1094BD00F4826F /* HomeViewController.swift in Sources */,
 				733EE1662F1181D2001C6B69 /* UserDataManager.swift in Sources */,
 				733EE1752F120A5C001C6B69 /* SureDeleteViewController.swift in Sources */,
+				732867BB2F13A9EC00AB767E /* LocationInfo.swift in Sources */,
 				7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */,
 				732867B52F13991200AB767E /* OrderListViewCell.swift in Sources */,
 				733EE1A72F12B795001C6B69 /* ContactViewController.swift in Sources */,

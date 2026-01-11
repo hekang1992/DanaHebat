@@ -43,7 +43,6 @@ class HttpViewModel {
         }
     }
     
-    
     /// login
     func codeApi(parameters: [String: Any]) async throws -> BaseModel {
         
@@ -469,6 +468,19 @@ class HttpViewModel {
         do {
             let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
                 url: "/relateder/millipedes",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
+    /// Device
+    func uploadLocationApi(parameters: [String: String]) async throws -> BaseModel {
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/mustard",
                 parameters: parameters,
                 responseType: BaseModel.self)
             return model

@@ -139,7 +139,7 @@ extension GuideViewController {
         do {
             let parameters = ["forested": DeviceIDManager.getIDFV(),
                               "occur": DeviceIDManager.getIDFA()]
-            let _ = try await viewModel.uploadIDFAApi(parameters: parameters)
+            _ = try await viewModel.uploadIDFAApi(parameters: parameters)
         } catch {
             
         }

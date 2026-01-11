@@ -22,6 +22,10 @@ class HomeViewController: BaseViewController {
     
     private var productModel: newarModel?
     
+    let locartionManager = SimpleLocationManager()
+    
+    let collector = DeviceInfoCollector()
+    
     lazy var loginBtn: UIButton = {
         let loginBtn = UIButton(type: .custom)
         loginBtn.setTitle("Log in to Zoom Loan", for: .normal)
@@ -120,18 +124,51 @@ class HomeViewController: BaseViewController {
             let pageUrl = baseModel.potions?.off?.ready ?? ""
             self.goWordWebVc(with: pageUrl)
         }
+        
+        self.collector.getDeviceInfoJSON { jsonString in
+            if let json = jsonString {
+                print("JSON格式: \(json)")
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Task {
             await self.homeInfo()
+            await self.uploadIDFAInfo()
+        }
+        locartionManager.getLocation { [weak self] info, error in
+            if let self = self, let info = info {
+                Task {
+                    await self.uploadLocation(with: info)
+                }
+            }
         }
     }
     
 }
 
 extension HomeViewController {
+    
+    private func uploadLocation(with parameters: [String: String]) async {
+        do {
+            _ = try await viewModel.uploadLocationApi(parameters: parameters)
+        } catch {
+            
+        }
+    }
+    
+    private func uploadIDFAInfo() async {
+        do {
+            let parameters = ["forested": DeviceIDManager.getIDFV(),
+                              "occur": DeviceIDManager.getIDFA()]
+            _ = try await viewModel.uploadIDFAApi(parameters: parameters)
+        } catch {
+            
+        }
+    }
     
     private func homeInfo() async {
         do {
