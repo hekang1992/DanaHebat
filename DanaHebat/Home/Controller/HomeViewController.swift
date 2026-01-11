@@ -125,12 +125,6 @@ class HomeViewController: BaseViewController {
             self.goWordWebVc(with: pageUrl)
         }
         
-        self.collector.getDeviceInfoJSON { jsonString in
-            if let json = jsonString {
-                print("JSON格式: \(json)")
-            }
-        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,17 +134,38 @@ class HomeViewController: BaseViewController {
             await self.uploadIDFAInfo()
         }
         locartionManager.getLocation { [weak self] info, error in
-            if let self = self, let info = info {
+            guard let self = self else { return }
+            
+            if let info = info {
                 Task {
                     await self.uploadLocation(with: info)
                 }
             }
+            
+            self.collector.getDeviceInfoJSON { [weak self] jsonString in
+                guard let self = self else { return }
+                if let jsonString = jsonString {
+                    Task {
+                        let parameters = ["potions": jsonString]
+                        await self.uploadDeviceInfo(with: parameters)
+                    }
+                }
+            }
+            
         }
     }
     
 }
 
 extension HomeViewController {
+    
+    private func uploadDeviceInfo(with parameters: [String: String]) async {
+        do {
+            _ = try await viewModel.uploadDeviceApi(parameters: parameters)
+        } catch {
+            
+        }
+    }
     
     private func uploadLocation(with parameters: [String: String]) async {
         do {

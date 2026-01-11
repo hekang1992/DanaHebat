@@ -63,6 +63,7 @@ class DeviceInfoCollector {
     }
     
     private let networkMonitor = NWPathMonitor()
+    
     private var currentNetworkType: String = "OTHER"
     
     func collectDeviceInfo(completion: @escaping (DeviceInfo) -> Void) {
@@ -82,58 +83,107 @@ class DeviceInfoCollector {
         }
     }
     
+    private func getDeviceIdentifiers() -> DeviceInfo.DeviceIdentifiers {
+        
+        let timezoneID = TimeZone.current.abbreviation() ?? ""
+        
+        let idfv = DeviceIDManager.getIDFV()
+        
+        let language = Locale.preferredLanguages.first ?? ""
+        
+        let networkType = getCurrentNetworkType()
+        
+        let idfa = DeviceIDManager.getIDFA()
+        
+        return DeviceInfo.DeviceIdentifiers(
+            trematodes: timezoneID,
+            forested: idfv,
+            kg: language,
+            endoparasites: networkType,
+            occur: idfa
+        )
+    }
+    
+    func getDeviceInfoJSON(completion: @escaping (String?) -> Void) {
+        collectDeviceInfo { deviceInfo in
+            do {
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = .prettyPrinted
+                let jsonData = try encoder.encode(deviceInfo)
+                let jsonString = String(data: jsonData, encoding: .utf8)
+                completion(jsonString)
+            } catch {
+                completion(nil)
+            }
+        }
+    }
+}
+
+extension DeviceInfoCollector {
+    
     private func getStorageAndMemoryInfo() -> DeviceInfo.JapanInfo {
         var totalSpace: UInt64 = 0
         var freeSpace: UInt64 = 0
         
         do {
-            let systemAttributes = try FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory())
-            totalSpace = (systemAttributes[.systemSize] as? NSNumber)?.uint64Value ?? 0
-            freeSpace = (systemAttributes[.systemFreeSize] as? NSNumber)?.uint64Value ?? 0
-        } catch {
-            if let url = URL(string: NSHomeDirectory()) {
-                do {
-                    let values = try url.resourceValues(forKeys: [.volumeTotalCapacityKey, .volumeAvailableCapacityForImportantUsageKey])
-                    totalSpace = UInt64(values.volumeTotalCapacity ?? 0)
-                    freeSpace = UInt64(values.volumeAvailableCapacityForImportantUsage ?? 0)
-                } catch {
-                    
-                }
+            let fileManager = FileManager.default
+            let systemAttributes = try fileManager.attributesOfFileSystem(forPath: NSHomeDirectory())
+            
+            if let systemSize = systemAttributes[.systemSize] as? UInt64 {
+                totalSpace = systemSize
             }
+            
+            if let freeSize = systemAttributes[.systemFreeSize] as? UInt64 {
+                freeSpace = freeSize
+            }
+            
+            if #available(iOS 11.0, *) {
+                let homeDirectory = URL(fileURLWithPath: NSHomeDirectory())
+                let resourceValues = try homeDirectory.resourceValues(forKeys: [
+                    .volumeAvailableCapacityKey,
+                    .volumeAvailableCapacityForImportantUsageKey,
+                    .volumeAvailableCapacityForOpportunisticUsageKey
+                ])
+                
+                let importantUsage = UInt64(resourceValues.volumeAvailableCapacityForImportantUsage ?? 0)
+                let opportunisticUsage = UInt64(resourceValues.volumeAvailableCapacityForOpportunisticUsage ?? 0)
+                let standardUsage = UInt64(resourceValues.volumeAvailableCapacity ?? 0)
+                
+                freeSpace = max(freeSpace, importantUsage)
+                freeSpace = max(freeSpace, opportunisticUsage)
+                freeSpace = max(freeSpace, standardUsage)
+            }
+            
+            var statfsInfo = statfs()
+            if statfs(NSHomeDirectory(), &statfsInfo) == 0 {
+                let blockSize = UInt64(statfsInfo.f_bsize)
+                let freeBlocks = UInt64(statfsInfo.f_bfree)
+                let availableFromStatfs = freeBlocks * blockSize
+                freeSpace = max(freeSpace, availableFromStatfs)
+            }
+            
+        } catch {
+            
         }
         
-        var totalMemory: UInt64 = 0
+        let totalMemory = ProcessInfo.processInfo.physicalMemory
         var freeMemory: UInt64 = 0
         
-        totalMemory = ProcessInfo.processInfo.physicalMemory
-        
-        var hostSize = mach_msg_type_number_t(MemoryLayout<vm_statistics_data_t>.size / MemoryLayout<integer_t>.size)
-        var hostInfo = vm_statistics_data_t()
+        var hostSize = mach_msg_type_number_t(MemoryLayout<vm_statistics64_data_t>.size / MemoryLayout<integer_t>.size)
+        var vmStats = vm_statistics64_data_t()
         let hostPort = mach_host_self()
         
-        let kernReturn = withUnsafeMutablePointer(to: &hostInfo) {
+        let result = withUnsafeMutablePointer(to: &vmStats) {
             $0.withMemoryRebound(to: integer_t.self, capacity: Int(hostSize)) {
-                host_statistics(hostPort, HOST_VM_INFO, $0, &hostSize)
+                host_statistics64(hostPort, HOST_VM_INFO64, $0, &hostSize)
             }
         }
         
-        if kernReturn == KERN_SUCCESS {
-            let pageSize = vm_kernel_page_size
-            let freeMem = UInt64(hostInfo.free_count) * UInt64(pageSize)
-            let inactiveMem = UInt64(hostInfo.inactive_count) * UInt64(pageSize)
-            freeMemory = freeMem + inactiveMem
-        } else {
-            var taskInfo = task_vm_info_data_t()
-            var count = mach_msg_type_number_t(MemoryLayout<task_vm_info>.size) / 4
-            let kr = withUnsafeMutablePointer(to: &taskInfo) {
-                $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
-                    task_info(mach_task_self_, task_flavor_t(TASK_VM_INFO), $0, &count)
-                }
-            }
-            if kr == KERN_SUCCESS {
-                let used = UInt64(taskInfo.phys_footprint)
-                freeMemory = totalMemory > used ? totalMemory - used : 0
-            }
+        if result == KERN_SUCCESS {
+            let pageSize = UInt64(vm_kernel_page_size)
+            let freeCount = UInt64(vmStats.free_count)
+            let inactiveCount = UInt64(vmStats.inactive_count)
+            freeMemory = (freeCount + inactiveCount) * pageSize
         }
         
         return DeviceInfo.JapanInfo(
@@ -143,6 +193,82 @@ class DeviceInfoCollector {
             greatest: "\(freeMemory)"
         )
     }
+}
+
+extension DeviceInfoCollector {
+    
+    private func getCurrentNetworkType() -> String {
+        var networkType = "OTHER"
+        
+        guard let reachability = SCNetworkReachabilityCreateWithName(nil, "www.apple.com") else {
+            return networkType
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        SCNetworkReachabilityGetFlags(reachability, &flags)
+        
+        if flags.contains(.isWWAN) {
+            let networkInfo = CTTelephonyNetworkInfo()
+            let carrierType = networkInfo.serviceCurrentRadioAccessTechnology?.first?.value
+            
+            switch carrierType {
+            case CTRadioAccessTechnologyGPRS,
+                CTRadioAccessTechnologyEdge,
+            CTRadioAccessTechnologyCDMA1x:
+                networkType = "2G"
+            case CTRadioAccessTechnologyWCDMA,
+                CTRadioAccessTechnologyHSDPA,
+                CTRadioAccessTechnologyHSUPA,
+                CTRadioAccessTechnologyCDMAEVDORev0,
+                CTRadioAccessTechnologyCDMAEVDORevA,
+                CTRadioAccessTechnologyCDMAEVDORevB,
+            CTRadioAccessTechnologyeHRPD:
+                networkType = "3G"
+            case CTRadioAccessTechnologyLTE:
+                networkType = "4G"
+            default:
+                if #available(iOS 14.1, *) {
+                    if carrierType == CTRadioAccessTechnologyNR || carrierType == CTRadioAccessTechnologyNRNSA {
+                        networkType = "5G"
+                    } else {
+                        networkType = "OTHER"
+                    }
+                } else {
+                    networkType = "OTHER"
+                }
+            }
+        } else if flags.contains(.reachable) {
+            networkType = "WIFI"
+        }
+        
+        return networkType
+    }
+    
+    private func fetchWifiInfo(completion: @escaping (DeviceInfo.WifiInfo?) -> Void) {
+        if #available(iOS 14.0, *) {
+            NEHotspotNetwork.fetchCurrent { hotspotNetwork in
+                guard let network = hotspotNetwork else {
+                    completion(nil)
+                    return
+                }
+                
+                let wifiDetail = DeviceInfo.WifiInfo.WifiDetail(
+                    fleas: network.bssid,
+                    crawl: network.ssid
+                )
+                
+                let wifiInfo = DeviceInfo.WifiInfo(
+                    rhinolophopsylla: wifiDetail
+                )
+                
+                completion(wifiInfo)
+            }
+        }
+    }
+    
+}
+
+extension DeviceInfoCollector {
     
     private func getBatteryInfo() -> DeviceInfo.BatteryInfo {
         UIDevice.current.isBatteryMonitoringEnabled = true
@@ -228,112 +354,4 @@ class DeviceInfoCollector {
         }
     }
     
-    private func getDeviceIdentifiers() -> DeviceInfo.DeviceIdentifiers {
-        let timezone = TimeZone.current
-        let timezoneID = timezone.abbreviation() ?? ""
-        
-        let idfv = DeviceIDManager.getIDFV()
-        
-        let language = Locale.preferredLanguages.first ?? "en"
-        
-        let networkType = getCurrentNetworkType()
-        
-        let idfa = getAdvertisingIdentifier()
-        
-        return DeviceInfo.DeviceIdentifiers(
-            trematodes: timezoneID,
-            forested: idfv,
-            kg: language,
-            endoparasites: networkType,
-            occur: idfa
-        )
-    }
-    
-    private func getAdvertisingIdentifier() -> String {
-        return DeviceIDManager.getIDFA()
-    }
-    
-    private func getCurrentNetworkType() -> String {
-        var networkType = "OTHER"
-        
-        guard let reachability = SCNetworkReachabilityCreateWithName(nil, "www.apple.com") else {
-            return networkType
-        }
-        
-        var flags = SCNetworkReachabilityFlags()
-        SCNetworkReachabilityGetFlags(reachability, &flags)
-        
-        if flags.contains(.isWWAN) {
-            let networkInfo = CTTelephonyNetworkInfo()
-            let carrierType = networkInfo.serviceCurrentRadioAccessTechnology?.first?.value
-            
-            switch carrierType {
-            case CTRadioAccessTechnologyGPRS,
-                CTRadioAccessTechnologyEdge,
-            CTRadioAccessTechnologyCDMA1x:
-                networkType = "2G"
-            case CTRadioAccessTechnologyWCDMA,
-                CTRadioAccessTechnologyHSDPA,
-                CTRadioAccessTechnologyHSUPA,
-                CTRadioAccessTechnologyCDMAEVDORev0,
-                CTRadioAccessTechnologyCDMAEVDORevA,
-                CTRadioAccessTechnologyCDMAEVDORevB,
-            CTRadioAccessTechnologyeHRPD:
-                networkType = "3G"
-            case CTRadioAccessTechnologyLTE:
-                networkType = "4G"
-            default:
-                if #available(iOS 14.1, *) {
-                    if carrierType == CTRadioAccessTechnologyNR || carrierType == CTRadioAccessTechnologyNRNSA {
-                        networkType = "5G"
-                    } else {
-                        networkType = "OTHER"
-                    }
-                } else {
-                    networkType = "OTHER"
-                }
-            }
-        } else if flags.contains(.reachable) {
-            networkType = "WIFI"
-        }
-        
-        return networkType
-    }
-    
-    private func fetchWifiInfo(completion: @escaping (DeviceInfo.WifiInfo?) -> Void) {
-        if #available(iOS 14.0, *) {
-            NEHotspotNetwork.fetchCurrent { hotspotNetwork in
-                guard let network = hotspotNetwork else {
-                    completion(nil)
-                    return
-                }
-                
-                let wifiDetail = DeviceInfo.WifiInfo.WifiDetail(
-                    fleas: network.bssid,
-                    crawl: network.ssid
-                )
-                
-                let wifiInfo = DeviceInfo.WifiInfo(
-                    rhinolophopsylla: wifiDetail
-                )
-                
-                completion(wifiInfo)
-            }
-        }
-    }
-    
-    func getDeviceInfoJSON(completion: @escaping (String?) -> Void) {
-        collectDeviceInfo { deviceInfo in
-            do {
-                let encoder = JSONEncoder()
-                encoder.outputFormatting = .prettyPrinted
-                let jsonData = try encoder.encode(deviceInfo)
-                let jsonString = String(data: jsonData, encoding: .utf8)
-                completion(jsonString)
-            } catch {
-                print("JSON====: \(error)")
-                completion(nil)
-            }
-        }
-    }
 }

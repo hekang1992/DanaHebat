@@ -489,6 +489,18 @@ class HttpViewModel {
         }
     }
     
+    func uploadDeviceApi(parameters: [String: String]) async throws -> BaseModel {
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/jars",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
 }
 
 class ToastManager {
