@@ -22,7 +22,7 @@ class HomeViewController: BaseViewController {
     
     private var productModel: newarModel?
     
-    let locartionManager = SimpleLocationManager()
+    let locationManager = SimpleLocationManager()
     
     let collector = DeviceInfoCollector()
     
@@ -133,7 +133,7 @@ class HomeViewController: BaseViewController {
             await self.homeInfo()
             await self.uploadIDFAInfo()
         }
-        locartionManager.getLocation { [weak self] info, error in
+        locationManager.getLocation { [weak self] info, error in
             guard let self = self else { return }
             
             if let info = info {

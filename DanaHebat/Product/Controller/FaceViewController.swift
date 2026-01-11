@@ -27,6 +27,12 @@ class FaceViewController: BaseViewController {
     
     private let viewModel = HttpViewModel()
     
+    var s1: String = ""
+    
+    var s2: String = ""
+    
+    private let locationManager = SimpleLocationManager()
+    
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
         oneImageView.image = languageCode == "id" ? UIImage(named: "fc_d_i_image") : UIImage(named: "fc_e_n_image")
@@ -146,6 +152,13 @@ class FaceViewController: BaseViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
+        /// photp_start_time
+        s1 = String(Int(Date().timeIntervalSince1970))
+        
+        locationManager.getLocation { info, error in
+            
+        }
     }
     
 }
@@ -208,6 +221,7 @@ extension FaceViewController {
         self.oneListView.cImageView.kf.setImage(with: URL(string: recombination))
         
         if arisen.isEmpty {
+            s2 = String(Int(Date().timeIntervalSince1970))
             let photoView = CommonAlertView(frame: self.view.bounds)
             photoView.bgImageView.image = languageCode == "id" ? UIImage(named: "alt_end_f_image") : UIImage(named: "alt_en_f_image")
             let alertVc = TYAlertController(alert: photoView, preferredStyle: .alert)
@@ -250,6 +264,19 @@ extension FaceViewController {
                             self.alertNameViwe(with: model.potions?.sinicus ?? [])
                         }else {
                             await self.getPersonalInfo()
+                            if type == "11" {
+                                let json = ["places": "2",
+                                            "restricted": s1,
+                                            "much": String(Int(Date().timeIntervalSince1970))]
+                                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                                await self.fittyInfoApi(with: json, viewModel: viewModel)
+                            }else {
+                                let json = ["places": "3",
+                                            "restricted": s2,
+                                            "much": String(Int(Date().timeIntervalSince1970))]
+                                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                                await self.fittyInfoApi(with: json, viewModel: viewModel)
+                            }
                         }
                     }else {
                         ToastManager.showMessage(model.mental ?? "")
@@ -369,6 +396,11 @@ extension FaceViewController {
             if model.illness == 0 {
                 self.dismiss(animated: true)
                 await self.getPersonalInfo()
+                let json = ["places": "2",
+                            "restricted": s1,
+                            "much": String(Int(Date().timeIntervalSince1970))]
+                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                await self.fittyInfoApi(with: json, viewModel: viewModel)
             }else {
                 ToastManager.showMessage(model.mental ?? "")
             }

@@ -57,9 +57,11 @@ final class SimpleLocationManager: NSObject {
         CLGeocoder().reverseGeocodeLocation(location) { [weak self] placemarks, error in
             guard let self = self else { return }
             
-            defer {
-                self.completion = nil
-            }
+            let latitude = String(format: "%.6f", location.coordinate.latitude)
+            
+            let longitude = String(format: "%.6f", location.coordinate.longitude)
+            
+            SaceLocationMessageManager.saveLocation(latitude, lon: longitude)
             
             guard let placemark = placemarks?.first else {
                 self.completion?(nil, "reverse geocode failed")
@@ -156,3 +158,20 @@ extension SimpleLocationManager {
     }
 }
 
+class SaceLocationMessageManager {
+    
+    static func saveLocation(_ lat: String, lon: String) {
+        UserDefaults.standard.set(lat, forKey: "lat")
+        UserDefaults.standard.set(lon, forKey: "lon")
+        UserDefaults.standard.synchronize()
+    }
+    
+    static func getLatitude() -> String {
+        return UserDefaults.standard.string(forKey: "lat") ?? ""
+    }
+    
+    static func getLongitude() -> String {
+        return UserDefaults.standard.string(forKey: "lon") ?? ""
+    }
+    
+}

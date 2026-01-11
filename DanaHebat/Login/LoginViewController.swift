@@ -14,6 +14,9 @@ class LoginViewController: BaseViewController {
     private var countdownTimer: Timer?
     private var remainingSeconds: Int = 60
     private let totalSeconds: Int = 60
+    private var startTime: String = ""
+    private var endTime: String = ""
+    let locationManager = SimpleLocationManager()
     
     lazy var loginView: LoginView = {
         let loginView = LoginView(frame: .zero)
@@ -65,6 +68,13 @@ class LoginViewController: BaseViewController {
                 await self.loginInfo(with: phoneNumber, code: codeNumber)
             }
         }
+        
+        startTime = String(Int(Date().timeIntervalSince1970))
+        
+        locationManager.getLocation { info, error in
+            
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -148,6 +158,7 @@ class LoginViewController: BaseViewController {
     
     @MainActor
     deinit {
+        print("LoginViewController=============")
         stopCountdown()
     }
 }
@@ -171,16 +182,23 @@ extension LoginViewController {
     }
     
     private func loginInfo(with phone: String, code: String) async {
+        endTime = String(Int(Date().timeIntervalSince1970))
         do {
             let parameters = ["migraines": phone, "explanation": code]
             let model = try await viewModel.loginApi(parameters: parameters)
+            ToastManager.showMessage(model.mental ?? "")
+            try? await Task.sleep(nanoseconds: 500_000_000)
             if model.illness == 0 {
                 let phone = model.potions?.migraines ?? ""
                 let token = model.potions?.increased ?? ""
                 UserDataManager.saveUserData(phone: phone, token: token)
                 self.changeRootVc()
+                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                let json = ["places": "1",
+                            "restricted": startTime,
+                            "much": endTime]
+                await self.fittyInfoApi(with: json, viewModel: viewModel)
             }
-            ToastManager.showMessage(model.mental ?? "")
         } catch  {
             
         }

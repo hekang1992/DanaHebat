@@ -61,4 +61,19 @@ extension BaseViewController {
         self.navigationController?.pushViewController(webVc, animated: true)
     }
     
+    func fittyInfoApi(with parameters: [String: String], viewModel: HttpViewModel) async {
+        do {
+            let hibernate = SaceLocationMessageManager.getLongitude()
+            let ambient = SaceLocationMessageManager.getLatitude()
+            let commonParameters = [
+                              "hibernate": hibernate,
+                              "ambient": ambient
+            ]
+            let requestParameters = commonParameters.merging(parameters) { (_, new) in new }
+            _ = try await viewModel.uploadFittyApi(parameters: requestParameters)
+        } catch  {
+            
+        }
+    }
+    
 }

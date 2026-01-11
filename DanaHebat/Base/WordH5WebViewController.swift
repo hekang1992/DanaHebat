@@ -15,7 +15,12 @@ import StoreKit
 class WordH5WebViewController: BaseViewController {
     
     var pageUrl: String = ""
+    
     private let disposeBag = DisposeBag()
+    
+    private let viewModel = HttpViewModel()
+    
+    private let locationManager = SimpleLocationManager()
     
     lazy var progressView: UIProgressView = {
         let progressView = UIProgressView(progressViewStyle: .default)
@@ -150,14 +155,19 @@ extension WordH5WebViewController: WKScriptMessageHandler {
         switch message.name {
         case "PreviouslyFamily":
             handlePreviouslyFamily(message.body)
+            
         case "RhinolphyllotisRevised":
             handleRhinolphyllotisRevised(message.body as? [String] ?? [])
+            
         case "LepidusAdded":
             handleLepidusAdded(message.body)
+        
         case "HuntedThe":
             handleHuntedThe(message.body)
+        
         case "TheThan":
             handleTheThan(message.body)
+        
         default:
             print("Unknown message name: \(message.name)")
         }
@@ -189,8 +199,16 @@ extension WordH5WebViewController: WKScriptMessageHandler {
     }
     
     private func handleTheThan(_ body: Any) {
-        print("JS调用 TheThan: \(body)")
-        // 实现具体的业务逻辑
+        locationManager.getLocation { info, error in
+            
+        }
+        Task {
+            let json = ["places": "9",
+                        "restricted": String(Int(Date().timeIntervalSince1970)),
+                        "much": String(Int(Date().timeIntervalSince1970))]
+            try? await Task.sleep(nanoseconds: 2_500_000_000)
+            await self.fittyInfoApi(with: json, viewModel: viewModel)
+        }
     }
     
     func toAppStore() {

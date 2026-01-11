@@ -501,6 +501,27 @@ class HttpViewModel {
         }
     }
     
+    func uploadFittyApi(parameters: [String: String]) async throws -> BaseModel {
+        
+        let commonParameters = [
+            "islands": "2",
+            "cognatus": DeviceIDManager.getIDFV(),
+            "andaman": DeviceIDManager.getIDFA()
+        ]
+        
+        let requestParameters = commonParameters.merging(parameters) { (_, new) in new }
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/smell",
+                parameters: requestParameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
 }
 
 class ToastManager {

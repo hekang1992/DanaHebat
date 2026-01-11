@@ -7,8 +7,11 @@
 
 import UIKit
 import SnapKit
+import TYAlertController
 
 class SettingViewController: BaseViewController {
+    
+    private let viewModel = HttpViewModel()
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -118,7 +121,36 @@ extension SettingViewController {
     }
     
     private func popOut() {
+        let popView = AlertOutView(frame: self.view.bounds)
+        let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)
+        self.present(alertVc!, animated: true)
+        popView.leftBlock = { [weak self] in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
         
+        popView.rightBlock = { [weak self] in
+            guard let self = self else { return }
+            Task {
+                await self.outInfo()
+            }
+        }
+    }
+    
+    private func outInfo() async {
+        do {
+            let parameters = ["purported": UserDataManager.getPhone() ?? ""]
+            let model = try await viewModel.outMineApi(parameters: parameters)
+            ToastManager.showMessage(model.mental ?? "")
+            self.dismiss(animated: true)
+            try? await Task.sleep(nanoseconds: 500_000_000)
+            if model.illness == 0 {
+                UserDataManager.clearAllUserData()
+                self.changeRootVc()
+            }
+        } catch {
+            
+        }
     }
     
 }

@@ -26,6 +26,10 @@ class WorkViewController: BaseViewController {
     
     var listModelArray: [showedModel] = []
     
+    var startTime: String = ""
+    
+    private let locationManager = SimpleLocationManager()
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "log_bg_image")
@@ -121,6 +125,12 @@ class WorkViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
+        locationManager.getLocation { info, error in
+            
+        }
+     
+        startTime = String(Int(Date().timeIntervalSince1970))
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,6 +162,11 @@ extension WorkViewController {
             let model = try await viewModel.saveWorkApi(parameters: parameters)
             if model.illness == 0 {
                 self.backProductVc()
+                let json = ["places": "5",
+                            "restricted": startTime,
+                            "much": String(Int(Date().timeIntervalSince1970))]
+                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                await self.fittyInfoApi(with: json, viewModel: viewModel)
             }else {
                 ToastManager.showMessage(model.mental ?? "")
             }
@@ -183,6 +198,7 @@ extension WorkViewController: UITableViewDelegate, UITableViewDataSource {
             cell.model = model
             cell.tapCellBlock = { [weak self] listModel in
                 guard let self = self else { return }
+                self.view.endEditing(true)
                 self.tapClickCell(with: listModel, cell: cell)
             }
             return cell

@@ -21,6 +21,8 @@ class ProductViewController: BaseViewController {
     
     private let viewModel = HttpViewModel()
     
+    private let locationManager = SimpleLocationManager()
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "log_bg_image")
@@ -86,6 +88,10 @@ class ProductViewController: BaseViewController {
             }
         })
         
+        locationManager.getLocation { info, error in
+            
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,7 +126,8 @@ extension ProductViewController {
     
     private func applyOrderInfo(with model: BaseModel) async {
         do {
-            let parameters = ["chaerephon": model.potions?.yet?.chaerephon ?? "",
+            let chaerephon = model.potions?.yet?.chaerephon ?? ""
+            let parameters = ["chaerephon": chaerephon,
                               "origins": model.potions?.yet?.origins ?? "",
                               "isolated": model.potions?.yet?.isolated ?? "",
                               "plicata": model.potions?.yet?.plicata ?? ""]
@@ -135,6 +142,13 @@ extension ProductViewController {
                 }else {
                     self.goWordWebVc(with: pageUrl)
                 }
+                
+                let json = ["places": "8",
+                            "china": chaerephon,
+                            "restricted": String(Int(Date().timeIntervalSince1970)),
+                            "much": String(Int(Date().timeIntervalSince1970))]
+                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                await self.fittyInfoApi(with: json, viewModel: viewModel)
             }else {
                 ToastManager.showMessage(model.mental ?? "")
             }

@@ -23,6 +23,7 @@
 		732867B92F13A2DB00AB767E /* OrderContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B82F13A2DB00AB767E /* OrderContentListView.swift */; };
 		732867BB2F13A9EC00AB767E /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867BA2F13A9EC00AB767E /* LocationInfo.swift */; };
 		732867BD2F13B34100AB767E /* DeviceInfoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867BC2F13B34100AB767E /* DeviceInfoCollector.swift */; };
+		732867BF2F13C49F00AB767E /* AlertOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867BE2F13C49F00AB767E /* AlertOutView.swift */; };
 		733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15B2F1165E7001C6B69 /* LoginViewController.swift */; };
 		733EE15E2F116613001C6B69 /* AppNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15D2F116613001C6B69 /* AppNavView.swift */; };
 		733EE1602F116699001C6B69 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15F2F116695001C6B69 /* Other.swift */; };
@@ -116,6 +117,7 @@
 		732867B82F13A2DB00AB767E /* OrderContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderContentListView.swift; sourceTree = "<group>"; };
 		732867BA2F13A9EC00AB767E /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
 		732867BC2F13B34100AB767E /* DeviceInfoCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoCollector.swift; sourceTree = "<group>"; };
+		732867BE2F13C49F00AB767E /* AlertOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertOutView.swift; sourceTree = "<group>"; };
 		733EE15B2F1165E7001C6B69 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		733EE15D2F116613001C6B69 /* AppNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavView.swift; sourceTree = "<group>"; };
 		733EE15F2F116695001C6B69 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		733EE16F2F1204C9001C6B69 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				732867BE2F13C49F00AB767E /* AlertOutView.swift */,
 				733EE1672F118C85001C6B69 /* MineListView.swift */,
 				733EE1722F120706001C6B69 /* SettingListView.swift */,
 			);
@@ -606,6 +609,7 @@
 				7316E3BE2F10B98B004A8271 /* AppLanguage.swift in Sources */,
 				7316E3B02F10AC8A004A8271 /* KeychainHelper.swift in Sources */,
 				733EE18E2F1271A8001C6B69 /* FaceListView.swift in Sources */,
+				732867BF2F13C49F00AB767E /* AlertOutView.swift in Sources */,
 				73EA86C22F1094C400F4826F /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
