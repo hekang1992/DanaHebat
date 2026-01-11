@@ -35,6 +35,16 @@ extension BaseViewController {
         }
     }
     
+    func changeCenterRootVc() {
+        let tabBarVc = BaseTabBarController()
+        tabBarVc.selectedIndex = 2
+        if let window = UIApplication.shared.windows.first {
+            UIView.transition(with: window, duration: 0.25, options: .transitionCrossDissolve, animations: {
+                window.rootViewController = tabBarVc
+            }, completion: nil)
+        }
+    }
+    
     func backProductVc() {
         guard let nav = navigationController,
               let productVC = nav.viewControllers.first(where: { $0 is ProductViewController })

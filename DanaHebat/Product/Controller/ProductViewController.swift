@@ -60,8 +60,13 @@ class ProductViewController: BaseViewController {
         
         productView.nextBlock = { [weak self] in
             guard let self = self, let baseModel = baseModel else { return }
-            let appearedModel = baseModel.potions?.appeared ?? fiveModel()
-            self.toPageVc(with: appearedModel)
+            if let appearedModel = baseModel.potions?.appeared {
+                self.toPageVc(with: appearedModel)
+            }else {
+                Task {
+                    await self.applyOrderInfo(with: baseModel)
+                }
+            }
         }
         
         productView.cellBlock = { [weak self] model in
@@ -113,6 +118,31 @@ extension ProductViewController {
         }
     }
     
+    private func applyOrderInfo(with model: BaseModel) async {
+        do {
+            let parameters = ["chaerephon": model.potions?.yet?.chaerephon ?? "",
+                              "origins": model.potions?.yet?.origins ?? "",
+                              "isolated": model.potions?.yet?.isolated ?? "",
+                              "plicata": model.potions?.yet?.plicata ?? ""]
+            let model = try await viewModel.applyOrderApi(parameters: parameters)
+            if model.illness == 0 {
+                let pageUrl = model.potions?.stated ?? ""
+                if pageUrl.isEmpty {
+                    return
+                }
+                if pageUrl.hasPrefix(DeepLinkRoute.scheme_url) {
+                    URLSchemeRouter.handle(pageURL: pageUrl, from: self)
+                }else {
+                    self.goWordWebVc(with: pageUrl)
+                }
+            }else {
+                ToastManager.showMessage(model.mental ?? "")
+            }
+        } catch {
+            
+        }
+    }
+    
     private func configInfo(with model: yetModel) {
         self.appHeadView.configTitle(with: model.ecological ?? "")
         self.productView.oneLabel.text = model.indicates ?? ""
@@ -151,7 +181,17 @@ extension ProductViewController {
             self.navigationController?.pushViewController(faceVc, animated: true)
             
         case "tod":
-            break
+            let faceVc = ContactViewController()
+            faceVc.productID = productID
+            faceVc.appTitle = model.tightly ?? ""
+            self.navigationController?.pushViewController(faceVc, animated: true)
+            
+        case "toe":
+            let faceVc = BindCardViewController()
+            faceVc.productID = productID
+            faceVc.appTitle = model.tightly ?? ""
+            self.navigationController?.pushViewController(faceVc, animated: true)
+            
         default:
             break
         }

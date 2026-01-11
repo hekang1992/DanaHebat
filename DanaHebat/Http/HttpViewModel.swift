@@ -352,6 +352,114 @@ class HttpViewModel {
         }
     }
     
+    func getContactApi(parameters: [String: String]) async throws -> BaseModel {
+        
+        LoadingIndicator.show()
+        
+        defer {
+            LoadingIndicator.hide()
+        }
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/possibly",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
+    func saveContactApi(parameters: [String: String]) async throws -> BaseModel {
+        
+        LoadingIndicator.show()
+        
+        defer {
+            LoadingIndicator.hide()
+        }
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/brain",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
+    func uploadContactApi(parameters: [String: String]) async throws -> BaseModel {
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/dead",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
+    func getCardApi(parameters: [String: String]) async throws -> BaseModel {
+        
+        LoadingIndicator.show()
+        
+        defer {
+            LoadingIndicator.hide()
+        }
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/gnaw",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
+    func saveCardApi(parameters: [String: String]) async throws -> BaseModel {
+        
+        LoadingIndicator.show()
+        
+        defer {
+            LoadingIndicator.hide()
+        }
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/crawl",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
+    func applyOrderApi(parameters: [String: String]) async throws -> BaseModel {
+        
+        LoadingIndicator.show()
+        
+        defer {
+            LoadingIndicator.hide()
+        }
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/millipedes",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
+    
 }
 
 class ToastManager {

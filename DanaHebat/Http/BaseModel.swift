@@ -40,12 +40,47 @@ class potionsModel: Codable {
     var off: offModel?
     var stated: String?
     var five: [fiveModel]?
-    var appeared: fiveModel?
+    var appeared: fiveModel?  // 保持为 fiveModel? 类型
     var yet: yetModel?
     var newar: newarModel?
     var pearsoni: Int?
     var sinicus: [sinicusModel]?
     var showed: [showedModel]?
+    var coronavirus: [showedModel]?
+    
+    enum CodingKeys: String, CodingKey {
+        case reports, being, migraines, increased, userInfo
+        case certainly, off, stated, five, appeared, yet, newar
+        case pearsoni, sinicus, showed, coronavirus
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        reports = try? container.decode(reportsModel?.self, forKey: .reports)
+        being = try? container.decode(String?.self, forKey: .being)
+        migraines = try? container.decode(String?.self, forKey: .migraines)
+        increased = try? container.decode(String?.self, forKey: .increased)
+        userInfo = try? container.decode(userInfoModel?.self, forKey: .userInfo)
+        certainly = try? container.decode([certainlyModel]?.self, forKey: .certainly)
+        off = try? container.decode(offModel?.self, forKey: .off)
+        stated = try? container.decode(String?.self, forKey: .stated)
+        five = try? container.decode([fiveModel]?.self, forKey: .five)
+        yet = try? container.decode(yetModel?.self, forKey: .yet)
+        newar = try? container.decode(newarModel?.self, forKey: .newar)
+        pearsoni = try? container.decode(Int?.self, forKey: .pearsoni)
+        sinicus = try? container.decode([sinicusModel]?.self, forKey: .sinicus)
+        showed = try? container.decode([showedModel]?.self, forKey: .showed)
+        coronavirus = try? container.decode([showedModel]?.self, forKey: .coronavirus)
+        
+        if let appearedValue = try? container.decode(fiveModel?.self, forKey: .appeared) {
+            appeared = appearedValue
+        } else if let _ = try? container.decode([fiveModel]?.self, forKey: .appeared) {
+            appeared = nil
+        } else {
+            appeared = nil
+        }
+    }
 }
 
 class showedModel: Codable {
@@ -59,6 +94,14 @@ class showedModel: Codable {
     var market: String?
     var almost: String?
     
+    var animal: String?
+    var outbreak: String?
+    var zoonosis: String?
+    var health: String?
+    var crawl: String?
+    var possible: String?
+    var causative: String?
+    
     private enum CodingKeys: String, CodingKey {
         case tightly
         case infected
@@ -69,10 +112,27 @@ class showedModel: Codable {
         case orthoreoviruses
         case market
         case almost
+        case animal
+        case outbreak
+        case zoonosis
+        case health
+        case crawl
+        case possible
+        case causative
+        
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        crawl = try container.decodeIfPresent(String.self, forKey: .crawl)
+        possible = try container.decodeIfPresent(String.self, forKey: .possible)
+        causative = try container.decodeIfPresent(String.self, forKey: .causative)
+        
+        animal = try container.decodeIfPresent(String.self, forKey: .animal)
+        outbreak = try container.decodeIfPresent(String.self, forKey: .outbreak)
+        zoonosis = try container.decodeIfPresent(String.self, forKey: .zoonosis)
+        health = try container.decodeIfPresent(String.self, forKey: .health)
         
         tightly = try container.decodeIfPresent(String.self, forKey: .tightly)
         infected = try container.decodeIfPresent(String.self, forKey: .infected)
@@ -232,6 +292,7 @@ class newarModel: Codable {
     var homologous: String?
     var recombination: String?
     var arisen: String?
+    var philippines: String?
 }
 
 class fiveModel: Codable {

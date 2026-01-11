@@ -36,7 +36,14 @@ class HomeViewController: BaseViewController {
     
     lazy var homeView: HomeView = {
         let homeView = HomeView(frame: .zero)
+        homeView.isHidden = true
         return homeView
+    }()
+    
+    lazy var homeListView: HomeProductListView = {
+        let homeListView = HomeProductListView(frame: .zero)
+        homeListView.isHidden = true
+        return homeListView
     }()
     
     override func viewDidLoad() {
@@ -54,7 +61,25 @@ class HomeViewController: BaseViewController {
             make.left.right.bottom.equalToSuperview()
         }
         
+        view.addSubview(homeListView)
+        homeListView.snp.makeConstraints { make in
+            make.top.equalTo(headView.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+        }
+        
+        headView.tapClickBlock = { [weak self] in
+            guard let self = self else { return }
+            self.changeCenterRootVc()
+        }
+        
         homeView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            Task {
+                await self.homeInfo()
+            }
+        })
+        
+        homeListView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             guard let self = self else { return }
             Task {
                 await self.homeInfo()
@@ -74,6 +99,14 @@ class HomeViewController: BaseViewController {
                 self.present(loginVc, animated: true)
             }
             
+        }
+        
+        homeListView.cellBlock = { [weak self] model in
+            guard let self = self else { return }
+            Task {
+                let productID = String(model.anthropologist ?? 0)
+                await self.enterInfo(with: productID)
+            }
         }
         
         homeView.twoBlock = { [weak self] in
@@ -106,20 +139,38 @@ extension HomeViewController {
             let model = try await viewModel.homeApi(parameters: parameters)
             self.baseModel = model
             if model.illness == 0 {
-                let modelArray = model.potions?.certainly ?? []
+                var modelArray = model.potions?.certainly ?? []
                 if let listModel = modelArray.first(where: { $0.almost == "lengthsb" }) {
                     let newarModel = listModel.newar?.first ?? newarModel()
                     self.productModel = newarModel
                     self.configHeadInfo(with: newarModel)
                     self.homeView.model = newarModel
+                    self.homeView.isHidden = false
+                    self.homeListView.isHidden = true
+                }else {
+                    
+                    if let index = modelArray.firstIndex(where: { $0.almost == "lengthsa" }) {
+                        modelArray.remove(at: index)
+                    }
+                    
+                    if let listModel = modelArray.first(where: { $0.almost == "lengthsc" }) {
+                        let newarModel = listModel.newar?.first ?? newarModel()
+                        self.configHeadInfo(with: newarModel)
+                    }
+                    
+                    self.homeListView.modelArray = modelArray
+                    self.homeView.isHidden = true
+                    self.homeListView.isHidden = false
                 }
             }
             await MainActor.run {
                 self.homeView.scrollView.mj_header?.endRefreshing()
+                self.homeListView.tableView.mj_header?.endRefreshing()
             }
         } catch {
             await MainActor.run {
                 self.homeView.scrollView.mj_header?.endRefreshing()
+                self.homeListView.tableView.mj_header?.endRefreshing()
             }
         }
     }

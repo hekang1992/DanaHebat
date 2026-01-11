@@ -10,6 +10,8 @@ import SnapKit
 
 class HomeHeadView: UIView {
     
+    var tapClickBlock: (() -> Void)?
+    
     lazy var statusBarView: UIView = {
         let statusBarView = UIView()
         statusBarView.backgroundColor = .white
@@ -24,8 +26,8 @@ class HomeHeadView: UIView {
     
     lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
-        logoImageView.backgroundColor = .systemBlue
-        logoImageView.contentMode = .scaleAspectFit
+        logoImageView.layer.cornerRadius = 8.pix()
+        logoImageView.layer.masksToBounds = true
         return logoImageView
     }()
     
@@ -33,7 +35,7 @@ class HomeHeadView: UIView {
         let nameLabel = StrokeLabel()
         nameLabel.textAlignment = .left
         nameLabel.textColor = UIColor(hexString: "#FFFFFF")
-        nameLabel.font = UIFont.systemFont(ofSize: 20, weight: .black)
+        nameLabel.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight(400))
         nameLabel.strokeColor = UIColor(hexString: "#0329F6")
         nameLabel.strokeWidth = 2.0
         return nameLabel
@@ -42,6 +44,7 @@ class HomeHeadView: UIView {
     lazy var centerBtn: UIButton = {
         let centerBtn = UIButton(type: .custom)
         centerBtn.setBackgroundImage(UIImage(named: "p_logo_image"), for: .normal)
+        centerBtn.addTarget(self, action: #selector(btnClick), for: .touchUpInside)
         return centerBtn
     }()
     
@@ -101,3 +104,10 @@ private extension HomeHeadView {
     }
 }
 
+extension HomeHeadView {
+   
+    @objc func btnClick() {
+        self.tapClickBlock?()
+    }
+    
+}
