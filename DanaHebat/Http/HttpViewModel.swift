@@ -141,8 +141,25 @@ class HttpViewModel {
         }
     }
     
-    
     /// order
+    func orderListApi(parameters: [String: Any]) async throws -> BaseModel {
+        
+        LoadingIndicator.show()
+        
+        defer {
+            LoadingIndicator.hide()
+        }
+        
+        do {
+            let model: BaseModel = try await NetworkManager.shared.postMultipartForm(
+                url: "/relateder/earbugs",
+                parameters: parameters,
+                responseType: BaseModel.self)
+            return model
+        } catch {
+            throw error
+        }
+    }
     
     /// center
     func centerMineApi(parameters: [String: Any]) async throws -> BaseModel {

@@ -11,6 +11,10 @@ import MJRefresh
 
 class OrderViewController: BaseViewController {
     
+    var type: String = String(Int(1 + 3))
+    
+    private let viewModel = HttpViewModel()
+    
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
         oneImageView.image = languageCode == "id" ? UIImage(named: "olo_hea_image") : UIImage(named: "olo_ehea_image")
@@ -45,14 +49,56 @@ class OrderViewController: BaseViewController {
         view.addSubview(orderView)
         orderView.snp.makeConstraints { make in
             make.top.equalTo(oneImageView.snp.bottom)
-            make.left.right.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         }
         
         orderView.tapClickBlock = { [weak self] type in
-            ToastManager.showMessage(type)
+            guard let self = self else { return }
+            self.type = type
+            Task {
+                await self.orderListInfo(with: type)
+            }
         }
         
+        orderView.emptyClickBlock = { [weak self] in
+            guard let self = self else { return }
+            self.changeRootVc()
+        }
+        
+        orderView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            Task {
+                await self.orderListInfo(with: self.type)
+            }
+        })
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Task {
+            await self.orderListInfo(with: type)
+        }
     }
     
 }
 
+extension OrderViewController {
+    
+    private func orderListInfo(with type: String) async {
+        do {
+            let parameters = ["transmitted": type]
+            let model = try await viewModel.orderListApi(parameters: parameters)
+            if model.illness == 0 {
+                let modelArray = model.potions?.certainly ?? []
+                self.orderView.modelArray = modelArray
+                self.orderView.tableView.reloadData()
+            }
+            await self.orderView.tableView.mj_header?.endRefreshing()
+        } catch {
+            await self.orderView.tableView.mj_header?.endRefreshing()
+        }
+    }
+    
+}

@@ -14,6 +14,21 @@ class OrderView: UIView {
     
     var tapClickBlock: ((String) -> Void)?
     
+    var emptyClickBlock: (() -> Void)?
+    
+    var modelArray: [certainlyModel]? {
+        didSet {
+            guard let modelArray = modelArray else { return }
+            if modelArray.count > 0 {
+                tableView.isHidden = false
+                emptyView.isHidden = true
+            }else {
+                tableView.isHidden = true
+                emptyView.isHidden = false
+            }
+        }
+    }
+    
     lazy var oneBtn: UIButton = {
         let oneBtn = UIButton(type: .custom)
         oneBtn.setTitle(LanguageManager.localizedString(for: "All"), for: .normal)
@@ -82,6 +97,30 @@ class OrderView: UIView {
         return scrollView
     }()
     
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.estimatedRowHeight = 100.pix()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(OrderListViewCell.self, forCellReuseIdentifier: "OrderListViewCell")
+        tableView.isHidden = true
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
+    }()
+    
+    lazy var emptyView: OrderEmptyView = {
+        let emptyView = OrderEmptyView()
+        emptyView.isHidden = true
+        return emptyView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -111,7 +150,8 @@ class OrderView: UIView {
         scrollView.addSubview(twoBtn)
         scrollView.addSubview(threeBtn)
         scrollView.addSubview(fourBtn)
-        
+        addSubview(tableView)
+        addSubview(emptyView)
         scrollView.snp.makeConstraints { make in
             make.left.top.equalToSuperview()
             make.centerX.equalToSuperview()
@@ -141,6 +181,18 @@ class OrderView: UIView {
             make.size.equalTo(CGSize(width: 70.pix(), height: 40.pix()))
             make.left.equalTo(threeBtn.snp.right).offset(6.pix())
             make.right.equalToSuperview().offset(-8.pix())
+        }
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.bottom)
+            make.left.bottom.right.equalToSuperview()
+        }
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(scrollView.snp.bottom)
+            make.left.bottom.right.equalToSuperview()
+        }
+        emptyView.onTap = { [weak self] in
+            guard let self = self else { return }
+            self.emptyClickBlock?()
         }
     }
     
@@ -243,3 +295,18 @@ class OrderView: UIView {
     
 }
 
+
+extension OrderView: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.modelArray?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = self.modelArray?[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderListViewCell", for: indexPath) as! OrderListViewCell
+        cell.model = model
+        return cell
+    }
+    
+}

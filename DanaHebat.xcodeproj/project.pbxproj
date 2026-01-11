@@ -19,6 +19,8 @@
 		7316E3B72F10B577004A8271 /* DeviceNetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3B62F10B577004A8271 /* DeviceNetworkInfo.swift */; };
 		7316E3BA2F10B7AF004A8271 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7316E3B82F10B7AF004A8271 /* Localizable.strings */; };
 		7316E3BE2F10B98B004A8271 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3BD2F10B98B004A8271 /* AppLanguage.swift */; };
+		732867B52F13991200AB767E /* OrderListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B42F13991200AB767E /* OrderListViewCell.swift */; };
+		732867B72F139E5300AB767E /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B62F139E5300AB767E /* OrderEmptyView.swift */; };
 		733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15B2F1165E7001C6B69 /* LoginViewController.swift */; };
 		733EE15E2F116613001C6B69 /* AppNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15D2F116613001C6B69 /* AppNavView.swift */; };
 		733EE1602F116699001C6B69 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15F2F116695001C6B69 /* Other.swift */; };
@@ -105,6 +107,8 @@
 		7316E3B92F10B7AF004A8271 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7316E3BC2F10B7C2004A8271 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7316E3BD2F10B98B004A8271 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
+		732867B42F13991200AB767E /* OrderListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewCell.swift; sourceTree = "<group>"; };
+		732867B62F139E5300AB767E /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
 		733EE15B2F1165E7001C6B69 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		733EE15D2F116613001C6B69 /* AppNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavView.swift; sourceTree = "<group>"; };
 		733EE15F2F116695001C6B69 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
@@ -364,7 +368,9 @@
 			isa = PBXGroup;
 			children = (
 				73DF8E2F2F137B4D002C6EE9 /* OrderView.swift */,
+				732867B42F13991200AB767E /* OrderListViewCell.swift */,
 				73EA86C12F1094C400F4826F /* OrderViewController.swift */,
+				732867B62F139E5300AB767E /* OrderEmptyView.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 				733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */,
 				733EE1822F123691001C6B69 /* ProductViewController.swift in Sources */,
 				733EE1962F129159001C6B69 /* PersonalNameAlertView.swift in Sources */,
+				732867B72F139E5300AB767E /* OrderEmptyView.swift in Sources */,
 				733EE19C2F12A370001C6B69 /* PersonalViewController.swift in Sources */,
 				733EE19A2F1293A1001C6B69 /* CommonClickView.swift in Sources */,
 				733EE1A92F12B81D001C6B69 /* TapContactViewCell.swift in Sources */,
@@ -576,6 +583,7 @@
 				733EE1662F1181D2001C6B69 /* UserDataManager.swift in Sources */,
 				733EE1752F120A5C001C6B69 /* SureDeleteViewController.swift in Sources */,
 				7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */,
+				732867B52F13991200AB767E /* OrderListViewCell.swift in Sources */,
 				733EE1A72F12B795001C6B69 /* ContactViewController.swift in Sources */,
 				7316E3AA2F10A5CC004A8271 /* LoadingIndicator.swift in Sources */,
 				733EE1882F12665A001C6B69 /* ProductListView.swift in Sources */,
