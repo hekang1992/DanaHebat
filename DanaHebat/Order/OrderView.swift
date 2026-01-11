@@ -16,6 +16,8 @@ class OrderView: UIView {
     
     var emptyClickBlock: (() -> Void)?
     
+    var cellTapClickBlock: ((certainlyModel) -> Void)?
+    
     var modelArray: [certainlyModel]? {
         didSet {
             guard let modelArray = modelArray else { return }
@@ -307,6 +309,12 @@ extension OrderView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderListViewCell", for: indexPath) as! OrderListViewCell
         cell.model = model
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let model = self.modelArray?[indexPath.row] {
+            self.cellTapClickBlock?(model)
+        }
     }
     
 }

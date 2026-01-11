@@ -36,8 +36,8 @@ class MineListView: UIView {
     
     lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
-        logoImageView.backgroundColor = .systemBlue
-        logoImageView.contentMode = .scaleAspectFit
+        logoImageView.layer.cornerRadius = 5.pix()
+        logoImageView.layer.masksToBounds = true
         return logoImageView
     }()
     

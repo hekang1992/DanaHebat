@@ -275,6 +275,17 @@ class certainlyModel: Codable {
     var newar: [newarModel]?
     var stated: String?
     var off: String?
+    var asthma: String?
+    var ecological: String?
+    var hilli: [hilliModel]?
+    var treat: String?
+    var stoliczka: String?
+    var rocky: String?
+}
+
+class hilliModel: Codable {
+    var tightly: String?
+    var trident: String?
 }
 
 class newarModel: Codable {

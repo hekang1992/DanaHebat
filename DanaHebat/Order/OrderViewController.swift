@@ -66,6 +66,19 @@ class OrderViewController: BaseViewController {
             self.changeRootVc()
         }
         
+        orderView.cellTapClickBlock = { [weak self] model in
+            guard let self = self else { return }
+            let pageUrl = model.rocky ?? ""
+            if pageUrl.isEmpty {
+                return
+            }
+            if pageUrl.hasPrefix(DeepLinkRoute.scheme_url) {
+                URLSchemeRouter.handle(pageURL: pageUrl, from: self)
+            }else {
+                self.goWordWebVc(with: pageUrl)
+            }
+        }
+        
         orderView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             guard let self = self else { return }
             Task {
