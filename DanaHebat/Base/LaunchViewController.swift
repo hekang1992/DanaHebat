@@ -80,7 +80,7 @@ extension LaunchViewController {
             
             if model.illness == 0 {
                 let being = Int(model.potions?.being ?? "1") ?? 1
-                LanguageManager.shared.setLanguage(code: 2)
+                LanguageManager.shared.setLanguage(code: being)
                 
                 if let facebookModel = model.potions?.reports {
                     faceBookSDK(with: facebookModel)
