@@ -181,12 +181,32 @@ extension FaceViewController {
     private func configNameInfo(with model: BaseModel) {
         self.oneListView.nameLabel.text = model.potions?.newar?.harbored ?? ""
         self.twoListView.nameLabel.text = model.potions?.newar?.homologous ?? ""
-        self.ocAlertView(with: model)
+        self.ocWithNoAlertView(with: model)
     }
     
 }
 
 extension FaceViewController {
+    
+    private func ocWithNoAlertView(with model: BaseModel) {
+        let recombination = model.potions?.newar?.recombination ?? ""
+        let arisen = model.potions?.newar?.arisen ?? ""
+        if recombination.isEmpty {
+            return
+        }
+        
+        self.oneListView.typeLabel.backgroundColor = UIColor.init(hexString: "#90FF38")
+        self.oneListView.typeLabel.text = LanguageManager.localizedString(for: "Uploaded")
+        self.oneListView.cImageView.kf.setImage(with: URL(string: recombination))
+        
+        if arisen.isEmpty {
+            return
+        }
+        self.twoListView.cImageView.kf.setImage(with: URL(string: arisen))
+        self.twoListView.typeLabel.backgroundColor = UIColor.init(hexString: "#90FF38")
+        self.twoListView.typeLabel.text = LanguageManager.localizedString(for: "Uploaded")
+        
+    }
     
     private func ocAlertView(with model: BaseModel) {
         let recombination = model.potions?.newar?.recombination ?? ""

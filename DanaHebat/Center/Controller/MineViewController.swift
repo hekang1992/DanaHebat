@@ -95,7 +95,7 @@ class MineViewController: BaseViewController {
         
         scrollView.addSubview(logoImageView)
         logoImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(34)
+            make.top.equalToSuperview().offset(25)
             make.width.height.equalTo(100)
             make.centerX.equalToSuperview()
         }

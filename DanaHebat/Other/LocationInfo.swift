@@ -19,7 +19,7 @@ class SimpleLocationManager: NSObject {
     override init() {
         super.init()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     func getLocation(completion: @escaping ([String: String]) -> Void) {
@@ -62,8 +62,8 @@ extension SimpleLocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
         
-        let lat = String(location.coordinate.latitude)
-        let lon = String(location.coordinate.longitude)
+        let lat = String(format: "%.6f", location.coordinate.latitude)
+        let lon = String(format: "%.6f", location.coordinate.longitude)
         SaceLocationMessageManager.saveLocation(lat, lon: lon)
         
         geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, _ in

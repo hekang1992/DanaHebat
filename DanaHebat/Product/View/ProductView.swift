@@ -155,6 +155,7 @@ class ProductView: UIView {
     lazy var cycleBtn: UIButton = {
         let cycleBtn = UIButton(type: .custom)
         cycleBtn.isSelected = true
+        cycleBtn.isHidden = true
         cycleBtn.setImage(UIImage(named: "cy_nor_image"), for: .normal)
         cycleBtn.setImage(UIImage(named: "cy_sel_image"), for: .selected)
         return cycleBtn

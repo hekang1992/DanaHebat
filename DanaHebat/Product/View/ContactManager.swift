@@ -78,11 +78,9 @@ extension ContactManager: CNContactPickerDelegate {
         
         let name = "\(contact.givenName) \(contact.familyName)"
         
-        let phones = contact.phoneNumbers
-            .map { $0.value.stringValue }
-            .joined(separator: ",")
+        let phone = contact.phoneNumbers.first?.value.stringValue ?? ""
         
-        singleResult?(name, phones)
+        singleResult?(name, phone)
     }
 }
 
