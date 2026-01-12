@@ -377,7 +377,7 @@ class ProductView: UIView {
 extension ProductView {
     
     @objc private func handlePrivacyTap(_ gesture: UITapGestureRecognizer) {
-        let rolled = self.model?.potions?.sealed?.tightly ?? ""
+        let rolled = self.model?.potions?.sealed?.rolled ?? ""
         self.loanBlock?(rolled)
     }
     
