@@ -120,7 +120,7 @@ class ContactViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
-        locationManager.getLocation { info, error in
+        locationManager.getLocation { info in
             
         }
      

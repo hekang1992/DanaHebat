@@ -28,13 +28,20 @@ class HomeView: UIView {
             guard let model = model else { return }
             applyLabel.text = model.treat ?? ""
             oneLabel.text = model.flesh ?? ""
-            twoLabel.text = model.reported ?? ""
+            let money = model.reported ?? ""
+            twoLabel.text = money
             
             oneListView.oneLabel.text = model.northeast ?? ""
             oneListView.twoLabel.text = model.people ?? ""
             
             twoListView.oneLabel.text = model.naga ?? ""
-            twoListView.twoLabel.text = model.ao ?? ""
+            
+            let rate = model.ao ?? ""
+            twoListView.twoLabel.text = rate
+            
+            UserDefaults.standard.set(money, forKey: "money")
+            UserDefaults.standard.set(rate, forKey: "rate")
+            UserDefaults.standard.synchronize()
         }
     }
     

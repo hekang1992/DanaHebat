@@ -156,7 +156,7 @@ class FaceViewController: BaseViewController {
         /// photp_start_time
         s1 = String(Int(Date().timeIntervalSince1970))
         
-        locationManager.getLocation { info, error in
+        locationManager.getLocation { info in
             
         }
     }

@@ -43,15 +43,16 @@ class ContactManager: NSObject {
     
     private func showSettingAlert(_ vc: UIViewController) {
         let alert = UIAlertController(
-            title: "通讯录权限未开启",
-            message: "请前往设置中开启通讯录权限",
+            title: LanguageManager.localizedString(for: "Permission Required"),
+            message: LanguageManager.localizedString(for: "Contact permission is disabled. Please enable it in Settings to allow your loan application to be processed."),
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
-        alert.addAction(UIAlertAction(title: "去设置", style: .default) { _ in
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(url)
-            }
+        
+        alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Cancel"), style: .cancel))
+        
+        alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Go to  settings"), style: .default) { _ in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            UIApplication.shared.open(url)
         })
         vc.present(alert, animated: true)
     }
@@ -75,7 +76,7 @@ extension ContactManager: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController,
                        didSelect contact: CNContact) {
         
-        let name = "\(contact.familyName)\(contact.givenName)"
+        let name = "\(contact.givenName) \(contact.familyName)"
         
         let phones = contact.phoneNumbers
             .map { $0.value.stringValue }
@@ -110,7 +111,7 @@ extension ContactManager {
                 
                 guard !phones.isEmpty else { return }
                 
-                let name = "\(contact.familyName)\(contact.givenName)"
+                let name = "\(contact.givenName) \(contact.familyName)"
                 
                 list.append([
                     "purported": phones,

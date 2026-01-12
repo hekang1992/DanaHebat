@@ -71,7 +71,7 @@ class LoginViewController: BaseViewController {
         
         startTime = String(Int(Date().timeIntervalSince1970))
         
-        locationManager.getLocation { info, error in
+        locationManager.getLocation { info in
             
         }
         

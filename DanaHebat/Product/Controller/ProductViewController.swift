@@ -62,6 +62,13 @@ class ProductViewController: BaseViewController {
         
         productView.nextBlock = { [weak self] in
             guard let self = self, let baseModel = baseModel else { return }
+            let tightly = self.baseModel?.potions?.sealed?.tightly ?? ""
+            if !tightly.isEmpty {
+                if productView.cycleBtn.isSelected == false {
+                    ToastManager.showMessage(LanguageManager.localizedString(for: "Please read and agree to the Loan Agreement"))
+                    return
+                }
+            }
             if let appearedModel = baseModel.potions?.appeared {
                 self.toPageVc(with: appearedModel)
             }else {
@@ -73,12 +80,24 @@ class ProductViewController: BaseViewController {
         
         productView.cellBlock = { [weak self] model in
             guard let self = self else { return }
+            let tightly = self.baseModel?.potions?.sealed?.tightly ?? ""
+            if !tightly.isEmpty {
+                if productView.cycleBtn.isSelected == false {
+                    ToastManager.showMessage(LanguageManager.localizedString(for: "Please read and agree to the Loan Agreement"))
+                    return
+                }
+            }
             let gnaw = model.gnaw ?? 0
             if gnaw == 1 {
                 self.toPageVc(with: model)
             }else {
                 productView.nextBlock?()
             }
+        }
+        
+        productView.loanBlock = { [weak self] pageUrl in
+            guard let self = self else { return }
+            self.goWordWebVc(with: pageUrl)
         }
         
         productView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
@@ -88,7 +107,7 @@ class ProductViewController: BaseViewController {
             }
         })
         
-        locationManager.getLocation { info, error in
+        locationManager.getLocation { info in
             
         }
         

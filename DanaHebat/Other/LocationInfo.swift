@@ -5,66 +5,71 @@
 //  Created by hekang on 2026/1/11.
 //
 
+import UIKit
 import Foundation
 import CoreLocation
-import UIKit
 
-final class SimpleLocationManager: NSObject {
-    
-    typealias LocationCompletion = ([String: String]?, String?) -> Void
+class SimpleLocationManager: NSObject {
     
     private let locationManager = CLLocationManager()
-    
-    private var completion: LocationCompletion?
-    
+    private let geocoder = CLGeocoder()
     private static let lastAlertDateKey = "LastLocationAlertDate"
-    
-    let languageCode = LanguageManager.shared.getCurrentLocaleCode()
+    private var completion: (([String: String]) -> Void)?
     
     override init() {
         super.init()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     }
     
-    func getLocation(completion: @escaping LocationCompletion) {
+    func getLocation(completion: @escaping ([String: String]) -> Void) {
         self.completion = completion
         
         let status = locationManager.authorizationStatus
-        
         switch status {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
             
-        case .authorizedWhenInUse, .authorizedAlways:
-            requestLocationIfNeeded()
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.requestLocation()
             
         case .denied, .restricted:
             handlePermissionDenied()
+            completion([:])
             
         @unknown default:
-            completion(nil, "unknown authorization status")
+            completion([:])
+        }
+    }
+}
+
+extension SimpleLocationManager: CLLocationManagerDelegate {
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        let status = manager.authorizationStatus
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            manager.requestLocation()
+        } else if status == .denied || status == .restricted {
+            handlePermissionDenied()
+            completion?([:])
         }
     }
     
-    private func requestLocationIfNeeded() {
-        locationManager.requestLocation()
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        completion?([:])
     }
     
-    private func handleLocation(_ location: CLLocation) {
-        locationManager.stopUpdatingLocation()
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else { return }
         
-        CLGeocoder().reverseGeocodeLocation(location) { [weak self] placemarks, error in
-            guard let self = self else { return }
-            
-            let latitude = String(format: "%.6f", location.coordinate.latitude)
-            
-            let longitude = String(format: "%.6f", location.coordinate.longitude)
-            
-            SaceLocationMessageManager.saveLocation(latitude, lon: longitude)
-            
-            guard let placemark = placemarks?.first else {
-                self.completion?(nil, "reverse geocode failed")
+        let lat = String(location.coordinate.latitude)
+        let lon = String(location.coordinate.longitude)
+        SaceLocationMessageManager.saveLocation(lat, lon: lon)
+        
+        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, _ in
+            guard let self = self,
+                  let placemark = placemarks?.first else {
+                self?.completion?([:])
                 return
             }
             
@@ -79,49 +84,19 @@ final class SimpleLocationManager: NSObject {
                 "unforested": placemark.subLocality ?? ""
             ]
             
-            self.completion?(info, nil)
-        }
-    }
-    
-    private func handlePermissionDenied() {
-        if languageCode == "id" {
-            showPermissionAlertIfNeeded()
-        }
-        completion?(nil, "location permission denied")
-    }
-}
-
-// MARK: - CLLocationManagerDelegate
-
-extension SimpleLocationManager: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        handleLocation(location)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        completion?(nil, error.localizedDescription)
-        locationManager.stopUpdatingLocation()
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        let status = manager.authorizationStatus
-        
-        switch status {
-        case .authorizedWhenInUse, .authorizedAlways:
-            requestLocationIfNeeded()
-            
-        case .denied, .restricted:
-            handlePermissionDenied()
-            
-        default:
-            break
+            self.completion?(info)
         }
     }
 }
+
 
 extension SimpleLocationManager {
+    
+    private func handlePermissionDenied() {
+        if LanguageManager.shared.getCurrentLocaleCode() == "id" {
+            showPermissionAlertIfNeeded()
+        }
+    }
     
     private func showPermissionAlertIfNeeded() {
         let formatter = DateFormatter()
@@ -141,21 +116,22 @@ extension SimpleLocationManager {
             else { return }
             
             let alert = UIAlertController(
-                title: "定位权限被禁用",
-                message: "请在设置中开启定位权限以使用位置功能",
+                title: LanguageManager.localizedString(for: "Permission Required"),
+                message: LanguageManager.localizedString(for: "Location permission is disabled. Please enable it in Settings to allow your loan application to be processed."),
                 preferredStyle: .alert
             )
             
-            alert.addAction(UIAlertAction(title: "取消", style: .cancel))
-            alert.addAction(UIAlertAction(title: "去设置", style: .default) { _ in
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url)
-                }
+            alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Cancel"), style: .cancel))
+            
+            alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Go to  settings"), style: .default) { _ in
+                guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+                UIApplication.shared.open(url)
             })
             
             rootVC.present(alert, animated: true)
         }
     }
+    
 }
 
 class SaceLocationMessageManager {

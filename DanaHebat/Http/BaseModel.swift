@@ -30,6 +30,11 @@ class BaseModel: Codable {
     }
 }
 
+class sealedModel: Codable {
+    var tightly: String?
+    var rolled: String?
+}
+
 class potionsModel: Codable {
     var reports: reportsModel?
     var being: String?
@@ -47,10 +52,11 @@ class potionsModel: Codable {
     var sinicus: [sinicusModel]?
     var showed: [showedModel]?
     var coronavirus: [showedModel]?
+    var sealed: sealedModel?
     
     enum CodingKeys: String, CodingKey {
         case reports, being, migraines, increased, userInfo
-        case certainly, off, stated, five, appeared, yet, newar
+        case certainly, off, stated, five, appeared, yet, newar, sealed
         case pearsoni, sinicus, showed, coronavirus
     }
     
@@ -68,6 +74,7 @@ class potionsModel: Codable {
         five = try? container.decode([fiveModel]?.self, forKey: .five)
         yet = try? container.decode(yetModel?.self, forKey: .yet)
         newar = try? container.decode(newarModel?.self, forKey: .newar)
+        sealed = try? container.decode(sealedModel?.self, forKey: .sealed)
         pearsoni = try? container.decode(Int?.self, forKey: .pearsoni)
         sinicus = try? container.decode([sinicusModel]?.self, forKey: .sinicus)
         showed = try? container.decode([showedModel]?.self, forKey: .showed)

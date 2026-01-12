@@ -33,9 +33,10 @@ class GuideViewController: BaseViewController {
     private func setupUI() {
         
         let code = LanguageManager.shared.getCurrentLanguageCode()
-        backgroundImageNames = code == 2 ? backgroundENImageNames : backgroundIDImageNames
+        backgroundImageNames = code == 1 ? backgroundENImageNames : backgroundIDImageNames
         
         setupScrollView()
+        
         setupButton()
         
         Task {

@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import MJRefresh
 import Kingfisher
+import CoreLocation
 
 class HomeViewController: BaseViewController {
     
@@ -127,31 +128,34 @@ class HomeViewController: BaseViewController {
         
     }
     
+    @MainActor
+    deinit {
+        print("HomeViewController--------")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Task {
             await self.homeInfo()
             await self.uploadIDFAInfo()
-        }
-        locationManager.getLocation { [weak self] info, error in
-            guard let self = self else { return }
-            
-            if let info = info {
-                Task {
-                    await self.uploadLocation(with: info)
-                }
-            }
-            
-            self.collector.getDeviceInfoJSON { [weak self] jsonString in
+            locationManager.getLocation { [weak self] info in
                 guard let self = self else { return }
-                if let jsonString = jsonString {
+                print("info======\(info)")
+                if !info.isEmpty {
                     Task {
-                        let parameters = ["potions": jsonString]
-                        await self.uploadDeviceInfo(with: parameters)
+                        await self.uploadLocation(with: info)
+                    }
+                }
+                self.collector.getDeviceInfoJSON { [weak self] jsonString in
+                    guard let self = self else { return }
+                    if let jsonString = jsonString {
+                        Task {
+                            let parameters = ["potions": jsonString]
+                            await self.uploadDeviceInfo(with: parameters)
+                        }
                     }
                 }
             }
-            
         }
     }
     

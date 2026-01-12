@@ -76,7 +76,7 @@ class ProductListView: UIView {
         }
         
         arrowImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(9.pix())
+            make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-11.pix())
             make.height.width.equalTo(20.pix())
         }

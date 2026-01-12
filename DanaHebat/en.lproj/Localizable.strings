@@ -41,7 +41,6 @@
 "Please check your lD information correctly, once submitted it is not changed again" = "Please check your lD information correctly, once submitted it is not changed again";
 "Date Selection" = "Date Selection";
 "OK" = "OK";
-"Cancel" = "Cancel";
 
 "Please select one" = "Please select one";
 "Name or phone number is empty, please try again" = "Name or phone number is empty, please try again";
@@ -52,3 +51,15 @@
 "Repayment" = "Repayment";
 "Finished" = "Finished";
 "Check Details" = "Check Details";
+
+"Permission Required" = "Permission Required";
+"Go to Settings" = "Go to Settings";
+"Cancel" = "Cancel";
+"Contact permission is disabled. Please enable it in Settings to allow your loan application to be processed." = "Contact permission is disabled. Please enable it in Settings to allow your loan application to be processed.";
+"Camera permission is disabled. Please enable it in Settings to allow your loan application to be processed." = "Camera permission is disabled. Please enable it in Settings to allow your loan application to be processed.";
+"Location permission is disabled. Please enable it in Settings to allow your loan application to be processed." = "Location permission is disabled. Please enable it in Settings to allow your loan application to be processed.";
+
+"0.04%/Day" = "0.04%/Day";
+"Day" = "Day";
+
+"Please read and agree to the Loan Agreement" = "Please read and agree to the Loan Agreement";

@@ -36,11 +36,37 @@ class AlertOutView: UIView {
         return rightBtn
     }()
     
+//    UserDefaults.standard.set(money, forKey: "money")
+//    UserDefaults.standard.set(rate, forKey: "rate")
+//    UserDefaults.standard.synchronize()
+    
+    lazy var moneyLabel: UILabel = {
+        let moneyLabel = UILabel()
+        moneyLabel.textAlignment = .center
+        let money = UserDefaults.standard.object(forKey: "money") as? String ?? ""
+        moneyLabel.text = money.isEmpty ? "9.900.000" : money
+        moneyLabel.textColor = UIColor.init(hexString: "#333333")
+        moneyLabel.font = UIFont.systemFont(ofSize: 45, weight: UIFont.Weight(900))
+        return moneyLabel
+    }()
+    
+    lazy var rateLabel: UILabel = {
+        let rateLabel = UILabel()
+        rateLabel.textAlignment = .center
+        let rate = UserDefaults.standard.object(forKey: "rate") as? String ?? ""
+        rateLabel.text = rate.isEmpty ? LanguageManager.localizedString(for: "0.04%/Day") : "\(rate)/\(LanguageManager.localizedString(for: "Day"))"
+        rateLabel.textColor = UIColor.init(hexString: "#0329F6")
+        rateLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        return rateLabel
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgImageView)
         bgImageView.addSubview(leftBtn)
         bgImageView.addSubview(rightBtn)
+        bgImageView.addSubview(moneyLabel)
+        bgImageView.addSubview(rateLabel)
         bgImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 325.pix(), height: 355.pix()))
@@ -54,6 +80,20 @@ class AlertOutView: UIView {
             make.bottom.equalToSuperview()
             make.right.equalToSuperview()
             make.size.equalTo(CGSize(width: 157.pix(), height: 60.pix()))
+        }
+        moneyLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(46.pix())
+            if LanguageManager.shared.getCurrentLocaleCode() == "id" {
+                make.top.equalToSuperview().offset(175.pix())
+            }else {
+                make.top.equalToSuperview().offset(165.pix())
+            }
+        }
+        rateLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(moneyLabel.snp.bottom).offset(25.pix())
+            make.height.equalTo(25.pix())
         }
         
         leftBtn

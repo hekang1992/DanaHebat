@@ -17,14 +17,30 @@ class ProductView: UIView {
     
     var cellBlock: ((fiveModel) -> Void)?
     
+    var loanBlock: ((String) -> Void)?
+    
     private let disposeBag = DisposeBag()
     
     let languageCode = LanguageManager.shared.getCurrentLocaleCode()
     
     var model: BaseModel? {
         didSet {
-            guard let listArray = model?.potions?.five else { return }
+            guard let model = model else { return }
+            let listArray = model.potions?.five ?? []
             reloadDynamicViews(listArray)
+            let tightly = model.potions?.sealed?.tightly ?? ""
+            privacyLabel.text = tightly
+            if tightly.isEmpty {
+                self.scrollView.snp.remakeConstraints { make in
+                    make.top.left.right.equalToSuperview()
+                    make.bottom.equalTo(applyBtn.snp.top).offset(-5.pix())
+                }
+            }else {
+                self.scrollView.snp.remakeConstraints { make in
+                    make.top.left.right.equalToSuperview()
+                    make.bottom.equalTo(applyBtn.snp.top).offset(-40.pix())
+                }
+            }
         }
     }
     
@@ -135,6 +151,26 @@ class ProductView: UIView {
     
     private var listViews: [ProductListView] = []
     
+    lazy var cycleBtn: UIButton = {
+        let cycleBtn = UIButton(type: .custom)
+        cycleBtn.isSelected = true
+        cycleBtn.setImage(UIImage(named: "cy_nor_image"), for: .normal)
+        cycleBtn.setImage(UIImage(named: "cy_sel_image"), for: .selected)
+        return cycleBtn
+    }()
+    
+    lazy var privacyLabel: UILabel = {
+        let privacyLabel = UILabel()
+        privacyLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        privacyLabel.numberOfLines = 0
+        privacyLabel.isUserInteractionEnabled = true
+        privacyLabel.textAlignment = .center
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(handlePrivacyTap(_:)))
+        privacyLabel.addGestureRecognizer(tapGesture)
+        return privacyLabel
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -148,6 +184,8 @@ class ProductView: UIView {
         
         addSubview(scrollView)
         addSubview(applyBtn)
+        addSubview(cycleBtn)
+        addSubview(privacyLabel)
         
         scrollView.addSubview(contentView)
         
@@ -266,6 +304,17 @@ class ProductView: UIView {
             }
         }
         
+        cycleBtn.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(40.pix())
+            make.width.height.equalTo(16)
+            make.bottom.equalTo(applyBtn.snp.top).offset(-15.pix())
+        }
+        privacyLabel.snp.makeConstraints { make in
+            make.top.equalTo(cycleBtn)
+            make.left.equalTo(cycleBtn.snp.right).offset(6)
+            make.width.equalTo(290)
+        }
+        
         applyBtn
             .rx
             .tap
@@ -275,6 +324,18 @@ class ProductView: UIView {
                 self.nextBlock?()
             })
             .disposed(by: disposeBag)
+        
+        cycleBtn
+            .rx
+            .tap
+            .debounce(.milliseconds(150), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] in
+                guard let self = self else { return }
+                cycleBtn.isSelected.toggle()
+            })
+            .disposed(by: disposeBag)
+        
+        
         
     }
     
@@ -313,5 +374,11 @@ class ProductView: UIView {
     }
 }
 
-
-
+extension ProductView {
+    
+    @objc private func handlePrivacyTap(_ gesture: UITapGestureRecognizer) {
+        let rolled = self.model?.potions?.sealed?.tightly ?? ""
+        self.loanBlock?(rolled)
+    }
+    
+}

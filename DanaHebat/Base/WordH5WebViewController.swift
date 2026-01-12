@@ -199,7 +199,7 @@ extension WordH5WebViewController: WKScriptMessageHandler {
     }
     
     private func handleTheThan(_ body: Any) {
-        locationManager.getLocation { info, error in
+        locationManager.getLocation { info in
             
         }
         Task {
