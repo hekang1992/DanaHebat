@@ -55,9 +55,10 @@ extension BaseViewController {
         nav.popToViewController(productVC, animated: true)
     }
     
-    func goWordWebVc(with pageUrl: String) {
+    func goWordWebVc(with pageUrl: String, type: String? = "") {
         let webVc = WordH5WebViewController()
         webVc.pageUrl = pageUrl
+        webVc.type = type ?? ""
         self.navigationController?.pushViewController(webVc, animated: true)
     }
     

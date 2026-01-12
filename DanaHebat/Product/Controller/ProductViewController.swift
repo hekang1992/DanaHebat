@@ -97,7 +97,7 @@ class ProductViewController: BaseViewController {
         
         productView.loanBlock = { [weak self] pageUrl in
             guard let self = self else { return }
-            self.goWordWebVc(with: pageUrl)
+            self.goWordWebVc(with: pageUrl, type: "1")
         }
         
         productView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in

@@ -16,6 +16,8 @@ class WordH5WebViewController: BaseViewController {
     
     var pageUrl: String = ""
     
+    var type: String = ""
+    
     private let disposeBag = DisposeBag()
     
     private let viewModel = HttpViewModel()
@@ -77,7 +79,11 @@ class WordH5WebViewController: BaseViewController {
             if self.webView.canGoBack {
                 self.webView.goBack()
             }else {
-                self.navigationController?.popToRootViewController(animated: true)
+                if type == "1" {
+                    self.navigationController?.popViewController(animated: true)
+                }else {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
             }
         }
         
