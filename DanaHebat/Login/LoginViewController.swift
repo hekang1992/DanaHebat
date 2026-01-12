@@ -90,7 +90,7 @@ class LoginViewController: BaseViewController {
     private func sendVerificationCode(with type: String) {
         let phoneNumber = self.loginView.phoneFiled.text ?? ""
         if phoneNumber.isEmpty {
-            ToastManager.showMessage(LanguageManager.localizedString(for: "Enter mobile number"))
+            ToastManager.showMessage(LanguageManager.localizedString(for: "Please enter your phone number"))
             return
         }
         requestVerificationCode(phoneNumber: phoneNumber, type: type)
@@ -98,7 +98,7 @@ class LoginViewController: BaseViewController {
     
     private func validateInput(phone: String, code: String) -> Bool {
         if phone.isEmpty {
-            ToastManager.showMessage(LanguageManager.localizedString(for: "Enter mobile number"))
+            ToastManager.showMessage(LanguageManager.localizedString(for: "Please enter your phone number"))
             return false
         }
         

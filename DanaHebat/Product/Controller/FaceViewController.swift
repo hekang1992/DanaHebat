@@ -221,6 +221,9 @@ extension FaceViewController {
         self.oneListView.cImageView.kf.setImage(with: URL(string: recombination))
         
         if arisen.isEmpty {
+            locationManager.getLocation { info in
+                
+            }
             s2 = String(Int(Date().timeIntervalSince1970))
             let photoView = CommonAlertView(frame: self.view.bounds)
             photoView.bgImageView.image = languageCode == "id" ? UIImage(named: "alt_end_f_image") : UIImage(named: "alt_en_f_image")
