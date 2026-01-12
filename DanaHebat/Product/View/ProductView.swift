@@ -30,6 +30,7 @@ class ProductView: UIView {
             reloadDynamicViews(listArray)
             let tightly = model.potions?.sealed?.tightly ?? ""
             privacyLabel.text = tightly
+            cycleBtn.isHidden = tightly.isEmpty
             if tightly.isEmpty {
                 self.scrollView.snp.remakeConstraints { make in
                     make.top.left.right.equalToSuperview()
