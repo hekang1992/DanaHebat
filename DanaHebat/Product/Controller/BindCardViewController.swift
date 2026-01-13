@@ -163,7 +163,7 @@ extension BindCardViewController {
                 let json = ["places": "7",
                             "restricted": startTime,
                             "much": String(Int(Date().timeIntervalSince1970))]
-                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                try? await Task.sleep(nanoseconds: 3_000_000_000)
                 await self.fittyInfoApi(with: json, viewModel: viewModel)
             }else {
                 ToastManager.showMessage(model.mental ?? "")

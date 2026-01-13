@@ -210,7 +210,7 @@ extension WordH5WebViewController: WKScriptMessageHandler {
             let json = ["places": "9",
                         "restricted": String(Int(Date().timeIntervalSince1970)),
                         "much": String(Int(Date().timeIntervalSince1970))]
-            try? await Task.sleep(nanoseconds: 2_500_000_000)
+            try? await Task.sleep(nanoseconds: 3_000_000_000)
             await self.fittyInfoApi(with: json, viewModel: viewModel)
         }
     }

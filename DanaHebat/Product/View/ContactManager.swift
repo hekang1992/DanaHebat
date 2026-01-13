@@ -48,12 +48,13 @@ class ContactManager: NSObject {
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Cancel"), style: .cancel))
+        alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Cancel"), style: .default))
         
-        alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Go to settings"), style: .default) { _ in
+        alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Go to Settings"), style: .cancel) { _ in
             guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-            UIApplication.shared.open(url)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         })
+        
         vc.present(alert, animated: true)
     }
 }

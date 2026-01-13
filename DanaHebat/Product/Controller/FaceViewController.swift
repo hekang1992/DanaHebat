@@ -207,7 +207,6 @@ extension FaceViewController {
     }
     
     private func ocAlertView(with model: BaseModel) {
-        locationManager.getLocation { info in }
         let recombination = model.potions?.newar?.recombination ?? ""
         let arisen = model.potions?.newar?.arisen ?? ""
         if recombination.isEmpty {
@@ -240,6 +239,7 @@ extension FaceViewController {
         self.oneListView.cImageView.kf.setImage(with: URL(string: recombination))
         
         if arisen.isEmpty {
+            locationManager.getLocation { info in }
             s2 = String(Int(Date().timeIntervalSince1970))
             let photoView = CommonAlertView(frame: self.view.bounds)
             photoView.bgImageView.image = languageCode == "id" ? UIImage(named: "alt_end_f_image") : UIImage(named: "alt_en_f_image")
@@ -287,13 +287,13 @@ extension FaceViewController {
                                 let json = ["places": "2",
                                             "restricted": s1,
                                             "much": String(Int(Date().timeIntervalSince1970))]
-                                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                                try? await Task.sleep(nanoseconds: 3_000_000_000)
                                 await self.fittyInfoApi(with: json, viewModel: viewModel)
                             }else {
                                 let json = ["places": "3",
                                             "restricted": s2,
                                             "much": String(Int(Date().timeIntervalSince1970))]
-                                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                                try? await Task.sleep(nanoseconds: 3_000_000_000)
                                 await self.fittyInfoApi(with: json, viewModel: viewModel)
                             }
                         }
@@ -418,7 +418,7 @@ extension FaceViewController {
                 let json = ["places": "2",
                             "restricted": s1,
                             "much": String(Int(Date().timeIntervalSince1970))]
-                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                try? await Task.sleep(nanoseconds: 3_000_000_000)
                 await self.fittyInfoApi(with: json, viewModel: viewModel)
             }else {
                 ToastManager.showMessage(model.mental ?? "")

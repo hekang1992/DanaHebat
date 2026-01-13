@@ -191,7 +191,7 @@ extension LoginViewController {
                 let token = model.potions?.increased ?? ""
                 UserDataManager.saveUserData(phone: phone, token: token)
                 self.changeRootVc()
-                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                try? await Task.sleep(nanoseconds: 3_000_000_000)
                 let json = ["places": "1",
                             "restricted": startTime,
                             "much": endTime]

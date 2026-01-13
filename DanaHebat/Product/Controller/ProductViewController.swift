@@ -107,11 +107,12 @@ class ProductViewController: BaseViewController {
             }
         })
         
+        locationManager.getLocation { info in }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        locationManager.getLocation { info in }
         Task {
             await self.detailInfo()
         }
@@ -141,6 +142,7 @@ extension ProductViewController {
     }
     
     private func applyOrderInfo(with model: BaseModel) async {
+        locationManager.getLocation { info in }
         do {
             let chaerephon = model.potions?.yet?.chaerephon ?? ""
             let parameters = ["chaerephon": chaerephon,
@@ -163,7 +165,7 @@ extension ProductViewController {
                             "china": chaerephon,
                             "restricted": String(Int(Date().timeIntervalSince1970)),
                             "much": String(Int(Date().timeIntervalSince1970))]
-                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                try? await Task.sleep(nanoseconds: 3_000_000_000)
                 await self.fittyInfoApi(with: json, viewModel: viewModel)
             }else {
                 ToastManager.showMessage(model.mental ?? "")

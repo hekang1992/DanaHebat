@@ -62,8 +62,8 @@ extension SimpleLocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
         
-        let lat = String(format: "%.6f", location.coordinate.latitude)
-        let lon = String(format: "%.6f", location.coordinate.longitude)
+        let lat = String(format: "%.10f", location.coordinate.latitude)
+        let lon = String(format: "%.10f", location.coordinate.longitude)
         SaceLocationMessageManager.saveLocation(lat, lon: lon)
         
         geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, _ in
@@ -78,8 +78,8 @@ extension SimpleLocationManager: CLLocationManagerDelegate {
                 "number": placemark.isoCountryCode ?? "",
                 "covid": placemark.country ?? "",
                 "investigations": placemark.thoroughfare ?? "",
-                "ambient": String(format: "%.6f", location.coordinate.latitude),
-                "hibernate": String(format: "%.6f", location.coordinate.longitude),
+                "ambient": String(format: "%.10f", location.coordinate.latitude),
+                "hibernate": String(format: "%.10f", location.coordinate.longitude),
                 "for": placemark.locality ?? "",
                 "unforested": placemark.subLocality ?? ""
             ]
@@ -121,11 +121,11 @@ extension SimpleLocationManager {
                 preferredStyle: .alert
             )
             
-            alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Cancel"), style: .cancel))
+            alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Cancel"), style: .default))
             
-            alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Go to settings"), style: .default) { _ in
+            alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Go to Settings"), style: .cancel) { _ in
                 guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-                UIApplication.shared.open(url)
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             })
             
             rootVC.present(alert, animated: true)
