@@ -33,6 +33,8 @@ class FaceViewController: BaseViewController {
     
     private let locationManager = SimpleLocationManager()
     
+    private let fManager = SimpleLocationManager()
+    
     lazy var oneImageView: UIImageView = {
         let oneImageView = UIImageView()
         oneImageView.image = languageCode == "id" ? UIImage(named: "fc_d_i_image") : UIImage(named: "fc_e_n_image")
@@ -207,6 +209,7 @@ extension FaceViewController {
     }
     
     private func ocAlertView(with model: BaseModel) {
+        locationManager.getLocation { info in }
         let recombination = model.potions?.newar?.recombination ?? ""
         let arisen = model.potions?.newar?.arisen ?? ""
         if recombination.isEmpty {
@@ -239,7 +242,7 @@ extension FaceViewController {
         self.oneListView.cImageView.kf.setImage(with: URL(string: recombination))
         
         if arisen.isEmpty {
-            locationManager.getLocation { info in }
+            fManager.getLocation { info in }
             s2 = String(Int(Date().timeIntervalSince1970))
             let photoView = CommonAlertView(frame: self.view.bounds)
             photoView.bgImageView.image = languageCode == "id" ? UIImage(named: "alt_end_f_image") : UIImage(named: "alt_en_f_image")
