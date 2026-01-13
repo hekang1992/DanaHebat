@@ -45,6 +45,11 @@ extension LaunchViewController {
             case .unknown:
                 break
             case .notReachable:
+                print("============notReachable")
+                if UIDevice.current.model == "iPad" {
+                    LanguageManager.shared.setLanguage(code: 1)
+                    self?.changeRootVc()
+                }
                 break
                 
             case .ethernetOrWiFi:
@@ -79,8 +84,12 @@ extension LaunchViewController {
             let model = try await viewModel.launchApi(parameters: parameters)
             
             if model.illness == 0 {
-                let being = Int(model.potions?.being ?? "1") ?? 1
-                LanguageManager.shared.setLanguage(code: being)
+                if UIDevice.current.model == "iPad" {
+                    LanguageManager.shared.setLanguage(code: 1)
+                }else {
+                    let being = Int(model.potions?.being ?? "1") ?? 1
+                    LanguageManager.shared.setLanguage(code: being)
+                }
                 
                 if let facebookModel = model.potions?.reports {
                     faceBookSDK(with: facebookModel)

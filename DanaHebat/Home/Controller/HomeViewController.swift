@@ -45,6 +45,12 @@ class HomeViewController: BaseViewController {
         return homeView
     }()
     
+    lazy var lostView: LostNetworkView = {
+        let lostView = LostNetworkView(frame: .zero)
+        lostView.isHidden = true
+        return lostView
+    }()
+    
     lazy var homeListView: HomeProductListView = {
         let homeListView = HomeProductListView(frame: .zero)
         homeListView.isHidden = true
@@ -70,6 +76,11 @@ class HomeViewController: BaseViewController {
         homeListView.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
+        }
+        
+        view.addSubview(lostView)
+        lostView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         
         headView.tapClickBlock = { [weak self] in
@@ -124,6 +135,13 @@ class HomeViewController: BaseViewController {
             guard let self = self, let baseModel = baseModel else { return }
             let pageUrl = baseModel.potions?.off?.ready ?? ""
             self.goWordWebVc(with: pageUrl)
+        }
+        
+        lostView.againBlock = { [weak self] in
+            guard let self = self else { return }
+            Task {
+                await self.homeInfo()
+            }
         }
         
     }
@@ -204,16 +222,13 @@ extension HomeViewController {
                     self.homeView.isHidden = false
                     self.homeListView.isHidden = true
                 }else {
-                    
                     if let index = modelArray.firstIndex(where: { $0.almost == "lengthsa" }) {
                         modelArray.remove(at: index)
                     }
-                    
                     if let listModel = modelArray.first(where: { $0.almost == "lengthsc" }) {
                         let newarModel = listModel.newar?.first ?? newarModel()
                         self.configHeadInfo(with: newarModel)
                     }
-                    
                     self.homeListView.modelArray = modelArray
                     self.homeView.isHidden = true
                     self.homeListView.isHidden = false
@@ -223,11 +238,15 @@ extension HomeViewController {
                 self.homeView.scrollView.mj_header?.endRefreshing()
                 self.homeListView.tableView.mj_header?.endRefreshing()
             }
+            self.lostView.isHidden = true
         } catch {
             await MainActor.run {
                 self.homeView.scrollView.mj_header?.endRefreshing()
                 self.homeListView.tableView.mj_header?.endRefreshing()
             }
+            self.homeView.isHidden = true
+            self.homeListView.isHidden = true
+            self.lostView.isHidden = false
         }
     }
     
