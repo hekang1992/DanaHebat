@@ -19,7 +19,7 @@ class SimpleLocationManager: NSObject {
     override init() {
         super.init()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     func getLocation(completion: @escaping ([String: String]) -> Void) {
@@ -62,8 +62,8 @@ extension SimpleLocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
         
-        let lat = String(format: "%.10f", location.coordinate.latitude)
-        let lon = String(format: "%.10f", location.coordinate.longitude)
+        let lat = String(format: "%.6", location.coordinate.latitude)
+        let lon = String(format: "%.6", location.coordinate.longitude)
         SaceLocationMessageManager.saveLocation(lat, lon: lon)
         
         geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, _ in
@@ -78,8 +78,8 @@ extension SimpleLocationManager: CLLocationManagerDelegate {
                 "number": placemark.isoCountryCode ?? "",
                 "covid": placemark.country ?? "",
                 "investigations": placemark.thoroughfare ?? "",
-                "ambient": String(format: "%.10f", location.coordinate.latitude),
-                "hibernate": String(format: "%.10f", location.coordinate.longitude),
+                "ambient": String(format: "%.6", location.coordinate.latitude),
+                "hibernate": String(format: "%.6", location.coordinate.longitude),
                 "for": placemark.locality ?? "",
                 "unforested": placemark.subLocality ?? ""
             ]
