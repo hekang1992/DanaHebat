@@ -156,9 +156,7 @@ class FaceViewController: BaseViewController {
         /// photp_start_time
         s1 = String(Int(Date().timeIntervalSince1970))
         
-        locationManager.getLocation { info in
-            
-        }
+        locationManager.getLocation { info in }
     }
     
 }
@@ -209,6 +207,7 @@ extension FaceViewController {
     }
     
     private func ocAlertView(with model: BaseModel) {
+        locationManager.getLocation { info in }
         let recombination = model.potions?.newar?.recombination ?? ""
         let arisen = model.potions?.newar?.arisen ?? ""
         if recombination.isEmpty {
@@ -241,9 +240,6 @@ extension FaceViewController {
         self.oneListView.cImageView.kf.setImage(with: URL(string: recombination))
         
         if arisen.isEmpty {
-            locationManager.getLocation { info in
-                
-            }
             s2 = String(Int(Date().timeIntervalSince1970))
             let photoView = CommonAlertView(frame: self.view.bounds)
             photoView.bgImageView.image = languageCode == "id" ? UIImage(named: "alt_end_f_image") : UIImage(named: "alt_en_f_image")

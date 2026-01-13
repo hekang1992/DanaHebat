@@ -19,7 +19,7 @@ class SimpleLocationManager: NSObject {
     override init() {
         super.init()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
     }
     
     func getLocation(completion: @escaping ([String: String]) -> Void) {

@@ -205,9 +205,7 @@ extension WordH5WebViewController: WKScriptMessageHandler {
     }
     
     private func handleTheThan(_ body: Any) {
-        locationManager.getLocation { info in
-            
-        }
+        locationManager.getLocation { info in }
         Task {
             let json = ["places": "9",
                         "restricted": String(Int(Date().timeIntervalSince1970)),
