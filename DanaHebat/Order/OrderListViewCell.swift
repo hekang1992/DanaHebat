@@ -11,6 +11,8 @@ import Kingfisher
 
 class OrderListViewCell: UITableViewCell {
     
+    var loanBlock: ((String) -> Void)?
+    
     var model: certainlyModel? {
         didSet {
             guard let model = model else { return }
@@ -90,12 +92,15 @@ class OrderListViewCell: UITableViewCell {
         loanLabel.textColor = UIColor.init(hexString: "#333333")
         loanLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(500))
         
-        let attributedString = NSMutableAttributedString(string: "您的文本内容")
+        let attributedString = NSMutableAttributedString(string: "a")
         attributedString.addAttribute(.underlineStyle,
                                      value: NSUnderlineStyle.single.rawValue,
                                      range: NSRange(location: 0, length: attributedString.length))
         loanLabel.attributedText = attributedString
-        
+        loanLabel.isUserInteractionEnabled = true
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(loanLabelTapped))
+            loanLabel.addGestureRecognizer(tapGesture)
         return loanLabel
     }()
     
@@ -104,13 +109,13 @@ class OrderListViewCell: UITableViewCell {
         backgroundColor = .clear
         selectionStyle = .none
         contentView.addSubview(bgImageView)
+        contentView.addSubview(loanLabel)
         bgImageView.addSubview(logoImageView)
         bgImageView.addSubview(nameLabel)
         bgImageView.addSubview(whiteView)
         bgImageView.addSubview(typeLabel)
         bgImageView.addSubview(applyImageView)
         applyImageView.addSubview(applyLabel)
-        bgImageView.addSubview(loanLabel)
         
         bgImageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -147,8 +152,8 @@ class OrderListViewCell: UITableViewCell {
         }
         loanLabel.snp.makeConstraints { make in
             make.centerY.equalTo(applyImageView)
-            make.left.equalToSuperview().offset(17.pix())
-            make.height.equalTo(18.pix())
+            make.left.equalToSuperview().offset(30.pix())
+            make.height.equalTo(20.pix())
         }
     }
     
@@ -195,6 +200,12 @@ class OrderListViewCell: UITableViewCell {
         logoImageView.image = nil
         nameLabel.text = nil
         typeLabel.text = nil
+    }
+    
+    @objc func loanLabelTapped() {
+        if let model = model {
+            self.loanBlock?(model.blasius ?? "")
+        }
     }
     
     required init?(coder: NSCoder) {

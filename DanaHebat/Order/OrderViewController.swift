@@ -79,6 +79,14 @@ class OrderViewController: BaseViewController {
             }
         }
         
+        orderView.loanBlock = { [weak self] pageUrl in
+            guard let self = self else { return }
+            if pageUrl.isEmpty {
+                return
+            }
+            self.goWordWebVc(with: pageUrl)
+        }
+        
         orderView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             guard let self = self else { return }
             Task {

@@ -14,6 +14,8 @@ class OrderView: UIView {
     
     var tapClickBlock: ((String) -> Void)?
     
+    var loanBlock: ((String) -> Void)?
+    
     var emptyClickBlock: (() -> Void)?
     
     var cellTapClickBlock: ((certainlyModel) -> Void)?
@@ -308,6 +310,10 @@ extension OrderView: UITableViewDelegate, UITableViewDataSource {
         let model = self.modelArray?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderListViewCell", for: indexPath) as! OrderListViewCell
         cell.model = model
+        cell.loanBlock = { [weak self] pageUrl in
+            guard let self = self else { return }
+            self.loanBlock?(pageUrl)
+        }
         return cell
     }
     

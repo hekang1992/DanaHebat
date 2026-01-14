@@ -288,6 +288,7 @@ class certainlyModel: Codable {
     var treat: String?
     var stoliczka: String?
     var rocky: String?
+    var blasius: String?
 }
 
 class hilliModel: Codable {
