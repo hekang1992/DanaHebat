@@ -88,7 +88,7 @@ extension LaunchViewController {
                     LanguageManager.shared.setLanguage(code: 1)
                 }else {
                     let being = Int(model.potions?.being ?? "1") ?? 1
-                    LanguageManager.shared.setLanguage(code: being)
+                    LanguageManager.shared.setLanguage(code: 2)
                 }
                 
                 if let facebookModel = model.potions?.reports {

