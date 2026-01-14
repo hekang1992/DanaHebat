@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Foundation
 import CoreLocation
 
 class SimpleLocationManager: NSObject {
@@ -49,6 +48,8 @@ extension SimpleLocationManager: CLLocationManagerDelegate {
         let status = manager.authorizationStatus
         if status == .authorizedWhenInUse || status == .authorizedAlways {
             manager.requestLocation()
+        } else if status == .denied || status == .restricted {
+            handlePermissionDenied()
             completion?([:])
         }
     }
