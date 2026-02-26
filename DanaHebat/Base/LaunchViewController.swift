@@ -53,10 +53,15 @@ extension LaunchViewController {
                 
             case .ethernetOrWiFi, .cellular:
                 NetworkMonitor.shared.stopListening()
-                Task {
-                    await self?.urlInfo()
-                }
                 
+                if UIDevice.current.model == "iPad" {
+                    LanguageManager.shared.setLanguage(code: 1)
+                    self?.changeRootVc()
+                }else {
+                    Task {
+                        await self?.urlInfo()
+                    }
+                }
             }
             
         }

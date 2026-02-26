@@ -284,7 +284,7 @@ class LoginView: UIView {
             cycleBtn.snp.makeConstraints { make in
                 make.left.equalToSuperview().offset(60)
                 make.width.height.equalTo(16)
-                make.top.equalTo(whiteView.snp.bottom).offset(130)
+                make.top.equalTo(whiteView.snp.bottom).offset(50)
             }
             privacyLabel.snp.makeConstraints { make in
                 make.top.equalTo(cycleBtn)
@@ -295,7 +295,7 @@ class LoginView: UIView {
             cycleBtn.snp.makeConstraints { make in
                 make.left.equalToSuperview().offset(32)
                 make.width.height.equalTo(16)
-                make.top.equalTo(whiteView.snp.bottom).offset(130)
+                make.top.equalTo(whiteView.snp.bottom).offset(50)
             }
             privacyLabel.snp.makeConstraints { make in
                 make.top.equalTo(cycleBtn)
