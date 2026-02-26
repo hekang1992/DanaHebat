@@ -50,15 +50,8 @@ extension LaunchViewController {
                     LanguageManager.shared.setLanguage(code: 1)
                     self?.changeRootVc()
                 }
-                break
                 
-            case .ethernetOrWiFi:
-                NetworkMonitor.shared.stopListening()
-                Task {
-                    await self?.kgApi()
-                }
-                
-            case .cellular:
+            case .ethernetOrWiFi, .cellular:
                 NetworkMonitor.shared.stopListening()
                 Task {
                     await self?.kgApi()
