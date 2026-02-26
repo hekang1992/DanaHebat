@@ -2,7 +2,7 @@
 //  SettingViewController.swift
 //  DanaHebat
 //
-//  Created by hekang on 2026/1/10.
+//  Created by Json Kim on 2026/1/10.
 //
 
 import UIKit

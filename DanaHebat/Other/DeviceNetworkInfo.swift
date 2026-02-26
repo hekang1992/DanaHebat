@@ -2,7 +2,7 @@
 //  DeviceNetworkInfo.swift
 //  DanaHebat
 //
-//  Created by hekang on 2026/1/9.
+//  Created by Json Kim on 2026/1/9.
 //
 
 import Foundation
