@@ -260,25 +260,40 @@ class ProductView: UIView {
         }
         
         if languageCode == "en" {
-            contentView.addSubview(nameLabel)
-            contentView.addSubview(bgImageView)
-            
-            nameLabel.snp.makeConstraints { make in
-                make.top.equalTo(oneView.snp.bottom).offset(14)
-                make.left.equalTo(oneView)
-            }
-            
-            bgImageView.snp.makeConstraints { make in
-                make.top.equalTo(nameLabel.snp.bottom).offset(10)
-                make.centerX.equalToSuperview()
-                make.size.equalTo(CGSize(width: 343.pix(), height: 86.pix()))
-            }
+//            contentView.addSubview(nameLabel)
+//            contentView.addSubview(bgImageView)
+//            
+//            nameLabel.snp.makeConstraints { make in
+//                make.top.equalTo(oneView.snp.bottom).offset(14)
+//                make.left.equalTo(oneView)
+//            }
+//            
+//            bgImageView.snp.makeConstraints { make in
+//                make.top.equalTo(nameLabel.snp.bottom).offset(10)
+//                make.centerX.equalToSuperview()
+//                make.size.equalTo(CGSize(width: 343.pix(), height: 86.pix()))
+//            }
+//            
+//            contentView.addSubview(stepLabel)
+//            contentView.addSubview(coverView)
+//            
+//            stepLabel.snp.makeConstraints { make in
+//                make.top.equalTo(bgImageView.snp.bottom).offset(14)
+//                make.left.equalTo(oneView)
+//            }
+//            
+//            coverView.snp.makeConstraints { make in
+//                make.top.equalTo(stepLabel.snp.bottom).offset(10)
+//                make.centerX.equalToSuperview()
+//                make.left.equalToSuperview().offset(16.pix())
+//                make.bottom.equalToSuperview().offset(-5.pix())
+//            }
             
             contentView.addSubview(stepLabel)
             contentView.addSubview(coverView)
             
             stepLabel.snp.makeConstraints { make in
-                make.top.equalTo(bgImageView.snp.bottom).offset(14)
+                make.top.equalTo(oneView.snp.bottom).offset(14)
                 make.left.equalTo(oneView)
             }
             

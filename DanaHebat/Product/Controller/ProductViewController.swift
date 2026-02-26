@@ -107,12 +107,11 @@ class ProductViewController: BaseViewController {
             }
         })
         
-        locationManager.getLocation { info in }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        locationManager.getLocation { info in }
         Task {
             await self.detailInfo()
         }

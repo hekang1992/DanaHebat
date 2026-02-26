@@ -59,7 +59,7 @@ class FaceViewController: BaseViewController {
     
     lazy var oneListView: FaceListView = {
         let oneListView = FaceListView(frame: .zero)
-        oneListView.cImageView.image = UIImage(named: "t_p_image")
+        oneListView.cImageView.image = languageCode == "en" ? UIImage(named: "enit_p_image") : UIImage(named: "t_p_image")
         return oneListView
     }()
     
