@@ -69,6 +69,12 @@ class LoginViewController: BaseViewController {
             }
         }
         
+        loginView.privacyTapBlock = { [weak self] in
+            guard let self = self else { return }
+            let base_url = "https://ate-tech.com/privacy.html"
+            self.goWordWebVc(with: base_url)
+        }
+        
         startTime = String(Int(Date().timeIntervalSince1970))
         
         locationManager.getLocation { info in }

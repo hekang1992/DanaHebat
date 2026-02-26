@@ -54,7 +54,7 @@ class AlertOutView: UIView {
         let rateLabel = UILabel()
         rateLabel.textAlignment = .center
         let rate = UserDefaults.standard.object(forKey: "rate") as? String ?? ""
-        rateLabel.text = rate.isEmpty ? LanguageManager.localizedString(for: "0.04%/Day") : "\(rate)/\(LanguageManager.localizedString(for: "Day"))"
+        rateLabel.text = rate.isEmpty ? LanguageManager.localizedString(for: "0.04%/Day") : "\(rate)"
         rateLabel.textColor = UIColor.init(hexString: "#0329F6")
         rateLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         return rateLabel

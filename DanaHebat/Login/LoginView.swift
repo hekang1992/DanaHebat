@@ -18,6 +18,8 @@ class LoginView: UIView {
     
     var codeBlock: ((String) -> Void)?
     
+    var privacyTapBlock: (() -> Void)?
+    
     let languageCode = LanguageManager.shared.getCurrentLocaleCode()
     
     lazy var bgImageView: UIImageView = {
@@ -351,7 +353,7 @@ class LoginView: UIView {
 extension LoginView {
     
     @objc private func handlePrivacyTap(_ gesture: UITapGestureRecognizer) {
-        ToastManager.showMessage("1")
+        self.privacyTapBlock?()
     }
     
     @objc private func handleVoiceTap(_ gesture: UITapGestureRecognizer) {

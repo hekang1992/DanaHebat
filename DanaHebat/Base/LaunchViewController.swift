@@ -56,7 +56,7 @@ extension LaunchViewController {
                 
                 if UIDevice.current.model == "iPad" {
                     LanguageManager.shared.setLanguage(code: 1)
-                    self?.changeRootVc()
+                    self?.checkAndNavigateToGuideOrHome()
                 }else {
                     Task {
                         await self?.urlInfo()
