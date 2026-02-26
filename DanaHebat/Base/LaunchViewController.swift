@@ -76,10 +76,9 @@ extension LaunchViewController {
             
             let savedIndex = UserDefaults.standard.integer(forKey: "domainIndex")
             
-            if await testDomain("https://dh.ate-tech.com/seropositiveer") {
-                UserDefaults.standard.set("https://dh.ate-tech.com/seropositiveer", forKey: "API_URL")
+            if await testDomain("https://dh.ate-tech.com") {
+                UserDefaults.standard.set("https://dh.ate-tech.com", forKey: "API_URL")
                 await kgApi()
-                return
             }else {
                 for i in savedIndex..<items.count {
                     if await testDomain(items[i].dh) {

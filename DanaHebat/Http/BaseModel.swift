@@ -312,6 +312,7 @@ class newarModel: Codable {
     var recombination: String?
     var arisen: String?
     var philippines: String?
+    var forme: String?
 }
 
 class fiveModel: Codable {

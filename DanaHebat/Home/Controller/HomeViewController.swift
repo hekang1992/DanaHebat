@@ -85,7 +85,14 @@ class HomeViewController: BaseViewController {
         
         headView.tapClickBlock = { [weak self] in
             guard let self = self else { return }
-            self.changeCenterRootVc()
+            if UserDataManager.isLoggedIn() {
+                self.changeCenterRootVc()
+            }else {
+                let loginVc = BaseNavigationController(rootViewController: LoginViewController())
+                loginVc.modalPresentationStyle = .fullScreen
+                self.present(loginVc, animated: true)
+            }
+            
         }
         
         homeView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in

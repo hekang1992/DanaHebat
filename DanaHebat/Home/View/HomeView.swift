@@ -27,6 +27,7 @@ class HomeView: UIView {
         didSet {
             guard let model = model else { return }
             applyLabel.text = model.treat ?? ""
+            applyLabel.backgroundColor = UIColor.init(hexString: model.forme ?? "")
             oneLabel.text = model.flesh ?? ""
             let money = model.reported ?? ""
             twoLabel.text = money
