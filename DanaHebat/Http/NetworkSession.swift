@@ -18,7 +18,7 @@ final class NetworkSession {
     /// GET
     static let getSession: Session = {
         let config = URLSessionConfiguration.default
-        config.timeoutIntervalForRequest = 30
+        config.timeoutIntervalForRequest = 10
         return Session(configuration: config)
     }()
     
@@ -36,7 +36,18 @@ final class NetworkManager {
     
     private init() {}
     
-    let base_url = "http://8.215.47.12/seropositiveer"
+    var apiurl: String {
+        get {
+            return UserDefaults.standard.string(forKey: "API_URL") ?? ""
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "API_URL")
+        }
+    }
+    
+    var base_url: String {
+        return apiurl.isEmpty ? "https://dh.ate-tech.com/seropositiveer" : apiurl
+    }
     
     // MARK: - GET
     func get<T: Codable>(

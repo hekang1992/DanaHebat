@@ -184,7 +184,9 @@ extension LoginViewController {
         do {
             let parameters = ["migraines": phone, "explanation": code]
             let model = try await viewModel.loginApi(parameters: parameters)
-            ToastManager.showMessage(model.mental ?? "")
+            await MainActor.run {
+                ToastManager.showMessage(model.mental ?? "")
+            }
             try? await Task.sleep(nanoseconds: 500_000_000)
             if model.illness == 0 {
                 let phone = model.potions?.migraines ?? ""
